@@ -1,0 +1,16 @@
+backend:
+  name: git-gateway
+  branch: master
+media_folder: public/media
+public_folder: /media
+collections:
+  - name: "facts"
+    label: "Facts"
+    folder: "content/facts"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Text", name: "description", widget: "markdown"}
+      - {label: "Image", name: "image", widget: image}
+      - {label: "Tags", name: "tags", widget: "list"}

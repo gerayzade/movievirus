@@ -1,0 +1,20 @@
+{
+  "presets": ["next/babel"],
+  "plugins": [
+    ["module-resolver", {
+      "root": ["."],
+      "alias": {
+        "test": "./test",
+        "underscore": "lodash"
+      }
+    }],
+    ["inline-react-svg", {
+      "svgo": {
+        "plugins": [
+          { "removeAttrs": { "attrs": "(data-name)" } },
+          { "cleanupIDs": true }
+        ]
+      }
+    }]
+  ]
+}

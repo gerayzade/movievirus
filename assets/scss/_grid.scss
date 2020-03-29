@@ -1,0 +1,115 @@
+// desktop grid
+$grid-desktop-columns: 12;
+$grid-desktop-sideMargin: 80px;
+$grid-desktop-gutter: 20px;
+$grid-desktop-breakpoint: 1400px;
+
+// tablet grid
+$grid-tablet-columns: 12;
+$grid-tablet-sideMargin: 60px;
+$grid-tablet-gutter: 15px;
+$grid-tablet-breakpoint: 1024px;
+
+// mobile grid
+$grid-mobile-columns: 4;
+$grid-mobile-sideMargin: 32px;
+$grid-mobile-gutter: 10px;
+$grid-mobile-breakpoint: 620px;
+
+// pixels to % variables
+$desk-grid-width: 100% - (($grid-desktop-sideMargin * 2 / $grid-desktop-breakpoint) * 100%);
+$tab-grid-width: 100% - (($grid-tablet-sideMargin * 2 / $grid-tablet-breakpoint) * 100%);
+$mob-grid-width: 100% - (($grid-mobile-sideMargin * 2 / $grid-mobile-breakpoint) * 100%);
+
+$desk-gutter: (($grid-desktop-gutter / ($grid-desktop-breakpoint - ($grid-desktop-sideMargin * 2))) * 100%);
+$tab-gutter: (($grid-tablet-gutter / ($grid-tablet-breakpoint - ($grid-tablet-sideMargin * 2))) * 100%);
+$mob-gutter: (($grid-mobile-gutter / ($grid-mobile-breakpoint - ($grid-mobile-sideMargin * 2))) * 100%);
+
+// functions and mixins
+@function col-width($i, $columns) {
+	@return 100% / $columns * $i;
+}
+
+@mixin media-tablets-and-mobile {
+	@media screen and (max-width: $grid-tablet-breakpoint) {
+		@content;
+	}
+}
+
+@mixin media-mobile-only {
+	@media screen and (max-width: $grid-mobile-breakpoint) {
+		@content;
+	}
+}
+
+@mixin media-desktop-only {
+	@media screen and (min-width: $grid-tablet-breakpoint + 0.1px) {
+		@content;
+	}
+}
+
+@mixin col-props($i, $columns, $gutter) {
+	width: col-width($i, $columns);
+	padding: $gutter/2;
+}
+
+@mixin columns-loop($name, $columns, $gutter) {
+	@for $i from 0 through $columns {
+		&-#{$name}-#{$i} {
+			@include col-props($i, $columns, $gutter);
+		}
+
+		&-#{$name}-shift-#{$i} {
+			margin-left: col-width($i, $columns);
+		}
+	}
+}
+
+@mixin columns-equal($columns, $gutter) {
+	&-eq-#{$columns} {
+		@include col-props(1, $columns, $gutter);
+	}
+}
+
+@mixin grid-base($width) {
+	display: flex;
+	margin-left: auto;
+	margin-right: auto;
+	flex-wrap: wrap;
+	max-width: $grid-desktop-breakpoint;
+	width: $width;
+}
+
+// classes
+.row {
+	@include grid-base($desk-grid-width);
+
+	@media screen and (max-width: $grid-tablet-breakpoint) {
+		width: $tab-grid-width;
+	}
+
+	@media screen and (max-width: $grid-mobile-breakpoint) {
+		width: $mob-grid-width;
+	}
+
+	&:not(.padded) {
+		[class^=col] {
+			padding-bottom: 0;
+			padding-top: 0;
+		}
+	}
+}
+
+.col {
+	@include columns-equal(5, $desk-gutter);
+
+	@include columns-loop(desk, $grid-desktop-columns, $desk-gutter);
+
+	@media screen and (max-width: $grid-tablet-breakpoint) {
+		@include columns-loop(tab, $grid-tablet-columns, $tab-gutter);
+	}
+
+	@media screen and (max-width: $grid-mobile-breakpoint) {
+		@include columns-loop(mob, $grid-mobile-columns, $mob-gutter);
+	}
+}
