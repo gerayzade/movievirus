@@ -13,7 +13,7 @@ description: >-
   giant skulls after they were inspired by a scene from the James Bond movie
   Spectre.
 image: /media/spectre-007.jpg
-title: >-
+source: >-
   https://www.bbc.com/news/world-latin-america-37813562
 tags:
   - james bond
