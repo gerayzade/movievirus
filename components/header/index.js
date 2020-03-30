@@ -1,4 +1,4 @@
-import Logo from 'assets/icons/logo.svg';
+import Logo from '~/assets/icons/logo.svg';
 import MenuToggle from './MenuToggle';
 
 const Header = () => (

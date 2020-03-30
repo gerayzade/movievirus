@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Header from './header';
 import Footer from './footer';
 
-const GoogleFonts = 'Roboto:300,400,500,700|Sen:700,800';
+const GoogleFonts = 'Montserrat:300,400,500,700|Sen:700,800';
 
 const Layout = props => (
   <div className="wrapper">

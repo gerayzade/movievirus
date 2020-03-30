@@ -1,10 +1,20 @@
-import Layout from 'components/Layout';
-import FactsList from 'components/facts/FactsList';
+import { connect } from 'react-redux';
+import { importMarkdownFiles } from '~/helpers/handleMarkdown';
+import Layout from '~/components/Layout';
+import FactsList from '~/components/facts/FactsList';
 
-const Index = () => (
-  <Layout title="#StayHome">
-    <FactsList facts={Array.from(Array(18).keys())} />
-  </Layout>
-);
+class Index extends React.Component {
+  static async getInitialProps() {
+    const data = await importMarkdownFiles('facts');
+    return { facts: data };
+  }
+  render() {
+    return (
+      <Layout title="#StayHome">
+        <FactsList facts={this.props.facts} />
+      </Layout>
+    );
+  }
+}
 
-export default Index;
+export default connect()(Index);

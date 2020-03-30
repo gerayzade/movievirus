@@ -28,13 +28,18 @@ export default class FactsList extends React.Component {
       <div className="facts-strip" onMouseLeave={(e) => this.handleMouseLeave(e, true)}>
         {Array(rows).fill(0).map((row, i) => (
         <div className="row padded" style={{transform: `translateX(${this.state.translateX}px)`}} key={i}>
-          {this.props.facts.slice(count, count += (i % 2 === 0 ? 5 : 4)).map((item, j) => 
-          <div className="col-eq-5 col-tab-4 col-mob-4" key={j}>
-            <div className={'fact ' + (id === item ? 'active' : (id !== -1 ? 'muted' : ''))} 
-              onMouseOver={(e) => this.handleMouseOver(e, item)} 
+          {this.props.facts.slice(count, count += (i % 2 === 0 ? 5 : 4)).map(item => 
+          <div className="col-eq-5 col-tab-6 col-mob-4" key={item.id}>
+            <div className={'fact ' + (id === item.id ? 'active' : (id !== -1 ? 'muted' : ''))} 
+              onMouseOver={(e) => this.handleMouseOver(e, item.id)} 
               onMouseLeave={(e) => this.handleMouseLeave(e)}
             >
-              
+              <img src={item.image} alt={item.title} />
+              <div className="layer">
+                <p>
+                  <span>{item.title}</span>
+                </p>
+              </div>
             </div>
           </div>
           )}

@@ -4,8 +4,7 @@
     ["module-resolver", {
       "root": ["."],
       "alias": {
-        "test": "./test",
-        "underscore": "lodash"
+        "~": "."
       }
     }],
     ["inline-react-svg", {
