@@ -1,6 +1,6 @@
 ---
 title: >-
-  Which movie inspired Mexicans to hold annual parade during Day of the Dead?
+  A scene from James Bond movie prompts Mexico City to launch its own parade
 description: >-
   Mexicans traditionally celebrate the Day of the Dead with a family picnic to
   remember their loved ones at graveyard or in front of a decorated shrine at

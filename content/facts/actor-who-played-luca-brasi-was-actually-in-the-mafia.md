@@ -1,7 +1,7 @@
 ---
-title: Which character from The Godfather was played by a real gangster?
+title: Actor who played Luca Brasi was actually in the Mafia
 description: >-
-  Filming of Mario Puzo’s classic novel The Godfather was met with resistance
+  Filming of Mario Puzo's classic novel The Godfather was met with resistance
   from the Italo-American League for Civil Rights, founded by real crime
   families. In result the word "mafia" was excluded from the script and also
   some mobsters were sent to observe the set. One of them was protected by

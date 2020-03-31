@@ -161,6 +161,7 @@ button {
     p {
       line-height: 1.6;
       font-weight: 300;
+      max-width: 240px;
       span {
         background-color: $red-1;
         box-shadow: 5px 0 0 $red-1, -5px 0 0 $red-1;
