@@ -1,5 +1,5 @@
 ---
-title: Which The Godfather character was played by a real gangster?
+title: How real gangster was invited to play one of the major roles in The Godfather?
 description: >-
   Filming of Mario Puzo’s classic novel The Godfather was met with resistance
   from the Italo-American League for Civil Rights, founded by real crime
