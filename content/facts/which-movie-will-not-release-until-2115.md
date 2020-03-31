@@ -15,7 +15,7 @@ image: /media/100-years.jpg
 source: >-
   https://io9.gizmodo.com/john-malkovich-and-robert-rodriguez-have-made-a-movie-n-1743390289
 tags:
-  - promotion
   - alcohol
+  - promo
 ---
 

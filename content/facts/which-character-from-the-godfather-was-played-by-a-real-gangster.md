@@ -1,5 +1,5 @@
 ---
-title: How real gangster was invited to play one of the major roles in The Godfather?
+title: Which character from The Godfather was played by a real gangster?
 description: >-
   Filming of Mario Puzo’s classic novel The Godfather was met with resistance
   from the Italo-American League for Civil Rights, founded by real crime
@@ -12,7 +12,6 @@ description: >-
 image: /media/luca-brasi.jpg
 source: 'https://www.thevintagenews.com/2018/04/09/luca-brasi/'
 tags:
-  - the godfather
   - crime
 ---
 

@@ -13,10 +13,9 @@ description: >-
   Thorne got not only a movie that teaches a mass audience some real, accurate
   science, but also a scientific discovery that inspired him to publish new
   papers.
-image: /media/interstellar-black-hole.jpg
+image: /media/interstellar.jpg
 source: 'https://www.wired.com/2014/10/astrophysics-interstellar-black-hole/'
 tags:
-  - interstellar
   - science
   - space
 ---

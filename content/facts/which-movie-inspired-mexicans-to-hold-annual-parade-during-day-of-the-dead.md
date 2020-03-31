@@ -1,7 +1,6 @@
 ---
 title: >-
-  What inspired Mexicans to hold annual parade during Day of the Dead
-  celebrations?
+  Which movie inspired Mexicans to hold annual parade during Day of the Dead?
 description: >-
   Mexicans traditionally celebrate the Day of the Dead with a family picnic to
   remember their loved ones at graveyard or in front of a decorated shrine at
@@ -16,7 +15,7 @@ image: /media/spectre-007.jpg
 source: >-
   https://www.bbc.com/news/world-latin-america-37813562
 tags:
-  - james bond
+  - spy
   - traditions
 ---
 
