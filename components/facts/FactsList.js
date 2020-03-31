@@ -25,7 +25,7 @@ export default class FactsList extends React.Component {
     let rows = Math.floor(n/9) * 2 + Math.ceil((n - 9 * Math.floor(n/9)) / 5);
     let id = this.state.activeId;
     return(
-      <div className="facts-strip" onMouseLeave={(e) => this.handleMouseLeave(e, true)}>
+      <div className="facts-strip row" onMouseLeave={(e) => this.handleMouseLeave(e, true)}>
         {Array(rows).fill(0).map((row, i) => (
         <div className="row padded" style={{transform: `translateX(${this.state.translateX}px)`}} key={i}>
           {this.props.facts.slice(count, count += (i % 2 === 0 ? 5 : 4)).map(item => 

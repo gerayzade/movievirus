@@ -136,6 +136,7 @@ button {
 .facts-strip {
   padding-top: 10px;
   .row {
+    width: 100%;
     justify-content: center;
     transition: transform .3s;
     @include media-tablets-and-mobile {
@@ -160,7 +161,6 @@ button {
     }
     p {
       line-height: 1.6;
-      font-weight: 300;
       max-width: 240px;
       span {
         background-color: $red-1;
@@ -170,11 +170,11 @@ button {
   }
   @include media-desktop-only {
     .fact {
-      transition: opacity .3s ease, transform .3s;
+      transition: box-shadow .3s, opacity .3s, transform .3s;
       p {
         font-size: 11px;
-        transition: opacity .3s ease, transform .3s;
-        max-width: 180px;
+        transition: opacity .3s, transform .3s;
+        max-width: 170px;
       }
       &:not(.active) {
         p {
