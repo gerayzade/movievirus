@@ -1,8 +1,8 @@
 // desktop grid
 $grid-desktop-columns: 12;
-$grid-desktop-sideMargin: 80px;
-$grid-desktop-gutter: 20px;
-$grid-desktop-breakpoint: 1400px;
+$grid-desktop-sideMargin: 60px;
+$grid-desktop-gutter: 15px;
+$grid-desktop-breakpoint: 1440px;
 
 // tablet grid
 $grid-tablet-columns: 12;
@@ -13,8 +13,8 @@ $grid-tablet-breakpoint: 1024px;
 // mobile grid
 $grid-mobile-columns: 4;
 $grid-mobile-sideMargin: 32px;
-$grid-mobile-gutter: 10px;
-$grid-mobile-breakpoint: 620px;
+$grid-mobile-gutter: 15px;
+$grid-mobile-breakpoint: 640px;
 
 // pixels to % variables
 $desk-grid-width: 100% - (($grid-desktop-sideMargin * 2 / $grid-desktop-breakpoint) * 100%);
