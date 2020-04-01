@@ -6,7 +6,7 @@ const Header = () => (
     <div className="row">
       <div className="col-desk-8">
         <Logo className="logo" />
-        <strong className="slogan">The most viral facts from film industry</strong>
+        <strong className="slogan">#StayHome</strong>
       </div>
       <div className="col-desk-4">
         <MenuToggle />

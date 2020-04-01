@@ -10,7 +10,7 @@ class Index extends React.Component {
   }
   render() {
     return (
-      <Layout title="#StayHome">
+      <Layout title="The most viral facts from film industry">
         <FactsList facts={this.props.facts} />
       </Layout>
     );

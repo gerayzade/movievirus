@@ -6,7 +6,7 @@
 :global {
 
 body {
-  font-family: $ff-montserrat;
+  font-family: $ff-sen;
   color: #fff;
   background-color: #000;
   line-height: 1.4;
@@ -56,9 +56,7 @@ button {
   }
   .slogan {
     display: inline-block;
-    font-family: $ff-sen;
     font-size: 14px;
-    letter-spacing: 0.56px;
     margin-top: 8px;
   }
   .burger {
@@ -110,9 +108,7 @@ button {
   z-index: 10;
   bottom: 0;
   left: 0;
-  font-family: $ff-sen;
   font-size: 14px;
-  letter-spacing: 0.56px;
   width: 100%;
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 50%, #000 100%);
   .row {
@@ -155,7 +151,6 @@ button {
   .row {
     width: 100%;
     justify-content: center;
-    transition: transform .3s;
     @include media-tablets-and-mobile {
       justify-content: flex-start;
     }
@@ -186,17 +181,23 @@ button {
     }
   }
   @include media-desktop-only {
+    .row,
+    .fact,
+    .fact p {
+      transition: .3s;
+      transition-property: transform, opacity, box-shadow;
+      will-change: transform, opacity, box-shadow;
+    }
     .fact {
-      transition: box-shadow .3s, opacity .3s, transform .3s;
+      overflow: hidden;
       p {
         font-size: 11px;
-        transition: opacity .3s, transform .3s;
-        max-width: 170px;
+        max-width: 165px;
       }
       &:not(:hover) {
         p {
           opacity: 0;
-          transform: translateY(10px) scale(.8);
+          transform: scale(.6);
         }
       }
       &.muted {

@@ -1,5 +1,5 @@
 ---
-title: Release of the movie none of us will ever see is set for November 2115
+title: Release of the movie none of us will ever see is set for 2115
 description: >-
   John Malkovich and Robert Rodriguez collaborated for a film that no one will
   see for 100 years. Literally.
