@@ -4,7 +4,7 @@ export const initialState = {
   menuOpened: false
 }
 
-export default function rootReducer(state = initialState, action) {
+export const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.TOGGLE_MENU:
       return {

@@ -23,6 +23,7 @@
   "dependencies": {
     "@zeit/next-sass": "^1.0.1",
     "next": "^9.3.2",
+    "next-page-transitions": "^1.0.0-beta.2",
     "next-redux-wrapper": "^5.0.0",
     "node-sass": "^4.13.1",
     "react": "^16.13.1",

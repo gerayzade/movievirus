@@ -10,6 +10,7 @@ body {
   color: #fff;
   background-color: #000;
   line-height: 1.4;
+  overflow-y: scroll;
 }
 
 svg, 
@@ -32,6 +33,36 @@ button {
   cursor: pointer;
 }
 
+h1, h2 {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.highlight {
+  background-color: $red-1;
+  padding: 0 0 .1em;
+  box-shadow: .3em 0 0 $red-1, -.3em 0 0 $red-1;
+}
+
+// page transition
+
+.page-transition {
+  position: fixed;
+  z-index: 9;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200vh;
+  transform: translateY(100vh);
+  background-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, #000 50%, #000 100%);
+  transition: transform .7s;
+  will-change: transform;
+  &-enter .page-transition,
+  &-exit-active .page-transition {
+    transform: translateY(-100vh);
+  }
+}
+
 // layout
 
 .wrapper {
@@ -51,6 +82,7 @@ button {
     height: 100px;
   }
   .logo {
+    cursor: pointer;
     height: 30px;
     fill: #fff;
   }
@@ -146,6 +178,19 @@ button {
   margin: 100px 0;
 }
 
+.text {
+  line-height: 1.6;
+  max-width: 840px;
+  h2, img {
+    max-width: 700px;
+    margin-bottom: 1em;
+  }
+  p {
+    font-family: $ff-montserrat;
+    font-weight: 300;
+  }
+}
+
 .facts-strip {
   padding-top: 10px;
   .row {
@@ -171,31 +216,27 @@ button {
       justify-content: flex-end;
       padding: 15px 40px 10px 15px;
     }
-    p {
+    h4 {
       line-height: 1.6;
       max-width: 240px;
-      span {
-        background-color: $red-1;
-        box-shadow: 5px 0 0 $red-1, -5px 0 0 $red-1;
-      }
     }
   }
   @include media-desktop-only {
     .row,
     .fact,
-    .fact p {
+    .fact h4 {
       transition: .3s;
       transition-property: transform, opacity, box-shadow;
       will-change: transform, opacity, box-shadow;
     }
     .fact {
       overflow: hidden;
-      p {
+      h4 {
         font-size: 11px;
         max-width: 165px;
       }
       &:not(:hover) {
-        p {
+        h4 {
           opacity: 0;
           transform: scale(.6);
         }

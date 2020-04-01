@@ -3,6 +3,5 @@ export const actionTypes = {
 }
 
 export const toggleMenu = (value) => ({
-  type: actionTypes.TOGGLE_MENU,
-  value
+  type: actionTypes.TOGGLE_MENU, value
 });

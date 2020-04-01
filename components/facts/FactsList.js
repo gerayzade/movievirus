@@ -1,49 +1,52 @@
-export default class FactsList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { active: [-1, -1], x: 0 };
-  }
-  handleMouseEnter(e, row, col) {
+import Link from 'next/link';
+
+const FactsList = ({ facts }) => {
+  const initialState = { active: [-1, -1], x: 0 };
+  const [state, setState] = React.useState(initialState);
+  // destructuring state
+  const { active, x } = state;
+  const [activeRow, activeCol ] = active;
+  // handle transformations on mouse enter/leave events
+  const handleMouseEnter = (e, row, col) => {
     e.persist();
     let vw = window.innerWidth;
     let pos = e.pageX / vw;
     let xLookup = { 0: 30, 1: 15, 2: 0, 3: 15, 4: 30, 5: 22.5, 6: 7.5, 7: 7.5, 8: 22.5 };
     let x = vw > 1024 ? (pos > 0.5 ? -1 : 1) * xLookup[col % 9] : 0;
-    this.setState({ active: [row, col], x: x });
+    setState({ active: [row, col], x: x });
   }
-  handleMouseLeave() {
-    this.setState({ active: [-1, -1], x: 0 });
-  }
-  render() {
-    let n = this.props.facts.length, count = 0;
-    let rows = Math.floor(n/9) * 2 + Math.ceil((n - 9 * Math.floor(n/9)) / 5);
-    const { active, x } = this.state;
-    const getRowStyles = (i) => ({
-      transform: `translateX(${x !== 0 ? x * (1 + ((i % 3) * 0.4)) : 0}px)`, 
-      zIndex: i === active[0] ? 2 : 1
-    });
-    return(
-      <div className="facts-strip row padded">
-        {Array(rows).fill(0).map((row, i) => (
-        <div className="row padded" style={getRowStyles(i)} key={i}>
-          {this.props.facts.slice(count, count += (i % 2 === 0 ? 5 : 4)).map(item => 
-          <div className="col-eq-5 col-tab-6 col-mob-4" key={item.id}>
-            <div className={'fact ' + (active[1] === item.id ? 'active' : (active[1] !== -1 ? 'muted' : ''))} 
-              onMouseEnter={(e) => this.handleMouseEnter(e, i, item.id)} 
-              onMouseLeave={(e) => this.handleMouseLeave(e)}
+  const handleMouseLeave = (e) => setState(initialState);
+  // generate alternating rows with 5 and 4 facts
+  let n = facts.length, count = 0;
+  let rows = Array(Math.floor(n/9) * 2 + Math.ceil((n - 9 * Math.floor(n/9)) / 5)).fill(0);
+  // update rows' style
+  const getRowStyles = (i) => ({
+    transform: `translateX(${x !== 0 ? x * (1 + ((i % 3) * 0.4)) : 0}px)`, 
+    zIndex: i === activeRow ? 2 : 1
+  });
+  return(
+    <div className="facts-strip row padded">
+      {rows.map((row, i) => (
+      <div className="row padded" style={getRowStyles(i)} key={i}>
+        {facts.slice(count, count += (i % 2 === 0 ? 5 : 4)).map(item => 
+        <div className="col-eq-5 col-tab-6 col-mob-4" key={item.id}>
+          <Link href="/post/[slug]" as={`/post/${item.slug}`}>
+            <div className={'fact ' + (activeCol === item.id ? 'active' : (activeCol !== -1 ? 'muted' : ''))} 
+              onMouseEnter={(e) => handleMouseEnter(e, i, item.id)} 
+              onMouseLeave={(e) => handleMouseLeave(e)}
             >
               <img src={item.image} alt={item.title} />
               <div className="layer">
-                <p>
-                  <span>{item.title}</span>
-                </p>
+                <h4><span className="highlight">{item.title}</span></h4>
               </div>
             </div>
-          </div>
-          )}
+          </Link>
         </div>
-        ))}
+        )}
       </div>
-    )
-  }
+      ))}
+    </div>
+  )
 }
+
+export default FactsList;
