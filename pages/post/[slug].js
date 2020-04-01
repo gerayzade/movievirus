@@ -1,4 +1,4 @@
-import { getMarkdownFile } from '~/helpers/handleMarkdown';
+import { importMarkdownFile } from '~/helpers/handleMarkdown';
 import Layout from '~/components/Layout';
 
 const Post = ({ content }) => (
@@ -16,7 +16,7 @@ const Post = ({ content }) => (
 )
 
 Post.getInitialProps = async ({ query }) => {
-  const data = await getMarkdownFile('facts', `${query.slug}.md`);
+  const data = await importMarkdownFile('facts', `${query.slug}.md`);
   return { content: data };
 }
 
