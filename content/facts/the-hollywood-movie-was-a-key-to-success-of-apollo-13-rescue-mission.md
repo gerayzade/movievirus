@@ -9,8 +9,7 @@ description: >-
   spacecraft had suffered an accident. According to Jerry, that was actually
   a catalyst to the rescue of Apollo 13.
 image: /media/marooned.jpg
-source: >-
-  https://www.universetoday.com/63721/13-things-that-saved-apollo-13-part-11-a-hollywood-movie/
+source: 'https://www.universetoday.com/63721/13-things-that-saved-apollo-13-part-11-a-hollywood-movie/'
 tags:
   - accidents
   - astronautics
