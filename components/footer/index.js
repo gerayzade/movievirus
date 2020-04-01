@@ -5,7 +5,9 @@ const Footer = () => (
         All Rights Reserved (c) {new Date().getFullYear()}
       </span>
       <span className="col-desk-6 col-tab-12">
-        {'</'} Developed by <a href="https://gerayzade.az/" target="_blank">Gerayzade</a> {'>'}
+        <a href="https://gerayzade.az/" target="_blank">
+          {'</'} Developed by <em>Gerayzade</em> {'>'}
+        </a>
       </span>
     </div>
   </footer>

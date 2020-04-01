@@ -23,9 +23,9 @@ img {
 a {
   color: $red-1;
   text-decoration: none;
-  &:hover {
-    opacity: .8;
-  }
+  &,&::before,&::after {
+    transition: .15s;
+  };
 }
 
 button {
@@ -121,6 +121,23 @@ button {
     height: 100px;
   }
   span {
+    a {
+      position: relative;
+      color: #fff;
+      em {
+        font-style: normal;
+        color: $red-1;
+      }
+      &::after {
+        content: '';
+        @include layer;
+        margin-top: 5px;
+        border-bottom: 2px solid transparent;
+      }
+      &:hover::after {
+        border-color: #fff;
+      }
+    }
     @include media-desktop-only {
       &:last-child {
         text-align: right;
@@ -157,7 +174,7 @@ button {
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      padding: 15px 40px 10px 15px
+      padding: 15px 40px 10px 15px;
     }
     p {
       line-height: 1.6;
@@ -176,7 +193,7 @@ button {
         transition: opacity .3s, transform .3s;
         max-width: 170px;
       }
-      &:not(.active) {
+      &:not(:hover) {
         p {
           opacity: 0;
           transform: translateY(10px) scale(.8);

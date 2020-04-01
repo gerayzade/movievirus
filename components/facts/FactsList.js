@@ -5,20 +5,26 @@ export default class FactsList extends React.Component {
   }
   handleMouseOver(e, row, id) {
     e.persist();
-    let x = window.innerWidth > 1024 ? -(e.pageX / window.innerWidth * 50) : 0;
+    let vw = window.innerWidth;
+    let pos = e.pageX / vw;
+    let x = vw > 1024 ? (pos > 0.5 ? -1 : 1) * ((pos < 0.5 ? (0.5 + pos) : pos) * 25) : 0;
     this.setState(state => ({  x: x, active: [row, id] }));
   }
-  handleMouseLeave(e, clear = false) {
-    this.setState(state => ({ x: clear ? 0 : state.x, active: [-1, -1] }));
+  handleMouseLeave(e) {
+    this.setState(state => ({ x: 0, active: [-1, -1] }));
   }
   render() {
     let n = this.props.facts.length, count = 0;
     let rows = Math.floor(n/9) * 2 + Math.ceil((n - 9 * Math.floor(n/9)) / 5);
-    let { active, x } = this.state;
+    const { active, x } = this.state;
+    const getRowStyles = (i) => ({
+      transform: `translateX(${x !== 0 ? x * (1 + ((i % 2) * 0.2)) : 0}px)`, 
+      zIndex: i === active[0] ? 2 : 1
+    });
     return(
-      <div className="facts-strip row padded" onMouseLeave={(e) => this.handleMouseLeave(e, true)}>
+      <div className="facts-strip row padded">
         {Array(rows).fill(0).map((row, i) => (
-        <div className="row padded" style={{transform: `translateX(${x}px)`, zIndex: i === active[0] ? 2 : 1 }} key={i}>
+        <div className="row padded" style={getRowStyles(i)} key={i}>
           {this.props.facts.slice(count, count += (i % 2 === 0 ? 5 : 4)).map(item => 
           <div className="col-eq-5 col-tab-6 col-mob-4" key={item.id}>
             <div className={'fact ' + (active[1] === item.id ? 'active' : (active[1] !== -1 ? 'muted' : ''))} 
