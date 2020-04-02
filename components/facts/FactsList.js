@@ -36,7 +36,9 @@ const FactsList = ({ facts }) => {
               onMouseEnter={(e) => handleMouseEnter(e, i, item.id)} 
               onMouseLeave={(e) => handleMouseLeave(e)}
             >
-              <img src={item.image} alt={item.title} />
+              <div className="img-holder">
+                <img src={item.image} alt={item.title} />
+              </div>
               <div className="layer">
                 <h4><span className="highlight">{item.title}</span></h4>
               </div>

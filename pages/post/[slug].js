@@ -6,7 +6,9 @@ const Post = ({ content }) => (
     <div className="row padded">
       <div className="col-desk-12">
         <div className="post">
-          <img src={content.image} alt={content.title} />
+          <div className="img-holder">
+            <img src={content.image} alt={content.title} />
+          </div>
           <h2><span className="highlight">{content.title}</span></h2>
           <p dangerouslySetInnerHTML={{__html: content.description.replace(/\n/g, '<br/>')}} />
         </div>
