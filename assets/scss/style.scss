@@ -6,6 +6,7 @@
 :global {
 
 body {
+  position: relative;
   font-family: $ff-sen;
   color: #fff;
   background-color: #000;
@@ -34,7 +35,9 @@ img {
 a {
   color: $red-1;
   text-decoration: none;
-  &,&::before,&::after {
+  &,
+  &::before,
+  &::after {
     transition: .15s;
   };
 }
@@ -43,7 +46,8 @@ button {
   cursor: pointer;
 }
 
-h1, h2 {
+h1, 
+h2 {
   font-size: 24px;
   font-weight: 500;
 }
@@ -52,11 +56,17 @@ h1, h2 {
   @include highlight($red-1);
 }
 
-// layout
-
 .wrapper {
   overflow-x: hidden;
 }
+
+.content {
+  margin: 100px 0 80px;
+  padding-top: 10px;
+  min-height: calc(100vh - 230px);
+}
+
+/** HEADER */
 
 .header {
   position: fixed;
@@ -131,6 +141,8 @@ h1, h2 {
   }
 }
 
+/** FOOTER */
+
 .footer {
   position: fixed;
   z-index: 10;
@@ -180,40 +192,7 @@ h1, h2 {
   }
 }
 
-.content {
-  margin: 100px 0;
-  padding-top: 10px;
-  min-height: calc(100vh - 230px);
-}
-
-.post {
-  line-height: 1.6;
-  h2 {
-    max-width: 750px;
-    text-align: center;
-    margin: 1em auto;
-  }
-  p {
-    font-family: $ff-montserrat;
-    font-weight: 300;
-    max-width: 750px;
-    text-align: justify;
-    margin: 0 auto;
-  }
-  @include media-desktop-only {
-    img {
-      width: 50%;
-    }
-    h2 {
-      max-width: 50%;
-    }
-  }
-  @include media-mobile-only {
-    h2, p {
-      text-align: left;
-    }
-  }
-}
+/** FACTS */
 
 .facts-strip {
   .row {
@@ -229,7 +208,7 @@ h1, h2 {
       font-size: 16px;
       padding: 15px 15px 10px;
       line-height: 1.6;
-      background-image: url('/static/img/nosignal.jpg');
+      @include noise;
       span {
         @include highlight(#000);
       }
@@ -239,8 +218,7 @@ h1, h2 {
     cursor: pointer;
     position: relative;
     img {
-      position: relative;
-      width: 100%;
+      @include layer;
       z-index: 1;
     }
     .layer {
@@ -254,6 +232,14 @@ h1, h2 {
     h4 {
       line-height: 1.6;
       max-width: 240px;
+    }
+    &::after {
+      display: block;
+      content: '';
+      width: 100%;
+      height: 0;
+      padding-bottom: 60%;
+      @include noise;
     }
   }
   @include media-desktop-only {
@@ -286,6 +272,38 @@ h1, h2 {
           transform: scale(1);
         }
       }
+    }
+  }
+}
+
+/** SINGLE POST */
+
+.post {
+  line-height: 1.6;
+  h2 {
+    max-width: 750px;
+    text-align: center;
+    margin: 1em auto;
+  }
+  p {
+    font-family: $ff-montserrat;
+    font-weight: 300;
+    max-width: 750px;
+    text-align: justify;
+    margin: 0 auto;
+  }
+  @include media-desktop-only {
+    img {
+      width: 50%;
+    }
+    h2 {
+      max-width: 50%;
+    }
+  }
+  @include media-mobile-only {
+    h2, 
+    p {
+      text-align: left;
     }
   }
 }

@@ -11,3 +11,16 @@
   padding: 0 0 .1em;
   box-shadow: .3em 0 0 $color, -.3em 0 0 $color;
 }
+
+@keyframes noise {
+  @for $frame from 0 through 10 {
+    #{$frame * 10%} {
+      background-position: -100 + random(200) + px, -100 + random(200) + px
+    } 
+  }
+}
+
+@mixin noise {
+  background-image: url('/static/img/noise.jpg');
+  animation: noise .3s infinite;
+}
