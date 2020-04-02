@@ -11,6 +11,16 @@ body {
   background-color: #000;
   line-height: 1.4;
   overflow-y: scroll;
+  @include media-desktop-only {
+    .hide-desk {
+      display: none;
+    }
+  }
+  @include media-mobile-only {
+    .hide-mob {
+      display: none;
+    }
+  }
 }
 
 svg, 
@@ -39,9 +49,7 @@ h1, h2 {
 }
 
 .highlight {
-  background-color: $red-1;
-  padding: 0 0 .1em;
-  box-shadow: .3em 0 0 $red-1, -.3em 0 0 $red-1;
+  @include highlight($red-1);
 }
 
 // layout
@@ -67,9 +75,11 @@ h1, h2 {
     height: 30px;
     fill: #fff;
   }
-  .slogan {
+  .hashes {
+    position: absolute;
     display: inline-block;
-    font-size: 14px;
+    font-size: 10px;
+    letter-spacing: -.3px;
     margin-top: 8px;
   }
   .burger {
@@ -114,6 +124,11 @@ h1, h2 {
       }
     }
   }
+  @include media-tablets-and-mobile {
+    .hashes {
+      display: none;
+    }
+  }
 }
 
 .footer {
@@ -125,9 +140,10 @@ h1, h2 {
   width: 100%;
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 50%, #000 100%);
   .row {
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
     height: 100px;
+    padding-bottom: 30px;
   }
   span {
     a {
@@ -147,38 +163,76 @@ h1, h2 {
         border-color: #fff;
       }
     }
-    @include media-desktop-only {
-      &:last-child {
-        text-align: right;
-      }
+  }
+  @include media-desktop-only {
+    span:last-child {
+      text-align: right;
+    }
+  }
+  @include media-tablets-and-mobile {
+    position: initial;
+    margin-top: -80px;
+    .row {
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-start;
     }
   }
 }
 
 .content {
   margin: 100px 0;
+  padding-top: 10px;
+  min-height: calc(100vh - 230px);
 }
 
-.text {
+.post {
   line-height: 1.6;
-  max-width: 840px;
-  h2, img {
-    max-width: 700px;
-    margin-bottom: 1em;
+  h2 {
+    max-width: 750px;
+    text-align: center;
+    margin: 1em auto;
   }
   p {
     font-family: $ff-montserrat;
     font-weight: 300;
+    max-width: 750px;
+    text-align: justify;
+    margin: 0 auto;
+  }
+  @include media-desktop-only {
+    img {
+      width: 50%;
+    }
+    h2 {
+      max-width: 50%;
+    }
+  }
+  @include media-mobile-only {
+    h2, p {
+      text-align: left;
+    }
   }
 }
 
 .facts-strip {
-  padding-top: 10px;
   .row {
     width: 100%;
     justify-content: center;
     @include media-tablets-and-mobile {
       justify-content: flex-start;
+    }
+    .fun-quote {
+      display: flex;
+      align-items: flex-end;
+      height: 100%;
+      font-size: 16px;
+      padding: 15px 15px 10px;
+      line-height: 1.6;
+      background-image: url('/static/img/nosignal.jpg');
+      span {
+        @include highlight(#000);
+      }
     }
   }
   .fact {

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import FunQuote from './FunQuote';
 
 const FactsList = ({ facts }) => {
   const initialState = { active: [-1, -1], x: 0 };
@@ -25,12 +26,12 @@ const FactsList = ({ facts }) => {
     zIndex: i === activeRow ? 2 : 1
   });
   return(
-    <div className="facts-strip row padded">
+    <div className="facts-strip row">
       {rows.map((row, i) => (
       <div className="row padded" style={getRowStyles(i)} key={i}>
         {facts.slice(count, count += (i % 2 === 0 ? 5 : 4)).map(item => 
         <div className="col-eq-5 col-tab-6 col-mob-4" key={item.id}>
-          <Link href="/post/[slug]" as={`/post/${item.slug}`}>
+          <Link href="/post/[slug]" as={`/post/${item.slug}`} scroll={false}>
             <div className={'fact ' + (activeCol === item.id ? 'active' : (activeCol !== -1 ? 'muted' : ''))} 
               onMouseEnter={(e) => handleMouseEnter(e, i, item.id)} 
               onMouseLeave={(e) => handleMouseLeave(e)}
@@ -43,6 +44,7 @@ const FactsList = ({ facts }) => {
           </Link>
         </div>
         )}
+        {i % 2 === 0 && <FunQuote i={Math.floor(i/2)} />}
       </div>
       ))}
     </div>

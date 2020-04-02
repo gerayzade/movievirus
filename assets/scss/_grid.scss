@@ -14,7 +14,7 @@ $grid-tablet-breakpoint: 1024px;
 $grid-mobile-columns: 4;
 $grid-mobile-sideMargin: 32px;
 $grid-mobile-gutter: 15px;
-$grid-mobile-breakpoint: 640px;
+$grid-mobile-breakpoint: 768px;
 
 // pixels to % variables
 $desk-grid-width: 100% - (($grid-desktop-sideMargin * 2 / $grid-desktop-breakpoint) * 100%);
@@ -91,12 +91,12 @@ $mob-gutter: (($grid-mobile-gutter / ($grid-mobile-breakpoint - ($grid-mobile-si
 	@media screen and (max-width: $grid-mobile-breakpoint) {
 		width: $mob-grid-width;
 	}
+}
 
-	&:not(.padded) {
-		[class^=col] {
-			padding-bottom: 0;
-			padding-top: 0;
-		}
+.row:not(.padded) {
+	& > [class^=col] {
+		padding-bottom: 0;
+		padding-top: 0;
 	}
 }
 

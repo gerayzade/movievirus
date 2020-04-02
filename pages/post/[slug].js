@@ -3,9 +3,9 @@ import Layout from '~/components/Layout';
 
 const Post = ({ content }) => (
   <Layout title={content.title}>
-    <div className="row">
+    <div className="row padded">
       <div className="col-desk-12">
-        <div className="text">
+        <div className="post">
           <img src={content.image} alt={content.title} />
           <h2><span className="highlight">{content.title}</span></h2>
           <p dangerouslySetInnerHTML={{__html: content.description.replace(/\n/g, '<br/>')}} />
