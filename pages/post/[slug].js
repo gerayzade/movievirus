@@ -1,4 +1,4 @@
-import { importMarkdownFile } from '~/helpers/handleMarkdown';
+import { getPostPaths, getPostBySlug } from '~/lib/content';
 import Layout from '~/components/Layout';
 
 const Post = ({ content }) => (
@@ -17,9 +17,13 @@ const Post = ({ content }) => (
   </Layout>
 )
 
-Post.getInitialProps = async ({ query }) => {
-  const data = await importMarkdownFile('facts', `${query.slug}.md`);
-  return { content: data };
+export const getStaticProps = async ({ params }) => {
+  const content = await getPostBySlug('facts', params.slug);
+  return { props: { content } };
+}
+
+export const getStaticPaths = () => {
+  return getPostPaths('facts', '/post', true);
 }
 
 export default Post;

@@ -1,4 +1,4 @@
-import { importMarkdownFiles } from '~/helpers/handleMarkdown';
+import { getAllPosts } from '~/lib/content';
 import Layout from '~/components/Layout';
 import FactsList from '~/components/facts/FactsList';
 
@@ -8,9 +8,9 @@ const Index = ({ facts }) => (
   </Layout>
 )
 
-Index.getInitialProps = async () => {
-  const data = await importMarkdownFiles('facts');
-  return { facts: data };
+export const getStaticProps = async () => {
+  const facts = await getAllPosts('facts', ['title', 'image']);
+  return { props: { facts } };
 }
 
 export default Index;

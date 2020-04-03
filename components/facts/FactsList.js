@@ -30,10 +30,10 @@ const FactsList = ({ facts }) => {
       {rows.map((row, i) => (
       <div className="row padded" style={getRowStyles(i)} key={i}>
         {facts.slice(count, count += (i % 2 === 0 ? 5 : 4)).map(item => 
-        <div className="col-eq-5 col-tab-6 col-mob-4" key={item.id}>
+        <div className="col-eq-5 col-tab-6 col-mob-4" key={item.i}>
           <Link href="/post/[slug]" as={`/post/${item.slug}`} scroll={false}>
-            <div className={'fact ' + (activeCol === item.id ? 'active' : (activeCol !== -1 ? 'muted' : ''))} 
-              onMouseEnter={(e) => handleMouseEnter(e, i, item.id)} 
+            <div className={'fact ' + (activeCol === item.i ? 'active' : (activeCol !== -1 ? 'muted' : ''))} 
+              onMouseEnter={(e) => handleMouseEnter(e, i, item.i)} 
               onMouseLeave={(e) => handleMouseLeave(e)}
             >
               <div className="img-holder">

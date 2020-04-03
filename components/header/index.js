@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Logo from '~/assets/svg/logo.svg';
+import Logo from '~/assets/svg/logo.svg?sprite';
 import MenuToggle from './MenuToggle';
 
 const Header = () => (

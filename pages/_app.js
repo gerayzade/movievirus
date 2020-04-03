@@ -1,4 +1,3 @@
-import App from 'next/app';
 import withRedux from 'next-redux-wrapper';
 import { Provider } from 'react-redux';
 import { PageTransition } from 'next-page-transitions';
@@ -39,9 +38,5 @@ const VirusApp = ({ Component, pageProps, router, store }) => (
   </>
 )
 
-VirusApp.getInitialProps = async (appContext) => {
-  const appProps = await App.getInitialProps(appContext)
-  return { ...appProps }
-}
 
 export default withRedux(reduxStore)(VirusApp);

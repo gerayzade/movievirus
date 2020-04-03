@@ -22,22 +22,25 @@
   },
   "dependencies": {
     "@zeit/next-sass": "^1.0.1",
+    "gray-matter": "^4.0.2",
     "next": "^9.3.2",
     "next-page-transitions": "^1.0.0-beta.2",
     "next-redux-wrapper": "^5.0.0",
     "node-sass": "^4.13.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-lazy-load-image-component": "^1.4.1",
-    "react-lazyload": "^2.6.7",
     "react-redux": "^7.2.0",
     "redux": "^4.0.5"
   },
   "devDependencies": {
     "autoprefixer": "^9.7.5",
-    "babel-plugin-inline-react-svg": "^1.1.1",
     "babel-plugin-module-resolver": "^4.0.0",
     "cssnano": "^4.1.10",
-    "frontmatter-markdown-loader": "^3.3.0"
+    "imagemin-mozjpeg": "^8.0.0",
+    "imagemin-optipng": "^7.1.0",
+    "imagemin-svgo": "^7.1.0",
+    "next-compose-plugins": "^2.2.0",
+    "next-optimized-images": "^2.5.7",
+    "svg-sprite-loader": "^4.1.3"
   }
 }

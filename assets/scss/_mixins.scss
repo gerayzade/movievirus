@@ -21,6 +21,6 @@
 }
 
 @mixin noise {
-  background-image: url('/static/img/noise.jpg');
+  background-image: url('../img/noise.jpg');
   animation: noise .3s infinite;
 }
