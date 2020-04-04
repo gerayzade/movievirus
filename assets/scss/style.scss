@@ -12,6 +12,13 @@ body {
   background-color: #000;
   line-height: 1.4;
   overflow-y: scroll;
+  cursor: none;
+  :focus {
+    outline: none;
+  }
+  [data-cursor] {
+    cursor: pointer;
+  }
 }
 
 svg, 
@@ -23,17 +30,13 @@ img {
 }
 
 a {
-  color: $red-1;
+  color: $red;
   text-decoration: none;
   &,
   &::before,
   &::after {
     transition: .15s;
   };
-}
-
-button {
-  cursor: pointer;
 }
 
 h1, 
@@ -46,7 +49,7 @@ h2 {
 }
 
 .highlight {
-  @include highlight($red-1);
+  @include highlight($red);
 }
 
 .img-holder {
@@ -95,13 +98,14 @@ h2 {
     height: 100px;
   }
   .logo {
-    cursor: pointer;
-    height: 30px;
-    fill: #fff;
+    display: inline-block;
+    img {
+      height: 30px;
+    }
   }
   .hashes {
     position: absolute;
-    display: inline-block;
+    display: block;
     font-size: 10px;
     letter-spacing: -.3px;
     margin-top: 8px;
@@ -180,16 +184,7 @@ h2 {
       color: #fff;
       em {
         font-style: normal;
-        color: $red-1;
-      }
-      &::after {
-        content: '';
-        @include layer;
-        margin-top: 5px;
-        border-bottom: 2px solid transparent;
-      }
-      &:hover::after {
-        border-color: #fff;
+        color: $red;
       }
     }
   }
@@ -232,7 +227,6 @@ h2 {
     }
   }
   .fact {
-    cursor: pointer;
     position: relative;
     .layer {
       @include layer;

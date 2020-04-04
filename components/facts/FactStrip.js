@@ -38,7 +38,7 @@ const FactStrip = ({ facts }) => {
         <div className="col-lg-12 col-md-30 col-sm-60" key={item.i}>
           <Link href="/post/[slug]" as={`/post/${item.slug}`} scroll={false}>
             <div className={'fact ' + (activeCol === item.i ? 'active' : (activeCol !== -1 ? 'muted' : ''))} 
-              onMouseEnter={(e) => handleMouseEnter(e, i, item.i)} 
+              onMouseEnter={(e) => handleMouseEnter(e, i, item.i)} data-cursor="dot"
               onMouseLeave={(e) => handleMouseLeave(e)}
             >
               <div className="img-holder">
