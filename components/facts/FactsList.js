@@ -1,7 +1,11 @@
 import Link from 'next/link';
 import FunQuote from './FunQuote';
+import Blazy from 'blazy';
 
 const FactsList = ({ facts }) => {
+  // init lazy-load for images
+  React.useEffect(() => {new Blazy();}, [facts]);
+  // use state to animate rows with facts
   const initialState = { active: [-1, -1], x: 0 };
   const [state, setState] = React.useState(initialState);
   // destructuring state
@@ -37,7 +41,8 @@ const FactsList = ({ facts }) => {
               onMouseLeave={(e) => handleMouseLeave(e)}
             >
               <div className="img-holder">
-                <img src={item.image} alt={item.title} />
+                <img className="b-lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+                  data-src={item.image} alt={item.title} />
               </div>
               <div className="layer">
                 <h4><span className="highlight">{item.title}</span></h4>
