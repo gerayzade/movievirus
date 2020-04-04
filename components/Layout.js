@@ -17,7 +17,6 @@ const Layout = ({ children, title }) => (
     </Head>
     <Cursor />
     <div className="page-transition" />
-    <div className="screen-flow row hide-md hide-sm" />
     <Header />
     <main className="content">
       {children}

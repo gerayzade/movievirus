@@ -21,6 +21,7 @@ const VirusApp = ({ Component, pageProps, router, store }) => (
         height: 200vh;
         transform: translateY(100vh);
         background-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, #000 50%, #000 100%);
+        transition: transform .7s;
         will-change: transform;
       }
       .page-transition-enter .page-transition,
@@ -28,12 +29,7 @@ const VirusApp = ({ Component, pageProps, router, store }) => (
         transform: translateY(-100vh);
         transition: transform .7s;
       }
-      .page-transition-enter-done .page-transition,
-      .page-transition-enter-active .page-transition,
-      .page-transition-exit .page-transition {
-        transition: transform .7s;
-      }
-      `}
+    `}
     </style>
   </>
 )
