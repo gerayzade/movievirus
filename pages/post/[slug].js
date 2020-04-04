@@ -4,7 +4,7 @@ import Layout from '~/components/Layout';
 const Post = ({ content }) => (
   <Layout title={content.title}>
     <div className="row padded">
-      <div className="col-desk-12">
+      <div className="col-lg-60 col-md-60 col-sm-60">
         <div className="post">
           <div className="img-holder">
             <img src={content.image} alt={content.title} />

@@ -41,6 +41,7 @@
     "imagemin-svgo": "^7.1.0",
     "next-compose-plugins": "^2.2.0",
     "next-optimized-images": "^2.5.7",
+    "next-purgecss": "^4.0.0",
     "svg-sprite-loader": "4.1.3"
   }
 }

@@ -1,115 +1,106 @@
-// desktop grid
-$grid-desktop-columns: 12;
-$grid-desktop-sideMargin: 60px;
-$grid-desktop-gutter: 15px;
-$grid-desktop-breakpoint: 1440px;
+// Mappings
+$grid-devices: 				('large': lg, 			'medium': md, 			'small': sm);
+$grid-breakpoint:			('large': 1440px, 	'medium': 1040px, 	'small': 740px);
+$grid-sideMargin:			('large': 60px, 		'medium': 40px, 		'small': 20px);
+$grid-gutter: 				('large': 15px, 		'medium': 15px, 		'small': 15px);
+// Columns
+$grid-cols: 60;
+// Breakpoints
+$break-lg: map-get($grid-breakpoint, 'large');
+$break-md: map-get($grid-breakpoint, 'medium');
+$break-sm: map-get($grid-breakpoint, 'small');
 
-// tablet grid
-$grid-tablet-columns: 12;
-$grid-tablet-sideMargin: 60px;
-$grid-tablet-gutter: 15px;
-$grid-tablet-breakpoint: 1024px;
-
-// mobile grid
-$grid-mobile-columns: 4;
-$grid-mobile-sideMargin: 32px;
-$grid-mobile-gutter: 15px;
-$grid-mobile-breakpoint: 768px;
-
-// pixels to % variables
-$desk-grid-width: 100% - (($grid-desktop-sideMargin * 2 / $grid-desktop-breakpoint) * 100%);
-$tab-grid-width: 100% - (($grid-tablet-sideMargin * 2 / $grid-tablet-breakpoint) * 100%);
-$mob-grid-width: 100% - (($grid-mobile-sideMargin * 2 / $grid-mobile-breakpoint) * 100%);
-
-$desk-gutter: (($grid-desktop-gutter / ($grid-desktop-breakpoint - ($grid-desktop-sideMargin * 2))) * 100%);
-$tab-gutter: (($grid-tablet-gutter / ($grid-tablet-breakpoint - ($grid-tablet-sideMargin * 2))) * 100%);
-$mob-gutter: (($grid-mobile-gutter / ($grid-mobile-breakpoint - ($grid-mobile-sideMargin * 2))) * 100%);
-
-// functions and mixins
-@function col-width($i, $columns) {
+// Functions for grid
+@function get-gutter($device) {
+	$inside: map-get($grid-breakpoint, $device) - (map-get($grid-sideMargin, $device) * 2);
+	@return 100% * (map-get($grid-gutter, $device) / $inside);
+}
+@function get-row-width($device) {
+	$outside: map-get($grid-sideMargin, $device) * 2 / map-get($grid-breakpoint, $device);
+	@return 100% - (100% * $outside);
+}
+@function get-col-width($i, $columns) {
 	@return 100% / $columns * $i;
 }
 
-@mixin media-tablets-and-mobile {
-	@media screen and (max-width: $grid-tablet-breakpoint) {
-		@content;
-	}
-}
-
-@mixin media-mobile-only {
-	@media screen and (max-width: $grid-mobile-breakpoint) {
-		@content;
-	}
-}
-
-@mixin media-desktop-only {
-	@media screen and (min-width: $grid-tablet-breakpoint + 0.1px) {
-		@content;
-	}
-}
-
+// Mixins for grid
 @mixin col-props($i, $columns, $gutter) {
-	width: col-width($i, $columns);
+	width: get-col-width($i, $columns);
 	padding: $gutter/2;
 }
-
-@mixin columns-loop($name, $columns, $gutter) {
+@mixin col-group($name, $columns, $gutter) {
 	@for $i from 0 through $columns {
 		&-#{$name}-#{$i} {
 			@include col-props($i, $columns, $gutter);
 		}
 
 		&-#{$name}-shift-#{$i} {
-			margin-left: col-width($i, $columns);
+			margin-left: get-col-width($i, $columns);
 		}
 	}
 }
 
-@mixin columns-equal($columns, $gutter) {
-	&-eq-#{$columns} {
-		@include col-props(1, $columns, $gutter);
+// Mixins for media queries
+@mixin media($for) {
+	@if ($for == 'small') {
+		@media screen and (max-width: $break-sm - 0.1px) {
+			@content;
+		}
+	} @else if ($for == 'small-and-medium') {
+		@media screen and (max-width: $break-md - 0.1px) {
+			@content;
+		}
+	} @else if ($for == 'medium') {
+		@media screen and (min-width: $break-sm) and (max-width: $break-md - 0.1px) {
+			@content;
+		}
+	} @else if ($for == 'medium-and-large') {
+		@media screen and (min-width: $break-sm) {
+			@content;
+		}
+	} @else if ($for == 'large') {
+		@media screen and (min-width: $break-md) {
+			@content;
+		}
+	}
+}
+@each $device in ('small', 'medium', 'large') {
+	@include media($device) {
+		.hide-#{map-get($grid-devices, $device)} {
+			display: none;
+		}
 	}
 }
 
-@mixin grid-base($width) {
+// Classes
+.row {
 	display: flex;
 	margin-left: auto;
 	margin-right: auto;
 	flex-wrap: wrap;
-	max-width: $grid-desktop-breakpoint;
-	width: $width;
-}
-
-// classes
-.row {
-	@include grid-base($desk-grid-width);
-
-	@media screen and (max-width: $grid-tablet-breakpoint) {
-		width: $tab-grid-width;
+	max-width: 100%;
+	@include media('small') {
+		width: get-row-width('small');
 	}
-
-	@media screen and (max-width: $grid-mobile-breakpoint) {
-		width: $mob-grid-width;
+	@include media('medium') {
+		width: get-row-width('medium');
 	}
-}
-
-.row:not(.padded) {
-	& > [class^=col] {
-		padding-bottom: 0;
-		padding-top: 0;
+	@include media('large') {
+		width: get-row-width('large');
 	}
-}
-
-.col {
-	@include columns-equal(5, $desk-gutter);
-
-	@include columns-loop(desk, $grid-desktop-columns, $desk-gutter);
-
-	@media screen and (max-width: $grid-tablet-breakpoint) {
-		@include columns-loop(tab, $grid-tablet-columns, $tab-gutter);
+	.col {
+		@include media('small') {
+			@include col-group(sm, $grid-cols, get-gutter('small'));
+		}
+		@include media('medium') {
+			@include col-group(md, $grid-cols, get-gutter('medium'));
+		}
+		@include media('large') {
+			@include col-group(lg, $grid-cols, get-gutter('large'));
+		}
 	}
-
-	@media screen and (max-width: $grid-mobile-breakpoint) {
-		@include columns-loop(mob, $grid-mobile-columns, $mob-gutter);
+	&:not(.padded) > [class^=col] {
+		padding-bottom: 0 !important;
+		padding-top: 0 !important;
 	}
 }

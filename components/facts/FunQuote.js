@@ -7,7 +7,7 @@ const quotes = [
 ];
 
 const FunQuote = ({ i }) => (
-  <div className="col-tab-6 hide-mob hide-desk">
+  <div className="col-md-30 hide-sm hide-lg">
     <div className="fun-quote">
       <h4><span dangerouslySetInnerHTML={{__html: quotes[i % quotes.length].replace(/\n/g, '<br/>')}} /></h4>
     </div>
