@@ -1,8 +1,9 @@
 import Link from 'next/link';
-import FunQuote from './FunQuote';
+import Quote from './Quote';
 import Blazy from 'blazy';
+import { TINIEST_GIF_IMAGE } from '~/lib/constants';
 
-const FactsList = ({ facts }) => {
+const FactStrip = ({ facts }) => {
   // init lazy-load for images
   React.useEffect(() => {new Blazy();}, [facts]);
   // use state to animate rows with facts
@@ -31,7 +32,7 @@ const FactsList = ({ facts }) => {
   });
   return(
     <div className="facts-strip row">
-      {rows.map((row, i) => (
+      {rows.map((_, i) => (
       <div className="row padded" style={getRowStyles(i)} key={i}>
         {facts.slice(count, count += (i % 2 === 0 ? 5 : 4)).map(item => 
         <div className="col-lg-12 col-md-30 col-sm-60" key={item.i}>
@@ -41,8 +42,7 @@ const FactsList = ({ facts }) => {
               onMouseLeave={(e) => handleMouseLeave(e)}
             >
               <div className="img-holder">
-                <img className="b-lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
-                  data-src={item.image} alt={item.title} />
+                <img className="b-lazy" src={TINIEST_GIF_IMAGE} data-src={item.image} alt={item.title} />
               </div>
               <div className="layer">
                 <h4><span className="highlight">{item.title}</span></h4>
@@ -51,11 +51,11 @@ const FactsList = ({ facts }) => {
           </Link>
         </div>
         )}
-        {i % 2 === 0 && <FunQuote i={Math.floor(i/2)} />}
+        {i % 2 === 0 && <Quote i={Math.floor(i/2)} />}
       </div>
       ))}
     </div>
   )
 }
 
-export default FactsList;
+export default FactStrip;

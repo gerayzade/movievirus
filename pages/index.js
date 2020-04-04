@@ -1,10 +1,10 @@
 import { getAllPosts } from '~/lib/content';
 import Layout from '~/components/Layout';
-import FactsList from '~/components/facts/FactsList';
+import FactStrip from '~/components/facts/FactStrip';
 
 const Index = ({ facts }) => (
   <Layout title="The most viral facts from film industry">
-    <FactsList facts={facts} />
+    <FactStrip facts={facts} />
   </Layout>
 )
 

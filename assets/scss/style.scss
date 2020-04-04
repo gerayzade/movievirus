@@ -314,4 +314,36 @@ h2 {
   }
 }
 
+// Additional style for large screens
+
+@include media('large') {
+  .screen-flow {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    height: 100%;
+    transform: translate(-50%);
+    z-index: 10;
+    pointer-events: none;
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: 20px;
+      background-image: linear-gradient(to top, #fff 10px, rgba(0, 0, 0, 0) 10px);
+      background-size: 100% 20px;
+      background-repeat: repeat-y;
+    }
+    &::before {
+      left: -30px;
+    }
+    &::after {
+      right: -30px;
+    }
+  }
+}
+
 }

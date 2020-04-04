@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Logo from '~/assets/svg/logo.svg?sprite';
 import MenuToggle from './MenuToggle';
 
 const Header = () => (
@@ -7,7 +6,7 @@ const Header = () => (
     <div className="row">
       <div className="col-lg-45 col-md-45 col-sm-45">
         <Link href="/" scroll={false}>
-          <h1><Logo className="logo" /></h1>
+          <h1><img className="logo" src={require('~/assets/svg/logo.svg')} alt="Movievirus" /></h1>
         </Link>
         <strong className="hashes">#StayHome #Quarantine&Chill</strong>
       </div>
