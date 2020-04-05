@@ -9,10 +9,10 @@ const Layout = ({ children, title }) => (
     <Head>
       <meta charSet="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      {/* browser tab content */}
+      {/* browser tab view */}
       <title>{title ? 'Movievirus ★ ' + title : 'MovieVirus'}</title>
       <link rel="icon" type="image/png" href="/favicon.png" /> 
-      {/* preload content */}
+      {/* preload assets */}
       <PreloadFonts />
       <PreloadImages />
     </Head>
