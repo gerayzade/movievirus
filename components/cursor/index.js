@@ -21,10 +21,6 @@ const Cursor = () => {
       borderColor: 'transparent',
       mixBlendMode: 'lighten'
     });
-    // destroy when unmounted
-    return () => { 
-      cursor.destroy();
-    }
   }, []);
   return (<></>);
 }

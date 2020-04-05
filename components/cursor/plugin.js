@@ -16,7 +16,7 @@ const CursorDot = ({
   const cur = { x: 0, y: 0, o: 0, d: diameter };
   const dot = document.createElement('div');
   const tim = easing / 15;
-  dot.classList.add('hide-sm', 'hide-md');
+  dot.classList.add('cursor-dot', 'hide-sm', 'hide-md');
   dot.style = `position:fixed;top:0;left:0;border-radius:100%;pointer-events:none;opacity:0;z-index:${zIndex};height:${diameter}px;width:${diameter}px;background:${background};border:${borderWidth}px solid ${borderColor};mix-blend-mode:${mixBlendMode};transition:background ${tim}s,border ${tim}s`;
 
   document.addEventListener('mousemove', e => {
@@ -24,6 +24,9 @@ const CursorDot = ({
     alt.y = e.clientY;
     dot.style.opacity = 1;
     if (!inited) {
+      // remove cursors if exist
+      $('.cursor-dot').forEach($dot => $dot.parentNode.removeChild($dot));
+      // add new cursor
       document.body.append(dot);
       cur.x = alt.x;
       cur.y = alt.y;
@@ -71,10 +74,6 @@ const CursorDot = ({
     }
     if (isElement(any)) fn(any);
     else if (isString(any)) $(any).forEach(fn);
-  }
-
-  dot.destroy = () => {
-    dot.parentNode && dot.parentNode.removeChild(dot);
   }
 
   return dot;
