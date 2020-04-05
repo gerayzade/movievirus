@@ -8,7 +8,7 @@ export const PreloadFonts = () => {
   return fonts
     .reduce((acc, font) => [...acc, ...font.weights.map(weight => fontPath(weight, font.name))], [])
     .map(url => (
-      <link rel="preload" href={url} as="font" type="font/woff2" crossorigin="anonymous" />
+      <link rel="preload" href={url} as="font" type="font/woff2" crossOrigin="anonymous" />
     ));
 }
 

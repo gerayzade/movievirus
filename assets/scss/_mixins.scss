@@ -23,5 +23,6 @@
     }
   }
   animation: noise .3s infinite;
-  background-image: url('../img/noise.jpg');
+  background-image: url('../img/noise.jpg') !important;
+  background-size: auto;
 }

@@ -36,13 +36,13 @@ const FactStrip = ({ facts }) => {
       <div className="row padded" style={getRowStyles(i)} key={i}>
         {facts.slice(count, count += (i % 2 === 0 ? 5 : 4)).map(item => 
         <div className="col-lg-12 col-md-30 col-sm-60" key={item.i}>
-          <Link href="/post/[slug]" as={`/post/${item.slug}`} scroll={false}>
+          <Link href="/post/[slug]" as={`/post/${item.slug}`}>
             <div className={'fact ' + (activeCol === item.i ? 'active' : (activeCol !== -1 ? 'muted' : ''))} 
               onMouseEnter={(e) => handleMouseEnter(e, i, item.i)} data-cursor="dot"
               onMouseLeave={(e) => handleMouseLeave(e)}
             >
               <div className="img-holder">
-                <img className="b-lazy" src={TINIEST_GIF_IMAGE} data-src={item.image} alt={item.title} />
+                <div className="img b-lazy" data-src={item.image} />
               </div>
               <div className="layer">
                 <h4><span className="highlight">{item.title}</span></h4>
