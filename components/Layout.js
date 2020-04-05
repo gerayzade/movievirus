@@ -6,7 +6,7 @@ import Cursor from './cursor';
 
 const Layout = ({ children, title }) => {
   // scroll to top when component unmounted
-  React.useEffect(() => {setTimeout(() => window.scrollTo(0,0), 700)}, []); 
+  React.useEffect(() => {setTimeout(() => window.scrollTo(0,0), 250)}, []); 
   return (
     <div className="wrapper">
       <Head>
