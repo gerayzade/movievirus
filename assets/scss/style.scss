@@ -13,7 +13,6 @@ body {
   background-color: #000;
   line-height: 1.4;
   overflow-y: scroll;
-  cursor: none;
   :focus {
     outline: none;
   }
@@ -53,20 +52,18 @@ h2 {
   @include highlight($red);
 }
 
-.img-holder {
+.image {
   display: block;
-  position: relative;
-  .img {
-    display: block;
-    width: 100%;
-    height: 0;
-    padding-bottom: 60%;
-    background-size: cover;
-    transition: background .3s;
-    &.b-lazy:not(.b-loaded) {
-      @include noise;
-    }
+  width: 100%;
+  height: 0;
+  padding-bottom: 60%;
+  background-size: cover;
+  transition: background .3s;
+  &.b-lazy:not(.b-loaded) {
+    @include noise;
   }
+  position: relative;
+  
 }
 
 .wrapper {
@@ -292,8 +289,9 @@ h2 {
     margin: 0 auto;
   }
   @include media('large') {
-    .img-holder {
+    .image {
       width: 50%;
+      padding-bottom: 30%;
     }
     h2 {
       margin: 1em auto;
@@ -312,6 +310,10 @@ h2 {
 // Additional style for large screens
 
 @include media('large') {
+  body {
+    cursor: none;
+  }
+
   .screen-flow {
     position: absolute;
     top: 0;

@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import Quote from './Quote';
 import Blazy from 'blazy';
-import { TINIEST_GIF_IMAGE } from '~/lib/constants';
 
 const FactStrip = ({ facts }) => {
   // init lazy-load for images
@@ -36,14 +35,12 @@ const FactStrip = ({ facts }) => {
       <div className="row padded" style={getRowStyles(i)} key={i}>
         {facts.slice(count, count += (i % 2 === 0 ? 5 : 4)).map(item => 
         <div className="col-lg-12 col-md-30 col-sm-60" key={item.i}>
-          <Link href="/post/[slug]" as={`/post/${item.slug}`}>
+          <Link href="/post/[slug]" as={`/post/${item.slug}`} scroll={false}>
             <div className={'fact ' + (activeCol === item.i ? 'active' : (activeCol !== -1 ? 'muted' : ''))} 
               onMouseEnter={(e) => handleMouseEnter(e, i, item.i)} data-cursor="dot"
               onMouseLeave={(e) => handleMouseLeave(e)}
             >
-              <div className="img-holder">
-                <div className="img b-lazy" data-src={item.image} />
-              </div>
+              <div className="image b-lazy" data-src={'https://movievirus.net' + item.image} role="img" aria-label={item.title} />
               <div className="layer">
                 <h4><span className="highlight">{item.title}</span></h4>
               </div>
