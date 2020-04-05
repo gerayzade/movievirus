@@ -7,7 +7,7 @@ import '~/assets/scss/style.scss';
 const VirusApp = ({ Component, pageProps, router, store }) => (
   <>
     <Provider store={store}>
-      <PageTransition timeout={350} classNames="page-transition">
+      <PageTransition timeout={500} classNames="page-transition">
         <Component {...pageProps} key={router.route} />
       </PageTransition>
     </Provider>
@@ -19,12 +19,20 @@ const VirusApp = ({ Component, pageProps, router, store }) => (
         left: 0;
         width: 100%;
         height: 200vh;
-        transform: translateY(100vh);
         background-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, #000 50%, #000 100%);
-        transition: transform .7s;
+        transform: translateY(100vh);
         will-change: transform;
       }
-      .page-transition-enter .page-transition,
+      .page-transition-enter .page-transition {
+        transform: translateY(-100vh);
+      }
+      .page-transition-enter-active .page-transition {
+        transform: translateY(100vh);
+        transition: transform .7s;
+      }
+      .page-transition-exit .page-transition {
+        transform: translateY(100vh);
+      }
       .page-transition-exit-active .page-transition {
         transform: translateY(-100vh);
         transition: transform .7s;

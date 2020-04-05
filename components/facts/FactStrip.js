@@ -40,7 +40,7 @@ const FactStrip = ({ facts }) => {
               onMouseEnter={(e) => handleMouseEnter(e, i, item.i)} data-cursor="dot"
               onMouseLeave={(e) => handleMouseLeave(e)}
             >
-              <div className="image b-lazy" data-src={'https://movievirus.net' + item.image} role="img" aria-label={item.title} />
+              <div className="image b-lazy" data-src={item.image} role="img" aria-label={item.title} />
               <div className="layer">
                 <h4><span className="highlight">{item.title}</span></h4>
               </div>
