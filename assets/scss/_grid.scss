@@ -64,7 +64,7 @@ $break-sm: map-get($grid-breakpoint, 'small');
 		}
 	}
 }
-@each $device in ('small', 'medium', 'large') {
+@each $device in 'small', 'medium', 'large' {
 	@include media($device) {
 		.hide-#{map-get($grid-devices, $device)} {
 			display: none;

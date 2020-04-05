@@ -1,19 +1,25 @@
 const withPlugins = require('next-compose-plugins');
-const optimizedImages = require('next-optimized-images');
+const withImages = require('next-optimized-images');
+const withFonts = require('next-fonts');
 const withSass = require('@zeit/next-sass');
 const withPurgeSass = require('next-purgecss')
   
-module.exports = withPlugins([
-		[optimizedImages, {
+module.exports = withPlugins(
+	[
+		[withImages, {
 			imagesFolder: 'img',
 			optimizeImagesInDev: true,
 			svgo: {},
 			mozjpeg: { quality: 80 },
 			optipng: { optimizationLevel: 3 },
 		}],
+		[withFonts, {
+			enableSvg: false
+		}],
 		withSass,
 		withPurgeSass
-	],{
+	], 
+	{
 		webpack: (config, { isServer }) => {
 			if(!isServer) {
 				config.node = {

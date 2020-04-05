@@ -1,19 +1,20 @@
 import Head from 'next/head';
-import Header from '~/components/header';
-import Footer from '~/components/footer';
-import Cursor from '~/components/cursor';
-import { GOOGLE_FONTS } from '~/lib/constants';
+import { PreloadFonts, PreloadImages } from './header/ResourceLinks';
+import Header from './header';
+import Footer from './footer';
+import Cursor from './cursor';
 
 const Layout = ({ children, title }) => (
   <div className="wrapper">
     <Head>
       <meta charSet="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
+      {/* browser tab content */}
       <title>{title ? 'Movievirus ★ ' + title : 'MovieVirus'}</title>
-      <link rel="icon" type="image/png" href="/favicon.png" />
-      <link rel="stylesheet"href={`https://fonts.googleapis.com/css?family=${GOOGLE_FONTS}&display=swap`} />
-      <link rel="preload" as="image" href={require('~/assets/svg/logo.svg')} />
-      <link rel="preload" as="image" href={require('~/assets/img/noise.jpg')} />
+      <link rel="icon" type="image/png" href="/favicon.png" /> 
+      {/* preload content */}
+      <PreloadFonts />
+      <PreloadImages />
     </Head>
     <Cursor />
     <div className="page-transition" />

@@ -12,15 +12,16 @@
   box-shadow: .3em 0 0 $color, -.3em 0 0 $color;
 }
 
-@keyframes noise {
-  @for $frame from 0 through 10 {
-    #{$frame * 10%} {
-      background-position: -100 + random(200) + px, -100 + random(200) + px
-    } 
-  }
-}
-
 @mixin noise {
-  background-image: url('../img/noise.jpg');
+  @at-root {
+    @keyframes noise {
+      @for $frame from 0 through 10 {
+        #{$frame * 10%} {
+          background-position: -100 + random(200) + px, -100 + random(200) + px
+        } 
+      }
+    }
+  }
   animation: noise .3s infinite;
+  background-image: url('../img/noise.jpg');
 }

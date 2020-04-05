@@ -1,13 +1,14 @@
-@import 'reset';
-@import 'grid';
 @import 'variables';
 @import 'mixins';
+@import 'fonts';
+@import 'reset';
+@import 'grid';
 
 :global {
 
 body {
   position: relative;
-  font-family: $ff-sen;
+  font-family: $font-sen;
   color: #fff;
   background-color: #000;
   line-height: 1.4;
@@ -284,7 +285,7 @@ h2 {
     margin: 1em 0;
   }
   p {
-    font-family: $ff-montserrat;
+    font-family: $font-montserrat;
     font-weight: 300;
     max-width: 750px;
     text-align: justify;
