@@ -1,10 +1,8 @@
 import Link from 'next/link';
+import LazyLoad from '~/components/LazyLoad';
 import Quote from './Quote';
-import Blazy from 'blazy';
 
 const FactStrip = ({ facts }) => {
-  // init lazy-load for images
-  React.useEffect(() => {new Blazy();}, [facts]);
   // use state to animate rows with facts
   const initialState = { active: [-1, -1], x: 0 };
   const [state, setState] = React.useState(initialState);
@@ -30,28 +28,30 @@ const FactStrip = ({ facts }) => {
     zIndex: i === activeRow ? 2 : 1
   });
   return(
-    <div className="facts-strip row">
-      {rows.map((_, i) => (
-      <div className="row padded" style={getRowStyles(i)} key={i}>
-        {facts.slice(count, count += (i % 2 === 0 ? 5 : 4)).map(item => 
-        <div className="col-lg-12 col-md-30 col-sm-60" key={item.i}>
-          <Link href="/post/[slug]" as={`/post/${item.slug}`} scroll={false}>
-            <div className={'fact ' + (activeCol === item.i ? 'active' : (activeCol !== -1 ? 'muted' : ''))} 
-              onMouseEnter={(e) => handleMouseEnter(e, i, item.i)} data-cursor="dot"
-              onMouseLeave={(e) => handleMouseLeave(e)}
-            >
-              <div className="image b-lazy" data-src={item.image} role="img" aria-label={item.title} />
-              <div className="layer">
-                <h4><span className="highlight">{item.title}</span></h4>
+    <LazyLoad dependencies={[facts]}>
+      <div className="facts-strip row">
+        {rows.map((_, i) => (
+        <div className="row padded" style={getRowStyles(i)} key={i}>
+          {facts.slice(count, count += (i % 2 === 0 ? 5 : 4)).map(item => 
+          <div className="col-lg-12 col-md-30 col-sm-60" key={item.i}>
+            <Link href="/post/[slug]" as={`/post/${item.slug}`} scroll={false}>
+              <div className={'fact ' + (activeCol === item.i ? 'active' : (activeCol !== -1 ? 'muted' : ''))} 
+                onMouseEnter={(e) => handleMouseEnter(e, i, item.i)} data-cursor="dot"
+                onMouseLeave={(e) => handleMouseLeave(e)}
+              >
+                <div className="image lazy" data-src={item.image} role="img" aria-label={item.title} />
+                <div className="layer">
+                  <h4><span className="highlight">{item.title}</span></h4>
+                </div>
               </div>
-            </div>
-          </Link>
+            </Link>
+          </div>
+          )}
+          {i % 2 === 0 && <Quote i={Math.floor(i/2)} />}
         </div>
-        )}
-        {i % 2 === 0 && <Quote i={Math.floor(i/2)} />}
+        ))}
       </div>
-      ))}
-    </div>
+    </LazyLoad>
   )
 }
 

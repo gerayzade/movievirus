@@ -58,8 +58,8 @@ h2 {
   height: 0;
   padding-bottom: 60%;
   background-size: cover;
-  transition: background .3s;
-  &.b-lazy:not(.b-loaded) {
+  transition: background-image .15s;
+  &.lazy:not(.lazy-loaded) {
     @include noise;
   }
   position: relative;
