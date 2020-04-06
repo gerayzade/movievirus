@@ -21,6 +21,10 @@ const Cursor = () => {
       borderColor: 'transparent',
       mixBlendMode: 'lighten'
     });
+    cursor.over('[data-cursor="dot-3"]', {
+      borderColor: 'transparent',
+      background: 'transparent',
+    });
   }, []);
   return (<></>);
 }
