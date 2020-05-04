@@ -1,6 +1,6 @@
 ---
 title: >-
-  Sci-fi film Interstellar led to new scientific discovery
+  Sci-FI Film Interstellar Led to New Scientific Discovery
 description: >-
   Interstellar is the first Hollywood movie to attempt depicting a black hole as
   it would actually be seen by somebody nearby. For this, Kip Thorne, a
@@ -15,6 +15,7 @@ image: /media/interstellar.jpg
 source: 'https://www.wired.com/2014/10/astrophysics-interstellar-black-hole/'
 tags:
   - astronomy
+  - computer graphics
   - science fiction
   - visual effects
 ---

@@ -1,6 +1,6 @@
 ---
 title: >-
-  A scene from James Bond movie prompted Mexico City to launch its own parade
+  A Scene From James Bond Movie Prompted Mexico City to Launch Its Own Parade
 description: >-
   Mexicans traditionally celebrate the Day of the Dead with a family picnic to
   remember their loved ones at graveyard or in front of a decorated shrine at

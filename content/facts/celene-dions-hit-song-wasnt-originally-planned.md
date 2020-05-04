@@ -5,7 +5,7 @@ description: >-
 image: /media/titanic-rose-and-jack.jpg
 source: 'https://www.latimes.com/entertainment/movies/la-et-mn-horner-cameron-20150624-story.html'
 tags:
-  - soundtrack
   - titanic
+  - soundtrack
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Chewbacca needed protection from hunters while filming
+title: Chewbacca Needed Protection From Hunters While Filming
 description: >-
   During the filming of Return of the Jedi, Peter Mayhew, the rather tall actor
   who has played Chewbacca had to be protected while in the forest in the fears

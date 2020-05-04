@@ -1,5 +1,5 @@
 ---
-title: Actor who played Luca Brasi was actually in the Mafia
+title: Actor Who Played Luca Brasi Was Actually in the Mafia
 description: >-
   Filming of Mario Puzo's classic novel The Godfather was met with resistance
   from the Italo-American League for Civil Rights, founded by real crime
@@ -12,8 +12,8 @@ description: >-
 image: /media/luca-brasi.jpg
 source: 'https://www.thevintagenews.com/2018/04/09/luca-brasi/'
 tags:
+  - the godfather
   - crime
   - mafia
-  - the godfather
 ---
 

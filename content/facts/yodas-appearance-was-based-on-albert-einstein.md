@@ -1,5 +1,5 @@
 ---
-title: Yoda's Appearance was based on Albert Einstein
+title: Yoda's Appearance Was Based on Albert Einstein
 description: >-
   According to Mental Floss, the creator of Yoda — makeup supervisor and special
   effects artist Stuart Freeborn — was heavily influenced by a picture of

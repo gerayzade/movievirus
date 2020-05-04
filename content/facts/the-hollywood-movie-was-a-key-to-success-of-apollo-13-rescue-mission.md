@@ -1,5 +1,5 @@
 ---
-title: The Hollywood movie was a key to success of Apollo 13 rescue mission
+title: The Hollywood Movie Was a Key to Success of Apollo 13 Rescue Mission
 description: >-
   A Hollywood movie Marooned depicts three astronauts who survive an accident
   in space, but their lives hang in the balance as the people in Mission Control
