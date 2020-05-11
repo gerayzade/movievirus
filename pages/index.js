@@ -1,4 +1,4 @@
-import { getAllPosts } from '~/lib/content';
+import { getAllPosts } from '~/utils/content';
 import Layout from '~/components/Layout';
 import FactStrip from '~/components/facts/FactStrip';
 

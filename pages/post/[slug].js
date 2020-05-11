@@ -1,4 +1,4 @@
-import { getPostPaths, getPostBySlug } from '~/lib/content';
+import { getPostPaths, getPostBySlug } from '~/utils/content';
 import Layout from '~/components/Layout';
 import FactPost from '~/components/facts/FactPost';
 

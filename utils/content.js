@@ -1,8 +1,5 @@
 import fs from 'fs';
 import matter from 'gray-matter';
-import { toTitleCase } from './strings';
-
-String.prototype.toTitleCase = toTitleCase;
 
 const cwd = process.cwd();
 const contentDirectory = `${cwd}/content`;
@@ -14,7 +11,6 @@ export const getPostSlugs = (folder) => (
 export const getPostBySlug = async (folder, slug, fields = [], i = -1) => {
   const fileContents = fs.readFileSync(`${contentDirectory}/${folder}/${slug}.md`, 'utf8');
   const { data } = matter(fileContents);
-  data.title = data.title.toTitleCase();
   i !== -1 && (() => (data.i = i))();
   fields = fields.length ? ['i',...fields] : Object.keys(data);
   return fields.reduce((acc, field) => ({ ...acc, [field]: data[field] }), { slug: slug });

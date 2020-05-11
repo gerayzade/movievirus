@@ -1,5 +1,5 @@
 import CursorDot from './plugin';
-import { COLOR_PALETTE } from '~/lib/constants';
+import { COLOR_PALETTE } from '~/utils/constants';
 
 const Cursor = () => {
   React.useEffect(() => {
