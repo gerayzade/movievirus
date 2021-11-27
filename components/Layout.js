@@ -5,7 +5,9 @@ import Footer from './footer';
 import Cursor from './cursor';
 
 const Layout = ({ children, title }) => {
-  React.useEffect(() => {window.scrollTo(0,0)}, []); 
+  React.useEffect(() => {
+    window.scrollTo(0,0);
+  }, []); 
   return (
     <div className="wrapper">
       <Head>

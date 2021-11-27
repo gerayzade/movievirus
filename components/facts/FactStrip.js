@@ -6,12 +6,31 @@ const FactStrip = ({ facts }) => {
   // use state to animate rows with facts
   const initialState = { active: [-1, -1], x: 0 };
   const [state, setState] = React.useState(initialState);
+  const [mouseEvents, setMouseEvents] = React.useState(true);
   // destructuring state
   const { active, x } = state;
-  const [activeRow, activeCol ] = active;
+  const [activeRow, activeCol] = active;
+  // handle scroll
+  let timeout;
+  React.useEffect(() => {
+    const onScroll = () => { 
+      setState(initialState);
+      setMouseEvents(false);
+      clearTimeout(timeout);
+      timeout = setTimeout(() => { 
+        setMouseEvents(true); 
+      }, 400);
+    }
+    window.addEventListener('scroll', onScroll);
+    // clean effect
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+    }
+  }, []);
   // handle transformations on mouse enter/leave events
   const handleMouseEnter = (e, row, col) => {
     e.persist();
+    if (!mouseEvents || (active[0] === row && active[1] === col)) return;
     let vw = window.innerWidth;
     let pos = e.pageX / vw;
     let xLookup = { 0: 30, 1: 15, 2: 0, 3: 15, 4: 30, 5: 22.5, 6: 7.5, 7: 7.5, 8: 22.5 };
@@ -35,8 +54,9 @@ const FactStrip = ({ facts }) => {
           {facts.slice(count, count += (i % 2 === 0 ? 5 : 4)).map(item => 
           <div className="col-lg-12 col-md-30 col-sm-60" key={item.i}>
             <Link href="/post/[slug]" as={`/post/${item.slug}`} scroll={false}>
-              <div className={'fact ' + (activeCol === item.i ? 'active' : (activeCol !== -1 ? 'muted' : ''))} 
-                onMouseEnter={(e) => handleMouseEnter(e, i, item.i)} data-cursor="dot"
+              <div className={'fact ' + (activeCol === item.i ? 'active' : (activeCol !== -1 ? 'muted' : ''))} data-cursor="dot"
+                onMouseEnter={(e) => handleMouseEnter(e, i, item.i)} 
+                onMouseMove={(e) => handleMouseEnter(e, i, item.i)}
                 onMouseLeave={(e) => handleMouseLeave(e)}
               >
                 <div className="image lazy" data-src={item.image} role="img" aria-label={item.title} />
