@@ -7,7 +7,10 @@ import Document, {
 export default class HtmlDocument extends Document {
   render() {
     return (
-      <Html lang="en" dir="ltr">
+      <Html
+        lang="en"
+        dir="ltr"
+      >
         <Head />
         <body>
           <Main />

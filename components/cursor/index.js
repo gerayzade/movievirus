@@ -3,7 +3,7 @@ import {
   useEffect,
 } from 'react'
 import CursorDot from './plugin'
-import { COLOR_PALETTE } from '~/utils/constants'
+import { COLOR_PALETTE } from '~/utils/mappings'
 
 const Cursor = () => {
   useEffect(() => {

@@ -16,10 +16,17 @@ const Layout = ({ children, title }) => {
     <div className="wrapper">
       <Head>
         <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1"
+        />
         {/* browser tab view */}
         <title>{title ? 'Movievirus ★ ' + title : 'MovieVirus'}</title>
-        <link rel="icon" type="image/png" href="/favicon.png" /> 
+        <link
+          rel="icon"
+          type="image/png"
+          href="/favicon.png"
+        /> 
         {/* preload assets */}
         <PreloadFonts />
         <PreloadImages />

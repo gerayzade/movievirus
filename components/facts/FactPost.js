@@ -1,5 +1,6 @@
 // import Link from 'next/link'
 import LazyLoad from '~/components/LazyLoad'
+import { parseLineBreaks } from '~/utils'
 
 const FactPost = ({ post }) => (
   <LazyLoad data={post}>
@@ -19,7 +20,7 @@ const FactPost = ({ post }) => (
                 {post.title}
               </span>
             </h2>
-            <p dangerouslySetInnerHTML={{__html: post.description.replace(/\n/g, '<br/>')}} />
+            <p dangerouslySetInnerHTML={{__html: parseLineBreaks(post.description)}} />
             {/* <h4>Tags</h4>
             <ul className="tags">
               {post.tags.map((tag, i) => (

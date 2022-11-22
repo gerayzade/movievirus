@@ -10,11 +10,12 @@ import {
 const MenuToggle = () => {
   const isMenuOpened = useSelector(selectMenuState)
   const dispatch = useDispatch()
+  const onClick = (e) => dispatch(setMenuState(!isMenuOpened))
   return (
     <button
       type="button"
       className={'burger' + (isMenuOpened ? ' active' : '')}
-      onClick={() => dispatch(setMenuState(!isMenuOpened))}
+      onClick={(e) => onClick(e)}
       aria-label="Menu"
       data-cursor="dot-2"
     >
