@@ -1,7 +1,7 @@
 import { parseLineBreaks } from '~/utils'
 import { QUOTES } from '~/utils/constants'
 
-const FunQuote = ({ index }) => {
+const Quote = ({ index }) => {
   const quote = QUOTES[index % QUOTES.length]
   return (
     <div className="col-md-30 hide-sm hide-lg">
@@ -14,4 +14,4 @@ const FunQuote = ({ index }) => {
   )
 }
 
-export default FunQuote
+export default Quote

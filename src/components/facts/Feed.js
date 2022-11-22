@@ -6,7 +6,7 @@ import {
 } from 'react'
 import Link from 'next/link'
 import LazyLoad from '~/components/LazyLoad'
-import Quote from '~/components/facts/Quote'
+import Quote from '~/components/Quote'
 
 const Feed = ({ facts }) => {
   // animate rows with facts
