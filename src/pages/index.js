@@ -3,7 +3,7 @@ import Layout from '~/components/Layout'
 import Feed from '~/components/facts/Feed'
 import { SLOGAN } from '~/utils/constants'
 
-const Index = ({ facts }) => (
+const HomePage = ({ facts }) => (
   <Layout title={SLOGAN}>
     <Feed facts={facts} />
   </Layout>
@@ -18,4 +18,4 @@ export const getStaticProps = async () => {
   }
 }
 
-export default Index
+export default HomePage

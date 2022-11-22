@@ -5,7 +5,7 @@ import {
 import Layout from '~/components/Layout'
 import Post from '~/components/facts/Post'
 
-const Post = ({ post }) => (
+const PostPage = ({ post }) => (
   <Layout title={post.title}>
     <Post post={post} />
   </Layout>
@@ -20,4 +20,4 @@ export const getStaticPaths = () => {
   return getPostPaths('facts', '/post', true)
 }
 
-export default Post
+export default PostPage
