@@ -3,7 +3,7 @@ import { Provider } from 'react-redux'
 import { wrapper } from '~/store'
 import PageTransition from '~/components/PageTransition'
 
-import 'styles/index.scss'
+import '~/styles/index.scss'
 
 const VirusApp = ({ Component, router, ...rest }) => {
   const { store, props } = wrapper.useWrappedStore(rest)

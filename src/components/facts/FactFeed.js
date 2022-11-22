@@ -8,7 +8,7 @@ import Link from 'next/link'
 import LazyLoad from '~/components/LazyLoad'
 import Quote from '~/components/facts/Quote'
 
-const FactStrip = ({ facts }) => {
+const FactFeed = ({ facts }) => {
   // animate rows with facts
   const initialState = useMemo(() => ({
     active: [-1, -1],
@@ -114,4 +114,4 @@ const FactStrip = ({ facts }) => {
   )
 }
 
-export default FactStrip
+export default FactFeed
