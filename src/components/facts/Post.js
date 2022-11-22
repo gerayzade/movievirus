@@ -2,7 +2,7 @@
 import LazyLoad from '~/components/LazyLoad'
 import { parseLineBreaks } from '~/utils'
 
-const FactPost = ({ post }) => (
+const Post = ({ post }) => (
   <LazyLoad data={post}>
     <div className="row">
       <div className="col-lg-60 col-md-60 col-sm-60">
@@ -52,4 +52,4 @@ const FactPost = ({ post }) => (
   </LazyLoad>
 )
 
-export default FactPost
+export default Post

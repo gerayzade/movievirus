@@ -1,11 +1,11 @@
 import { getAllPosts } from '~/utils/content'
 import Layout from '~/components/Layout'
-import FactFeed from '~/components/facts/FactFeed'
+import Feed from '~/components/facts/Feed'
 import { SLOGAN } from '~/utils/constants'
 
 const Index = ({ facts }) => (
   <Layout title={SLOGAN}>
-    <FactFeed facts={facts} />
+    <Feed facts={facts} />
   </Layout>
 )
 

@@ -3,11 +3,11 @@ import {
   getPostBySlug,
 } from '~/utils/content'
 import Layout from '~/components/Layout'
-import FactPost from '~/components/facts/FactPost'
+import Post from '~/components/facts/Post'
 
 const Post = ({ post }) => (
   <Layout title={post.title}>
-    <FactPost post={post} />
+    <Post post={post} />
   </Layout>
 )
 
