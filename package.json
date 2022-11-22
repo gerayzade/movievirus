@@ -17,6 +17,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.0",
     "blazy": "^1.8.2",
+    "classnames": "^2.3.2",
     "eslint": "8.28.0",
     "eslint-config-next": "13.0.4",
     "gray-matter": "^4.0.3",

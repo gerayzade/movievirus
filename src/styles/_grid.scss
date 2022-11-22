@@ -3,8 +3,10 @@ $grid-devices: 				('large': lg, 			'medium': md, 			'small': sm);
 $grid-breakpoint:			('large': 1440px, 	'medium': 1040px, 	'small': 740px);
 $grid-sideMargin:			('large': 60px, 		'medium': 40px, 		'small': 20px);
 $grid-gutter: 				('large': 15px, 		'medium': 15px, 		'small': 15px);
+
 // Columns
 $grid-cols: 60;
+
 // Breakpoints
 $break-lg: map-get($grid-breakpoint, 'large');
 $break-md: map-get($grid-breakpoint, 'medium');

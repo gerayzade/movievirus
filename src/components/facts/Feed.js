@@ -1,3 +1,4 @@
+import cn from 'classnames'
 import {
   useEffect,
   useMemo,
@@ -61,7 +62,18 @@ const Feed = ({ facts }) => {
     zIndex: rowIndex === activeRow ? 2 : 1,
   })
   const getRowFacts = (rowIndex) => {
-    return facts.slice(count, count += (rowIndex % 2 === 0 ? 5 : 4))
+    const start = count
+    const end = count += (rowIndex % 2 === 0 ? 5 : 4)
+    return facts.slice(start, end)
+  }
+  const getFactClassNames = (colIndex) => {
+    const classNames = ['fact']
+    if (activeCol === colIndex) {
+      classNames.push('active')
+    } else if (activeCol !== -1) {
+      classNames.push('muted')
+    }
+    return classNames.join(' ')
   }
   return(
     <LazyLoad data={facts}>
@@ -83,7 +95,10 @@ const Feed = ({ facts }) => {
                   scroll={false}
                 >
                   <div
-                    className={'fact ' + (activeCol === item.index ? 'active' : (activeCol !== -1 ? 'muted' : ''))}
+                    className={cn('fact', {
+                      'active': activeCol === item.index,
+                      'muted': ![item.index, -1].includes(activeCol),
+                    })}
                     data-cursor="dot"
                     onMouseEnter={(e) => handleMouseEnter(e, rowIndex, item.index)} 
                     onMouseMove={(e) => handleMouseEnter(e, rowIndex, item.index)}

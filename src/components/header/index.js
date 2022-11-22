@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-// import MenuToggle from '~/components/header/MenuToggle'
+import MenuToggle from '~/components/header/MenuToggle'
 
 const Header = () => {
   const router = useRouter()
@@ -38,9 +38,9 @@ const Header = () => {
             #StayHome #Quarantine&Chill
           </strong>
         </div>
-        {/* <div className="col-lg-15 col-md-15 col-sm-15">
+        <div className="col-lg-15 col-md-15 col-sm-15">
           <MenuToggle />
-        </div> */}
+        </div>
       </div>
     </header>
   )

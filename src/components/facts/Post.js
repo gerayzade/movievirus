@@ -1,4 +1,4 @@
-// import Link from 'next/link'
+import Link from 'next/link'
 import LazyLoad from '~/components/LazyLoad'
 import { parseLineBreaks } from '~/utils'
 
@@ -21,7 +21,7 @@ const Post = ({ post }) => (
               </span>
             </h2>
             <p dangerouslySetInnerHTML={{__html: parseLineBreaks(post.description)}} />
-            {/* <h4>Tags</h4>
+            <h4>Tags</h4>
             <ul className="tags">
               {post.tags.map((tag, i) => (
                 <Link
@@ -34,7 +34,7 @@ const Post = ({ post }) => (
                   </li>
                 </Link>
               ))}
-            </ul> */}
+            </ul>
             <h4>Source</h4>
             <a
               href={post.source}

@@ -1,3 +1,4 @@
+import cn from 'classnames'
 import {
   useDispatch,
   useSelector,
@@ -14,10 +15,12 @@ const MenuToggle = () => {
   return (
     <button
       type="button"
-      className={'burger' + (isMenuOpened ? ' active' : '')}
-      onClick={(e) => onClick(e)}
+      className={cn('burger', {
+        'active': isMenuOpened,
+      })}
       aria-label="Menu"
       data-cursor="dot-2"
+      onClick={(e) => onClick(e)}
     >
       <div className="burger__icon">
         <span className="burger__line"></span> 
