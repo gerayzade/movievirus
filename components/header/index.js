@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router'
-import Image from 'next/image'
 import Link from 'next/link'
 // import MenuToggle from './MenuToggle'
 
@@ -18,21 +17,26 @@ const Header = () => {
     <header className="header">
       <div className="row">
         <div className="col-lg-45 col-md-45 col-sm-45">
-          <Link href="/" scroll={false}>
-            <h1 className="logo" data-cursor="dot-2" onClick={(e) => handleLogoClick(e)}>
-              <Image
-                src="/images/logo.svg"
-                alt="Movievirus"
-                width={286}
-                height={30}
-                style={{
-                  width: 'auto',
-                  height: 'auto',
-                }}
-              />
+          <Link
+            href="/"
+            scroll={false}
+          >
+            <h1
+              className="logo"
+              data-cursor="dot-2"
+              onClick={(e) => handleLogoClick(e)}
+            >
+              <picture>
+                <img
+                  src="/images/logo.svg"
+                  alt="Movievirus"
+                />
+              </picture>
             </h1>
           </Link>
-          <strong className="hashes">#StayHome #Quarantine&Chill</strong>
+          <strong className="hashes">
+            #StayHome #Quarantine&Chill
+          </strong>
         </div>
         {/* <div className="col-lg-15 col-md-15 col-sm-15">
           <MenuToggle />

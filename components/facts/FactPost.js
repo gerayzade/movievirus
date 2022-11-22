@@ -23,8 +23,14 @@ const FactPost = ({ post }) => (
             {/* <h4>Tags</h4>
             <ul className="tags">
               {post.tags.map((tag, i) => (
-                <Link href="/" scroll={false} key={i}>
-                  <li data-cursor="dot-3">{tag}</li>
+                <Link
+                  href="/"
+                  scroll={false}
+                  key={i}
+                >
+                  <li data-cursor="dot-3">
+                    {tag}
+                  </li>
                 </Link>
               ))}
             </ul> */}

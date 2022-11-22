@@ -7,6 +7,15 @@ export const COLOR_PALETTE = {
   BLACK: '#000',
 }
 
-export const GOOGLE_FONTS = 'Montserrat:300,400,500,700|Sen:700'
+export const FONTS = [
+  {
+    name: 'montserrat-v14-latin',
+    weights: [300, 400, 500, 700],
+  },
+  {
+    name: 'sen-v1-latin',
+    weights: [700],
+  },
+]
 
 export const TINIEST_GIF_IMAGE = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=='

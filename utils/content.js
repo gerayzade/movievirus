@@ -11,9 +11,9 @@ export const getPostSlugs = (folder) => (
 export const getPostBySlug = async (folder, slug, fields = [], i = -1) => {
   const fileContents = fs.readFileSync(`${contentDirectory}/${folder}/${slug}.md`, 'utf8')
   const { data } = matter(fileContents)
-  i !== -1 && (() => (data.i = i))()
+  i !== -1 && (() => (data.index = i))()
   fields = fields.length
-    ? ['i', ...fields]
+    ? ['index', ...fields]
     : Object.keys(data)
   return fields.reduce((acc, field) => ({
     ...acc,

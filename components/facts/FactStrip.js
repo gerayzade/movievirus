@@ -9,18 +9,17 @@ import LazyLoad from '~/components/LazyLoad'
 import Quote from './Quote'
 
 const FactStrip = ({ facts }) => {
-  // use state to animate rows with facts
+  // animate rows with facts
   const initialState = useMemo(() => ({
     active: [-1, -1],
     x: 0,
   }), [])
   const [state, setState] = useState(initialState)
   const [mouseEvents, setMouseEvents] = useState(true)
-  // destructuring state
   const { active, x } = state
   const [activeRow, activeCol] = active
   // handle scroll
-  const timeout = useRef(null)
+  const timeout = useRef()
   useEffect(() => {
     const onScroll = () => { 
       setState(initialState)
@@ -31,44 +30,52 @@ const FactStrip = ({ facts }) => {
       }, 400)
     }
     window.addEventListener('scroll', onScroll)
-    // clean effect
     return () => {
       clearTimeout(timeout.current)
       window.removeEventListener('scroll', onScroll)
     }
   }, [initialState])
   // handle transformations on mouse enter/leave events
-  const handleMouseEnter = (e, row, col) => {
+  const handleMouseEnter = (e, rowIndex, colIndex) => {
     e.persist()
-    if (!mouseEvents || (active[0] === row && active[1] === col)) return
-    let vw = window.innerWidth
-    let pos = e.pageX / vw
-    let xLookup = { 0: 30, 1: 15, 2: 0, 3: 15, 4: 30, 5: 22.5, 6: 7.5, 7: 7.5, 8: 22.5 }
-    let x = vw > 1024 ? (pos > 0.5 ? -1 : 1) * xLookup[col % 9] : 0
-    setState({ active: [row, col], x: x })
+    const isColActive = activeRow === rowIndex
+      && activeCol === colIndex
+    if (!mouseEvents || isColActive) return
+    const vw = window.innerWidth
+    const pos = e.pageX / vw
+    const x = vw > 1024
+      ? (pos > 0.5 ? -1 : 1) * [30, 15, 0, 15, 30, 22.5, 7.5, 7.5, 22.5][colIndex % 9]
+      : 0
+    setState({
+      active: [rowIndex, colIndex],
+      x,
+    })
   }
   const handleMouseLeave = (e) => setState(initialState)
   // generate alternating rows with 5 and 4 facts
-  let n = facts.length, count = 0
-  let rows = Array(Math.floor(n/9) * 2 + Math.ceil((n - 9 * Math.floor(n/9)) / 5)).fill(0)
-  // update rows' style
-  const getRowStyles = (i) => ({
-    transform: `translateX(${x !== 0 ? x * (1 + ((i % 3) * 0.4)) : 0}px)`, 
-    zIndex: i === activeRow ? 2 : 1,
+  let count = 0
+  const n = facts.length
+  const rows = Array(Math.floor(n / 9) * 2 + Math.ceil((n - 9 * Math.floor(n / 9)) / 5)).fill(0)
+  const getRowStyles = (rowIndex) => ({
+    transform: `translateX(${x !== 0 ? x * (1 + ((rowIndex % 3) * 0.4)) : 0}px)`, 
+    zIndex: rowIndex === activeRow ? 2 : 1,
   })
+  const getRowFacts = (rowIndex) => {
+    return facts.slice(count, count += (rowIndex % 2 === 0 ? 5 : 4))
+  }
   return(
     <LazyLoad data={facts}>
       <div className="facts-strip row">
-        {rows.map((_, i) => (
+        {rows.map((_, rowIndex) => (
         <div
           className="row padded"
-          style={getRowStyles(i)}
-          key={i}
+          style={getRowStyles(rowIndex)}
+          key={rowIndex}
         >
-          {facts.slice(count, count += (i % 2 === 0 ? 5 : 4)).map(item => 
+          {getRowFacts(rowIndex).map(item => 
           <div
             className="col-lg-12 col-md-30 col-sm-60"
-            key={item.i}
+            key={item.index}
           >
             <Link
               href="/post/[slug]"
@@ -76,10 +83,10 @@ const FactStrip = ({ facts }) => {
               scroll={false}
             >
               <div
-                className={'fact ' + (activeCol === item.i ? 'active' : (activeCol !== -1 ? 'muted' : ''))}
+                className={'fact ' + (activeCol === item.index ? 'active' : (activeCol !== -1 ? 'muted' : ''))}
                 data-cursor="dot"
-                onMouseEnter={(e) => handleMouseEnter(e, i, item.i)} 
-                onMouseMove={(e) => handleMouseEnter(e, i, item.i)}
+                onMouseEnter={(e) => handleMouseEnter(e, rowIndex, item.index)} 
+                onMouseMove={(e) => handleMouseEnter(e, rowIndex, item.index)}
                 onMouseLeave={(e) => handleMouseLeave(e)}
               >
                 <div
@@ -99,7 +106,7 @@ const FactStrip = ({ facts }) => {
             </Link>
           </div>
           )}
-          {i % 2 === 0 && <Quote i={Math.floor(i/2)} />}
+          {rowIndex % 2 === 0 && <Quote index={Math.floor(rowIndex / 2)} />}
         </div>
         ))}
       </div>

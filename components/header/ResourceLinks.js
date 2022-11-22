@@ -1,19 +1,14 @@
+import { FONTS } from '~/utils/constants'
+
 export const PreloadFonts = () => {
-  const fonts = [
-    {
-      name: 'montserrat-v14-latin',
-      weights: [300, 400, 500, 700],
-    },
-    {
-      name: 'sen-v1-latin',
-      weights: [700],
-    },
-  ]
-  const fontDir = (name) => name.split('-')[0].replace(/(?:^|\s)\S/g, (a) => a.toUpperCase())
+  const fontDir = name => name.split('-')[0].replace(/(?:^|\s)\S/g, a => a.toUpperCase())
   const fontPath = (weight, name) => `/fonts/${fontDir(name)}/${name}-${weight}.woff2`
 
-  return fonts
-    .reduce((acc, font) => [...acc, ...font.weights.map(weight => fontPath(weight, font.name))], [])
+  return FONTS
+    .reduce((acc, font) => [
+      ...acc,
+      ...font.weights.map(weight => fontPath(weight, font.name)),
+    ], [])
     .map(fontUrl => (
       <link
         key={fontUrl}

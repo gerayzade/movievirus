@@ -6,11 +6,11 @@ const quotes = [
   'Azdan az,\nçoktan çok gider',
 ]
 
-const FunQuote = ({ i }) => (
+const FunQuote = ({ index }) => (
   <div className="col-md-30 hide-sm hide-lg">
     <div className="fun-quote">
       <h4>
-        <span dangerouslySetInnerHTML={{__html: quotes[i % quotes.length].replace(/\n/g, '<br/>')}} />
+        <span dangerouslySetInnerHTML={{__html: quotes[index % quotes.length].replace(/\n/g, '<br/>')}} />
       </h4>
     </div>
   </div>
