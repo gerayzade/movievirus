@@ -15,10 +15,12 @@ $break-sm: map-get($grid-breakpoint, 'small');
 	$inside: map-get($grid-breakpoint, $device) - (map-get($grid-sideMargin, $device) * 2);
 	@return 100% * (map-get($grid-gutter, $device) / $inside);
 }
+
 @function get-row-width($device) {
 	$outside: map-get($grid-sideMargin, $device) * 2 / map-get($grid-breakpoint, $device);
 	@return 100% - (100% * $outside);
 }
+
 @function get-col-width($i, $columns) {
 	@return 100% / $columns * $i;
 }
@@ -26,8 +28,10 @@ $break-sm: map-get($grid-breakpoint, 'small');
 // Mixins for grid
 @mixin row-props($device, $class: default) {
 	$gutter: get-gutter($device);
+
 	@if ($class == default) {
 		width: get-row-width($device);
+
 		&.nested {
 			width: 100%;
 		}
@@ -36,6 +40,7 @@ $break-sm: map-get($grid-breakpoint, 'small');
 			@if ($class == padded) {
 				margin-top: $gutter / -2;
 				margin-bottom: $gutter / -2;
+
 				&:not(:last-child) {
 					margin-bottom: $gutter / 2;
 				}
@@ -43,10 +48,12 @@ $break-sm: map-get($grid-breakpoint, 'small');
 		}
 	}
 }
+
 @mixin col-props($i, $columns, $gutter) {
 	width: get-col-width($i, $columns);
 	padding: $gutter / 2;
 }
+
 @mixin col-group($name, $columns, $gutter) {
 	@for $i from 0 through $columns {
 		&-#{$name}-#{$i} {
@@ -83,6 +90,7 @@ $break-sm: map-get($grid-breakpoint, 'small');
 		}
 	}
 }
+
 @each $device in 'small', 'medium', 'large' {
 	@include media($device) {
 		
@@ -100,12 +108,15 @@ $break-sm: map-get($grid-breakpoint, 'small');
 	
 	@each $device in 'small', 'medium', 'large' {
 		$device-letters: map-get($grid-devices, $device);
+
 		@include media($device) {
 			@include row-props($device); // width
 			@include row-props($device, padded); // margin
+
 			.col {
 				@include col-group($device-letters, $grid-cols, get-gutter($device));
 			}
+
 			@at-root {
 				.hide-#{$device-letters} {
 					display: none !important;

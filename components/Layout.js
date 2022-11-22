@@ -1,13 +1,17 @@
-import Head from 'next/head';
-import { PreloadFonts, PreloadImages } from './header/ResourceLinks';
-import Header from './header';
-import Footer from './footer';
-import Cursor from './cursor';
+import { useEffect } from 'react'
+import Head from 'next/head'
+import Header from './header'
+import {
+  PreloadFonts,
+  PreloadImages,
+} from './header/ResourceLinks'
+import Footer from './footer'
+import Cursor from './cursor'
 
 const Layout = ({ children, title }) => {
-  React.useEffect(() => {
-    window.scrollTo(0,0);
-  }, []); 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <div className="wrapper">
       <Head>
@@ -28,7 +32,7 @@ const Layout = ({ children, title }) => {
       </main>
       <Footer />
     </div>
-  );
+  )
 }
 
-export default Layout;
+export default Layout

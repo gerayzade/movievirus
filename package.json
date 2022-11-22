@@ -1,51 +1,32 @@
 {
   "name": "next-app",
   "description": "MovieVirus Next App",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "author": "Heydar Gerayzade",
   "license": "MIT",
   "scripts": {
-    "dev": "next",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "export": "npm run build && next export",
-    "post": "node ./utils/post"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 4 version"
-    ]
+    "lint": "next lint",
+    "export": "npm run build && next export"
   },
   "dependencies": {
-    "@zeit/next-sass": "^1.0.1",
+    "@reduxjs/toolkit": "^1.9.0",
     "blazy": "^1.8.2",
-    "gray-matter": "^4.0.2",
-    "next": "^9.3.2",
-    "next-fonts": "^1.0.3",
+    "eslint": "8.28.0",
+    "eslint-config-next": "13.0.4",
+    "gray-matter": "^4.0.3",
+    "next": "13.0.4",
     "next-page-transitions": "^1.0.0-beta.2",
-    "next-redux-wrapper": "^5.0.0",
-    "node-sass": "^4.13.1",
-    "prompt-async": "^0.9.9",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-redux": "^7.2.0",
-    "redux": "^4.0.5"
+    "next-redux-wrapper": "^8.0.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-redux": "^8.0.5"
   },
   "devDependencies": {
-    "autoprefixer": "^9.7.5",
-    "babel-plugin-module-resolver": "^4.0.0",
-    "cssnano": "^4.1.10",
-    "imagemin-mozjpeg": "^8.0.0",
-    "imagemin-optipng": "^7.1.0",
-    "imagemin-svgo": "^7.1.0",
-    "next-compose-plugins": "^2.2.0",
-    "next-optimized-images": "^2.5.7",
-    "next-purgecss": "^4.0.0",
-    "svg-sprite-loader": "4.1.3"
+    "@fullhuman/postcss-purgecss": "^5.0.0",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "sass": "^1.56.1"
   }
 }

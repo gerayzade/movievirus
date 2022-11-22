@@ -1,0 +1,48 @@
+@mixin customScrollbar {
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: $grey transparent; /* Firefox */
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $grey;
+    border-radius: 4px;
+  }
+}
+
+@mixin layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@mixin highlight($bg-color, $text-color: $white) {
+  background-color: $bg-color;
+  box-shadow: .3em 0 0 $bg-color, -.3em 0 0 $bg-color;
+  color: $text-color;
+  padding: 0 0 .1em;
+}
+
+@mixin noise {
+  @at-root {
+    @keyframes noise {
+      @for $frame from 0 through 10 {
+        #{$frame * 10%} {
+          background-position: -100 + random(200) + px, -100 + random(200) + px
+        } 
+      }
+    }
+  }
+
+  animation: noise .3s infinite;
+  background-image: url('/images/noise.jpg') !important;
+  background-size: auto;
+}

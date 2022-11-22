@@ -1,6 +1,9 @@
-import { getPostPaths, getPostBySlug } from '~/utils/content';
-import Layout from '~/components/Layout';
-import FactPost from '~/components/facts/FactPost';
+import {
+  getPostPaths,
+  getPostBySlug,
+} from '~/utils/content'
+import Layout from '~/components/Layout'
+import FactPost from '~/components/facts/FactPost'
 
 const Post = ({ post }) => (
   <Layout title={post.title}>
@@ -9,12 +12,12 @@ const Post = ({ post }) => (
 )
 
 export const getStaticProps = async ({ params }) => {
-  const post = await getPostBySlug('facts', params.slug);
-  return { props: { post } };
+  const post = await getPostBySlug('facts', params.slug)
+  return { props: { post } }
 }
 
 export const getStaticPaths = () => {
-  return getPostPaths('facts', '/post', true);
+  return getPostPaths('facts', '/post', true)
 }
 
-export default Post;
+export default Post

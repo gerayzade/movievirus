@@ -1,13 +1,17 @@
-import Link from 'next/link';
-import MenuToggle from './MenuToggle';
-
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/router'
+import Image from 'next/image'
+import Link from 'next/link'
+// import MenuToggle from './MenuToggle'
 
 const Header = () => {
-  const router = useRouter();
+  const router = useRouter()
   const handleLogoClick = (e) => {
     if (router.pathname === '/') {
-      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth',
+      })
     }
   }
   return (
@@ -16,7 +20,16 @@ const Header = () => {
         <div className="col-lg-45 col-md-45 col-sm-45">
           <Link href="/" scroll={false}>
             <h1 className="logo" data-cursor="dot-2" onClick={(e) => handleLogoClick(e)}>
-              <img src={require('~/assets/svg/logo.svg')} alt="Movievirus" />
+              <Image
+                src="/images/logo.svg"
+                alt="Movievirus"
+                width={286}
+                height={30}
+                style={{
+                  width: 'auto',
+                  height: 'auto',
+                }}
+              />
             </h1>
           </Link>
           <strong className="hashes">#StayHome #Quarantine&Chill</strong>
@@ -27,6 +40,6 @@ const Header = () => {
       </div>
     </header>
   )
-};
+}
 
-export default Header;
+export default Header
