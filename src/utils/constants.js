@@ -9,7 +9,7 @@ export const FONTS = [
   },
 ]
 
-const SLOGAN = 'The most viral facts from film industry'
+export const SLOGAN = 'The most viral facts from film industry'
 
 export const QUOTES = [
   'Azdan az,\nçoktan çok gider',

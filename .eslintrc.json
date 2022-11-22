@@ -1,3 +1,22 @@
 {
-  "extends": "next/core-web-vitals"
+  "root": true,
+  "extends": [
+    "next/core-web-vitals"
+  ],
+  "rules": {
+    "operator-linebreak": ["error", "before"],
+    "comma-dangle": ["error", "always-multiline"],
+    "curly": ["error", "multi-line"],
+    "no-console": ["warn", {
+      "allow": ["warn", "error"]
+    }],
+    "no-unused-expressions": ["error", {
+      "allowShortCircuit": true,
+      "allowTernary": true
+    }],
+    "multiline-ternary": ["error", "always-multiline"],
+    "indent": ["error", 2, {
+      "SwitchCase": 1
+    }]
+  }
 }

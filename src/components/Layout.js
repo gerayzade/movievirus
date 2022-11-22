@@ -1,12 +1,12 @@
 import { useEffect } from 'react'
 import Head from 'next/head'
-import Header from './header'
+import Cursor from '~/components/cursor'
+import Footer from '~/components/footer'
+import Header from '~/components/header'
 import {
   PreloadFonts,
   PreloadImages,
-} from './header/ResourceLinks'
-import Footer from './footer'
-import Cursor from './cursor'
+} from '~/components/header/ResourceLinks'
 
 const Layout = ({ children, title }) => {
   useEffect(() => {

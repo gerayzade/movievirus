@@ -6,7 +6,7 @@ import {
 } from 'react'
 import Link from 'next/link'
 import LazyLoad from '~/components/LazyLoad'
-import Quote from './Quote'
+import Quote from '~/components/facts/Quote'
 
 const FactStrip = ({ facts }) => {
   // animate rows with facts
@@ -67,47 +67,47 @@ const FactStrip = ({ facts }) => {
     <LazyLoad data={facts}>
       <div className="facts-strip row">
         {rows.map((_, rowIndex) => (
-        <div
-          className="row padded"
-          style={getRowStyles(rowIndex)}
-          key={rowIndex}
-        >
-          {getRowFacts(rowIndex).map(item => 
           <div
-            className="col-lg-12 col-md-30 col-sm-60"
-            key={item.index}
+            className="row padded"
+            style={getRowStyles(rowIndex)}
+            key={rowIndex}
           >
-            <Link
-              href="/post/[slug]"
-              as={`/post/${item.slug}`}
-              scroll={false}
-            >
+            {getRowFacts(rowIndex).map(item => (
               <div
-                className={'fact ' + (activeCol === item.index ? 'active' : (activeCol !== -1 ? 'muted' : ''))}
-                data-cursor="dot"
-                onMouseEnter={(e) => handleMouseEnter(e, rowIndex, item.index)} 
-                onMouseMove={(e) => handleMouseEnter(e, rowIndex, item.index)}
-                onMouseLeave={(e) => handleMouseLeave(e)}
+                className="col-lg-12 col-md-30 col-sm-60"
+                key={item.index}
               >
-                <div
-                  className="image lazy"
-                  data-src={item.image}
-                  role="img"
-                  aria-label={item.title}
-                />
-                <div className="layer">
-                  <h4>
-                    <span className="highlight">
-                      {item.title}
-                    </span>
-                  </h4>
-                </div>
+                <Link
+                  href="/post/[slug]"
+                  as={`/post/${item.slug}`}
+                  scroll={false}
+                >
+                  <div
+                    className={'fact ' + (activeCol === item.index ? 'active' : (activeCol !== -1 ? 'muted' : ''))}
+                    data-cursor="dot"
+                    onMouseEnter={(e) => handleMouseEnter(e, rowIndex, item.index)} 
+                    onMouseMove={(e) => handleMouseEnter(e, rowIndex, item.index)}
+                    onMouseLeave={(e) => handleMouseLeave(e)}
+                  >
+                    <div
+                      className="image lazy"
+                      data-src={item.image}
+                      role="img"
+                      aria-label={item.title}
+                    />
+                    <div className="layer">
+                      <h4>
+                        <span className="highlight">
+                          {item.title}
+                        </span>
+                      </h4>
+                    </div>
+                  </div>
+                </Link>
               </div>
-            </Link>
+            ))}
+            {rowIndex % 2 === 0 && <Quote index={Math.floor(rowIndex / 2)} />}
           </div>
-          )}
-          {rowIndex % 2 === 0 && <Quote index={Math.floor(rowIndex / 2)} />}
-        </div>
         ))}
       </div>
     </LazyLoad>

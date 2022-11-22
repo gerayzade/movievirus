@@ -29,7 +29,6 @@
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^5.0.0",
-    "babel-plugin-module-resolver": "^4.1.0",
     "sass": "^1.56.1"
   }
 }

@@ -2,7 +2,7 @@ import {
   Fragment,
   useEffect,
 } from 'react'
-import CursorDot from './plugin'
+import CursorDot from '~/components/cursor/plugin'
 import { COLOR_PALETTE } from '~/utils/mappings'
 
 const Cursor = () => {
