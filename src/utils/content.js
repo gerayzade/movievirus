@@ -2,7 +2,7 @@ import fs from 'fs'
 import matter from 'gray-matter'
 
 const cwd = process.cwd()
-const contentDirectory = `${cwd}/src/content`
+const contentDirectory = `${cwd}/content`
 
 export const getPostSlugs = (folder) => {
   const postFiles = fs.readdirSync(`${contentDirectory}/${folder}`)

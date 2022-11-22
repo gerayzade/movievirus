@@ -1,5 +1,4 @@
 {
-  "root": true,
   "extends": [
     "next/core-web-vitals"
   ],
@@ -18,5 +17,10 @@
     "indent": ["error", 2, {
       "SwitchCase": 1
     }]
+  },
+  "settings": {
+    "next": {
+      "rootDir": "src"
+    }
   }
 }
