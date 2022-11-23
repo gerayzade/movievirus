@@ -4,14 +4,13 @@ import {
   useSelector,
 } from 'react-redux'
 import {
+  menuStateUpdated,
   selectMenuState,
-  setMenuState,
 } from '~/store/layoutSlice'
 
 const MenuToggle = () => {
   const isMenuOpened = useSelector(selectMenuState)
   const dispatch = useDispatch()
-  const onClick = (e) => dispatch(setMenuState(!isMenuOpened))
   return (
     <button
       type="button"
@@ -20,7 +19,7 @@ const MenuToggle = () => {
       })}
       aria-label="Menu"
       data-cursor="dot-2"
-      onClick={(e) => onClick(e)}
+      onClick={(e) => dispatch(menuStateUpdated(!isMenuOpened))}
     >
       <div className="burger__icon">
         <span className="burger__line"></span> 
