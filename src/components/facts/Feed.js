@@ -5,8 +5,8 @@ import {
   useRef,
   useState,
 } from 'react'
-import Link from '~/components/ui/Link'
 import LazyLoad from '~/components/LazyLoad'
+import Link from '~/components/ui/Link'
 import Quote from '~/components/Quote'
 
 const Feed = ({ facts }) => {

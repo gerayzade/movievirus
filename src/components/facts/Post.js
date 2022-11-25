@@ -1,6 +1,6 @@
+import HtmlContent from '~/components/ui/HtmlContent'
 import Link from '~/components/ui/Link'
 import LazyLoad from '~/components/LazyLoad'
-import { parseLineBreaks } from '~/utils'
 
 const Post = ({ post }) => (
   <LazyLoad data={post}>
@@ -20,7 +20,10 @@ const Post = ({ post }) => (
                 {post.title}
               </span>
             </h2>
-            <p dangerouslySetInnerHTML={{__html: parseLineBreaks(post.description)}} />
+            <HtmlContent
+              content={post.description}
+              tag="p"
+            />
             <h4>Tags</h4>
             <ul className="tags">
               {post.tags.map((tag, i) => (
