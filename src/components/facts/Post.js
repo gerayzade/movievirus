@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import Link from '~/components/ui/Link'
 import LazyLoad from '~/components/LazyLoad'
 import { parseLineBreaks } from '~/utils'
 
@@ -9,9 +9,9 @@ const Post = ({ post }) => (
         <div className="post">
           <div
             className="image lazy"
+            aria-label={post.title}
             data-src={post.image}
             role="img"
-            aria-label={post.title}
           />
           <div className="data">
             <h4>{'20 Mar, 2020'}</h4>
@@ -26,7 +26,6 @@ const Post = ({ post }) => (
               {post.tags.map((tag, i) => (
                 <Link
                   href="/"
-                  scroll={false}
                   key={i}
                 >
                   <li data-cursor="dot-3">
@@ -36,15 +35,13 @@ const Post = ({ post }) => (
               ))}
             </ul>
             <h4>Source</h4>
-            <a
+            <Link
               href={post.source}
-              target="_blank"
-              rel="noopener noreferrer"
               data-cursor="dot"
             >
               <span>{post.source.split('/').slice(0,3).join('/') + '/'}</span>
               <span>{post.source.split('/').slice(3).join('/')}</span>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

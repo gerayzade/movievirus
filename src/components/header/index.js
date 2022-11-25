@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import Link from 'next/link'
+import Link from '~/components/ui/Link'
 import MenuToggle from '~/components/header/MenuToggle'
 
 const Header = () => {
@@ -17,10 +17,7 @@ const Header = () => {
     <header className="header">
       <div className="row">
         <div className="col-lg-45 col-md-45 col-sm-45">
-          <Link
-            href="/"
-            scroll={false}
-          >
+          <Link href="/">
             <h1
               className="logo"
               data-cursor="dot-2"

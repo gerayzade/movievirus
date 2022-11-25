@@ -5,7 +5,7 @@ import {
   useRef,
   useState,
 } from 'react'
-import Link from 'next/link'
+import Link from '~/components/ui/Link'
 import LazyLoad from '~/components/LazyLoad'
 import Quote from '~/components/Quote'
 
@@ -92,7 +92,6 @@ const Feed = ({ facts }) => {
                 <Link
                   href="/post/[slug]"
                   as={`/post/${item.slug}`}
-                  scroll={false}
                 >
                   <div
                     className={cn('fact', {
@@ -121,7 +120,9 @@ const Feed = ({ facts }) => {
                 </Link>
               </div>
             ))}
-            {rowIndex % 2 === 0 && <Quote index={Math.floor(rowIndex / 2)} />}
+            {rowIndex % 2 === 0 && (
+              <Quote index={Math.floor(rowIndex / 2)} />
+            )}
           </div>
         ))}
       </div>
