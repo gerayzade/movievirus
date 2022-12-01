@@ -16,8 +16,9 @@ export const getStaticProps = async ({ params }) => {
   return { props: { post } }
 }
 
-export const getStaticPaths = () => {
-  return getPostPaths('facts', '/post', true)
+export const getStaticPaths = async () => {
+  const paths = await getPostPaths('facts', '/post', true)
+  return paths
 }
 
 export default PostPage
