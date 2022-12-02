@@ -66,15 +66,6 @@ const Feed = ({ facts }) => {
     const end = count += (rowIndex % 2 === 0 ? 5 : 4)
     return facts.slice(start, end)
   }
-  const getFactClassNames = (colIndex) => {
-    const classNames = ['fact']
-    if (activeCol === colIndex) {
-      classNames.push('active')
-    } else if (activeCol !== -1) {
-      classNames.push('muted')
-    }
-    return classNames.join(' ')
-  }
   return(
     <LazyLoad data={facts}>
       <div className="facts-strip row">
