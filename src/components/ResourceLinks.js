@@ -22,15 +22,17 @@ export const PreloadFonts = () => {
 }
 
 export const PreloadImages = () => {
-  return [
+  const images = [
     '/images/logo.svg',
     '/images/noise.jpg',
-  ].map(imageUrl => (
-    <link
-      key={imageUrl}
-      rel="preload"
-      href={imageUrl}
-      as="image"
-    />
-  ))
+  ]
+  return images
+    .map(imageUrl => (
+      <link
+        key={imageUrl}
+        rel="preload"
+        href={imageUrl}
+        as="image"
+      />
+    ))
 }

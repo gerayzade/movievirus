@@ -54,7 +54,7 @@ const Feed = ({ facts }) => {
   }
   const handleMouseLeave = (e) => setState(initialState)
   // generate alternating rows with 5 and 4 facts
-  let count = 0
+  let pointer = 0
   const n = facts.length
   const rows = Array(Math.floor(n / 9) * 2 + Math.ceil((n - 9 * Math.floor(n / 9)) / 5)).fill(0)
   const getRowStyles = (rowIndex) => ({
@@ -62,8 +62,8 @@ const Feed = ({ facts }) => {
     zIndex: rowIndex === activeRow ? 2 : 1,
   })
   const getRowFacts = (rowIndex) => {
-    const start = count
-    const end = count += (rowIndex % 2 === 0 ? 5 : 4)
+    const start = pointer
+    const end = pointer += (rowIndex % 2 === 0 ? 5 : 4)
     return facts.slice(start, end)
   }
   return(
@@ -75,42 +75,45 @@ const Feed = ({ facts }) => {
             style={getRowStyles(rowIndex)}
             key={rowIndex}
           >
-            {getRowFacts(rowIndex).map(item => (
-              <div
-                className="col-lg-12 col-md-30 col-sm-60"
-                key={item.index}
-              >
-                <Link
-                  href="/post/[slug]"
-                  as={`/post/${item.slug}`}
+            {getRowFacts(rowIndex).map((item, colIndex, cols) => {
+              const index = pointer - cols.length + colIndex
+              return (
+                <div
+                  className="col-lg-12 col-md-30 col-sm-60"
+                  key={item.slug}
                 >
-                  <div
-                    className={cn('fact', {
-                      'active': activeCol === item.index,
-                      'muted': ![item.index, -1].includes(activeCol),
-                    })}
-                    data-cursor="dot"
-                    onMouseEnter={(e) => handleMouseEnter(e, rowIndex, item.index)} 
-                    onMouseMove={(e) => handleMouseEnter(e, rowIndex, item.index)}
-                    onMouseLeave={(e) => handleMouseLeave(e)}
+                  <Link
+                    href="/post/[slug]"
+                    as={`/post/${item.slug}`}
                   >
                     <div
-                      className="image lazy"
-                      data-src={item.image}
-                      role="img"
-                      aria-label={item.title}
-                    />
-                    <div className="layer">
-                      <h4>
-                        <span className="highlight">
-                          {item.title}
-                        </span>
-                      </h4>
+                      className={cn('fact', {
+                        'active': index === activeCol,
+                        'muted': ![index, -1].includes(activeCol),
+                      })}
+                      data-cursor="dot"
+                      onMouseEnter={(e) => handleMouseEnter(e, rowIndex, index)} 
+                      onMouseMove={(e) => handleMouseEnter(e, rowIndex, index)}
+                      onMouseLeave={(e) => handleMouseLeave(e)}
+                    >
+                      <div
+                        className="image lazy"
+                        data-src={item.image}
+                        role="img"
+                        aria-label={item.title}
+                      />
+                      <div className="layer">
+                        <h4>
+                          <span className="highlight">
+                            {item.title}
+                          </span>
+                        </h4>
+                      </div>
                     </div>
-                  </div>
-                </Link>
-              </div>
-            ))}
+                  </Link>
+                </div>
+              )
+            })}
             {rowIndex % 2 === 0 && (
               <Quote index={Math.floor(rowIndex / 2)} />
             )}
