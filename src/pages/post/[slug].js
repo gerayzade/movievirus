@@ -4,7 +4,7 @@ import { selectSingleFact } from '~/store/selectors'
 import { getFactBySlug } from '~/store/thunks'
 import contentAPI from '~/utils/content'
 import Layout from '~/components/Layout'
-import Post from '~/components/facts/Post'
+import Post from '~/components/posts/Post'
 
 const PostPage = () => {
   const post = useSelector(selectSingleFact)

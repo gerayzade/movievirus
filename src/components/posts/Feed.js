@@ -9,8 +9,8 @@ import LazyLoad from '~/components/LazyLoad'
 import Link from '~/components/ui/Link'
 import Quote from '~/components/Quote'
 
-const Feed = ({ facts }) => {
-  // animate rows with facts
+const Feed = ({ posts }) => {
+  // animate rows with posts
   const initialState = useMemo(() => ({
     active: [-1, -1],
     x: 0,
@@ -53,29 +53,29 @@ const Feed = ({ facts }) => {
     })
   }
   const handleMouseLeave = (e) => setState(initialState)
-  // generate alternating rows with 5 and 4 facts
+  // generate alternating rows with 5 and 4 posts
   let pointer = 0
-  const n = facts.length
+  const n = posts.length
   const rows = Array(Math.floor(n / 9) * 2 + Math.ceil((n - 9 * Math.floor(n / 9)) / 5)).fill(0)
   const getRowStyles = (rowIndex) => ({
     transform: `translateX(${x !== 0 ? x * (1 + ((rowIndex % 3) * 0.4)) : 0}px)`, 
     zIndex: rowIndex === activeRow ? 2 : 1,
   })
-  const getRowFacts = (rowIndex) => {
+  const getRowPosts = (rowIndex) => {
     const start = pointer
     const end = pointer += (rowIndex % 2 === 0 ? 5 : 4)
-    return facts.slice(start, end)
+    return posts.slice(start, end)
   }
   return(
-    <LazyLoad data={facts}>
-      <div className="facts-strip row">
+    <LazyLoad data={posts}>
+      <div className="posts-feed row">
         {rows.map((_, rowIndex) => (
           <div
             className="row padded"
             style={getRowStyles(rowIndex)}
             key={rowIndex}
           >
-            {getRowFacts(rowIndex).map((item, colIndex, cols) => {
+            {getRowPosts(rowIndex).map((item, colIndex, cols) => {
               const index = pointer - cols.length + colIndex
               return (
                 <div
@@ -87,7 +87,7 @@ const Feed = ({ facts }) => {
                     as={`/post/${item.slug}`}
                   >
                     <div
-                      className={cn('fact', {
+                      className={cn('post-preview', {
                         'active': index === activeCol,
                         'muted': ![index, -1].includes(activeCol),
                       })}

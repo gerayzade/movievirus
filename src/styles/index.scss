@@ -234,9 +234,9 @@ h2 {
   }
 }
 
-// Facts
+// Posts Feed
 
-.facts-strip {
+.posts-feed {
   .row {
     width: 100%;
     justify-content: center;
@@ -261,7 +261,7 @@ h2 {
     }
   }
 
-  .fact {
+  .post-preview {
     position: relative;
 
     .layer {
@@ -282,14 +282,14 @@ h2 {
 
   @include media('large') {
     .row,
-    .fact,
-    .fact h4 {
+    .post-preview,
+    .post-preview h4 {
       transition: .3s;
       transition-property: transform, opacity, box-shadow;
       will-change: transform, opacity, box-shadow;
     }
 
-    .fact {
+    .post-preview {
       overflow: hidden;
 
       h4 {

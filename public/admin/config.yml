@@ -5,7 +5,7 @@ media_folder: public/media
 public_folder: /media
 collections:
   - name: "facts"
-    label: "Facts"
+    label: "Movie Facts"
     folder: "content/facts"
     create: true
     slug: "{{slug}}"

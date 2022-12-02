@@ -4,14 +4,14 @@ import { wrapper } from '~/store'
 import { selectAllFacts } from '~/store/selectors'
 import { getAllFacts } from '~/store/thunks'
 import Layout from '~/components/Layout'
-import Feed from '~/components/facts/Feed'
+import Feed from '~/components/posts/Feed'
 import { SLOGAN } from '~/utils/constants'
 
 const HomePage = () => {
-  const facts = useSelector(selectAllFacts)
+  const posts = useSelector(selectAllFacts)
   return (
     <Layout title={SLOGAN}>
-      <Feed facts={facts} />
+      <Feed posts={posts} />
     </Layout>
   )
 }
