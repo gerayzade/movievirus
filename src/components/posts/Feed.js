@@ -6,7 +6,7 @@ import {
 } from 'react'
 import LazyLoad from '~/components/LazyLoad'
 import Link from '~/components/ui/Link'
-import Preview from '~/components/posts/Preview'
+import PostPreview from '~/components/posts/PostPreview'
 import Quote from '~/components/Quote'
 
 const Feed = ({ posts }) => {
@@ -89,7 +89,7 @@ const Feed = ({ posts }) => {
                     as={`/post/${post.slug}`}
                     data-cursor="dot"
                   >
-                    <Preview
+                    <PostPreview
                       data={post}
                       handleMouseEnter={(e) => handleMouseEnter(e, rowIndex, index)}
                       handleMouseLeave={(e) => handleMouseLeave(e)}

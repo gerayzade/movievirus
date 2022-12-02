@@ -1,6 +1,6 @@
 import cn from 'classnames'
 
-const Preview = ({
+const PostPreview = ({
   data: { 
     image,
     title,
@@ -37,4 +37,4 @@ const Preview = ({
   )
 }
 
-export default Preview
+export default PostPreview
