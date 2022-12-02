@@ -7,6 +7,7 @@ import {
 } from 'react'
 import LazyLoad from '~/components/LazyLoad'
 import Link from '~/components/ui/Link'
+import Preview from '~/components/posts/Preview'
 import Quote from '~/components/Quote'
 
 const Feed = ({ posts }) => {
@@ -66,7 +67,7 @@ const Feed = ({ posts }) => {
     const end = pointer += (rowIndex % 2 === 0 ? 5 : 4)
     return posts.slice(start, end)
   }
-  return(
+  return (
     <LazyLoad data={posts}>
       <div className="posts-feed row">
         {rows.map((_, rowIndex) => (
@@ -75,41 +76,27 @@ const Feed = ({ posts }) => {
             style={getRowStyles(rowIndex)}
             key={rowIndex}
           >
-            {getRowPosts(rowIndex).map((item, colIndex, cols) => {
+            {getRowPosts(rowIndex).map((post, colIndex, cols) => {
               const index = pointer - cols.length + colIndex
+              const isActive = index === activeCol
+              const isMuted = ![index, -1].includes(activeCol)
               return (
                 <div
                   className="col-lg-12 col-md-30 col-sm-60"
-                  key={item.slug}
+                  key={post.slug}
                 >
                   <Link
                     href="/post/[slug]"
-                    as={`/post/${item.slug}`}
+                    as={`/post/${post.slug}`}
+                    data-cursor="dot"
                   >
-                    <div
-                      className={cn('post-preview', {
-                        'active': index === activeCol,
-                        'muted': ![index, -1].includes(activeCol),
-                      })}
-                      data-cursor="dot"
-                      onMouseEnter={(e) => handleMouseEnter(e, rowIndex, index)} 
-                      onMouseMove={(e) => handleMouseEnter(e, rowIndex, index)}
-                      onMouseLeave={(e) => handleMouseLeave(e)}
-                    >
-                      <div
-                        className="image lazy"
-                        data-src={item.image}
-                        role="img"
-                        aria-label={item.title}
-                      />
-                      <div className="layer">
-                        <h4>
-                          <span className="highlight">
-                            {item.title}
-                          </span>
-                        </h4>
-                      </div>
-                    </div>
+                    <Preview
+                      data={post}
+                      handleMouseEnter={(e) => handleMouseEnter(e, rowIndex, index)}
+                      handleMouseLeave={(e) => handleMouseLeave(e)}
+                      isActive={isActive}
+                      isMuted={isMuted}
+                    />
                   </Link>
                 </div>
               )
