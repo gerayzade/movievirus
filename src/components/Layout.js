@@ -6,7 +6,7 @@ import Header from '~/components/header'
 import {
   PreloadFonts,
   PreloadImages,
-} from '~/components/header/ResourceLinks'
+} from '~/components/ResourceLinks'
 
 const Layout = ({ children, title }) => {
   useEffect(() => {

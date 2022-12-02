@@ -1,13 +1,10 @@
-
 import { configureStore } from '@reduxjs/toolkit'
 import { createWrapper } from 'next-redux-wrapper'
-import layoutReducer from '~/store/layoutSlice'
+import reducer from '~/store/slices'
 import { isDev } from '~/utils'
 
 const makeStore = () => configureStore({
-  reducer: {
-    layout: layoutReducer,
-  },
+  reducer,
   devTools: isDev(),
 })
 

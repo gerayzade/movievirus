@@ -7,4 +7,12 @@ module.exports = {
   },
   poweredByHeader: false,
   // reactStrictMode: true,
+
+  webpack: (config) => {
+    config.resolve.fallback = {
+      ...config.resolve.fallback,
+      fs: false,
+    }
+    return config
+  },
 }
