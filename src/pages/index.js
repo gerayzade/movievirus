@@ -16,7 +16,7 @@ const HomePage = () => {
   )
 }
 
-export const getStaticProps = wrapper.getStaticProps(store => async (ctx) => {
+export const getStaticProps = wrapper.getStaticProps(store => async () => {
   await store.dispatch(getAllFacts())
 })
 

@@ -15,9 +15,9 @@ const PostPage = () => {
   )
 }
 
-export const getStaticProps = wrapper.getStaticProps(store => async (ctx) => {
+export const getStaticProps = wrapper.getStaticProps(store => async ({ params }) => {
   await store.dispatch(getFactBySlug({
-    slug: ctx.params.slug,
+    slug: params.slug,
   }))
 })
 

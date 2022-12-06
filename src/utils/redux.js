@@ -1,10 +1,23 @@
 export const handleHydrateAction = ({ sliceName }) => {
   return (state, { payload }) => {
-    const { payloadType } = payload[sliceName]
+    const { statePropKey } = payload[sliceName]
+    const nextState = {
+      ...state,
+      statePropKey: null,
+    }
+    if (statePropKey) {
+      nextState[statePropKey] = payload[sliceName][statePropKey]
+    }
+    return nextState
+  }
+}
+
+export const handleFulfilledAction = ({ statePropKey }) => {
+  return (state, { payload }) => {
     return {
       ...state,
-      [payloadType]: payload[sliceName][payloadType],
-      payloadType: null,
+      [statePropKey]: payload,
+      statePropKey,
     }
   }
 }

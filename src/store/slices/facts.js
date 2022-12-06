@@ -11,22 +11,19 @@ export const factsSlice = createSlice({
   initialState: {
     all: [],
     single: {},
-    payloadType: null,
   },
   reducers: {
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getAllFacts.fulfilled, (state, { payload }) => {
-        state.all = payload
-        state.payloadType = 'all'
-      })
-      .addCase(getFactBySlug.fulfilled, (state, { payload }) => {
-        state.single = payload
-        state.payloadType = 'single'
-      })
       .addCase(HYDRATE, reduxHelper.handleHydrateAction({
         sliceName: 'facts',
+      }))
+      .addCase(getAllFacts.fulfilled, reduxHelper.handleFulfilledAction({
+        statePropKey: 'all',
+      }))
+      .addCase(getFactBySlug.fulfilled, reduxHelper.handleFulfilledAction({
+        statePropKey: 'single',
       }))
   },
 })
