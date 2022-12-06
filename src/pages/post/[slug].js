@@ -27,7 +27,7 @@ export const getStaticPaths = async () => {
     postType: 'facts',
   })
   return {
-    paths, 
+    paths,
     fallback: false,
   }
 }
