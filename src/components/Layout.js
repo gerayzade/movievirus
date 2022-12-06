@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { useEffect } from 'react'
 import Head from 'next/head'
 import Cursor from '~/components/cursor'
@@ -21,7 +22,7 @@ const Layout = ({ children, title }) => {
           content="width=device-width, initial-scale=1"
         />
         {/* browser tab view */}
-        <title>{title ? 'Movievirus ★ ' + title : 'MovieVirus'}</title>
+        <title>{`MovieVirus${title ? ` ★ ${title}` : ''}`}</title>
         <link
           rel="icon"
           type="image/png"
@@ -40,6 +41,14 @@ const Layout = ({ children, title }) => {
       <Footer />
     </div>
   )
+}
+
+Layout.defaultProps = {
+  title: null,
+}
+
+Layout.propTypes = {
+  title: PropTypes.string,
 }
 
 export default Layout

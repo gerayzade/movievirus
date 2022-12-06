@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import NextLink from 'next/link'
 
 const Link = ({
@@ -25,6 +26,11 @@ const Link = ({
         {children}
       </NextLink>
     )
+}
+
+Link.propTypes = {
+  as: PropTypes.string,
+  href: PropTypes.string.isRequired,
 }
 
 export default Link

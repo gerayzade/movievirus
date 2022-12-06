@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import HtmlContent from '~/components/ui/HtmlContent'
 import { QUOTES } from '~/utils/constants'
 
@@ -14,6 +15,10 @@ const Quote = ({ index }) => {
       </div>
     </div>
   )
+}
+
+Quote.propTypes = {
+  index: PropTypes.number.isRequired,
 }
 
 export default Quote

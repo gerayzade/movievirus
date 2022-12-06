@@ -18,7 +18,6 @@ const HomePage = () => {
 
 export const getStaticProps = wrapper.getStaticProps(store => async (ctx) => {
   await store.dispatch(getAllFacts())
-  return {}
 })
 
 export default HomePage

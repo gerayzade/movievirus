@@ -19,7 +19,6 @@ export const getStaticProps = wrapper.getStaticProps(store => async (ctx) => {
   await store.dispatch(getFactBySlug({
     slug: ctx.params.slug,
   }))
-  return {}
 })
 
 export const getStaticPaths = async () => {

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import {
   useEffect,
   useMemo,
@@ -90,11 +91,11 @@ const Feed = ({ posts }) => {
                     data-cursor="dot"
                   >
                     <PostPreview
-                      data={post}
                       handleMouseEnter={(e) => handleMouseEnter(e, rowIndex, index)}
                       handleMouseLeave={(e) => handleMouseLeave(e)}
                       isActive={isActive}
                       isMuted={isMuted}
+                      post={post}
                     />
                   </Link>
                 </div>
@@ -108,6 +109,10 @@ const Feed = ({ posts }) => {
       </div>
     </LazyLoad>
   )
+}
+
+Feed.propTypes = {
+  posts: PropTypes.arrayOf(PropTypes.object),
 }
 
 export default Feed

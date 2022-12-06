@@ -1,14 +1,12 @@
 import cn from 'classnames'
+import PropTypes from 'prop-types'
 
 const PostPreview = ({
-  data: { 
-    image,
-    title,
-  },
   handleMouseEnter,
   handleMouseLeave,
   isActive,
   isMuted,
+  post,
 }) => {
   return (
     <div
@@ -22,19 +20,37 @@ const PostPreview = ({
     >
       <div
         className="image lazy"
-        aria-label={title}
-        data-src={image}
+        aria-label={post.title}
+        data-src={post.image}
         role="img"
       />
       <div className="layer">
         <h4>
           <span className="highlight">
-            {title}
+            {post.title}
           </span>
         </h4>
       </div>
     </div>
   )
+}
+
+PostPreview.defaultProps = {
+  handleMouseEnter: () => {},
+  handleMouseLeave: () => {},
+  isActive: false,
+  isMuted: false,
+}
+
+PostPreview.propTypes = {
+  handleMouseEnter: PropTypes.func,
+  handleMouseLeave: PropTypes.func,
+  isActive: PropTypes.bool,
+  isMuted: PropTypes.bool,
+  post: PropTypes.shape({
+    image: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+  }),
 }
 
 export default PostPreview
