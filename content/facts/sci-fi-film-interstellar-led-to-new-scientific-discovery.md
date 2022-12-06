@@ -12,7 +12,7 @@ description: >-
   Thorne got not only a movie that teaches a mass audience some real, accurate
   science, but also a new insight into the gravitational lensing and accretion disks surrounding black holes, resulting in the publication of three scientific papers.
 image: /media/interstellar.jpg
-source: 'https://www.wired.com/2014/10/astrophysics-interstellar-black-hole/'
+source: 'https://wired.com/2014/10/astrophysics-interstellar-black-hole/'
 tags:
   - astronomy
   - computer graphics

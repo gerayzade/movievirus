@@ -10,7 +10,7 @@ description: >-
   enough screen time, he attracted the attention of Hollywood producers and
   played gangster role in more than a dozen movies.
 image: /media/luca-brasi.jpg
-source: 'https://www.thevintagenews.com/2018/04/09/luca-brasi/'
+source: 'https://thevintagenews.com/2018/04/09/luca-brasi/'
 tags:
   - the godfather
   - crime

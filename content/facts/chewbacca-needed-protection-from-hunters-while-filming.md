@@ -7,7 +7,7 @@ description: >-
   of production assistants in brightly colored vests was assigned to go around
   with him to make sure people knew he wasn't a Sasquatch.
 image: /media/chewbacca.jpg
-source: 'https://www.cbr.com/star-wars-chewbacca-big-foot-protection-sasquatch/'
+source: 'https://cbr.com/star-wars-chewbacca-big-foot-protection-sasquatch/'
 tags:
   - star wars
 ---

@@ -8,7 +8,7 @@ description: >-
   fashion the Jedi master's facial features, specifically his eyes and wrinkles,
   after Einstein.
 image: /media/yoda.jpg
-source: 'https://www.thevintagenews.com/2019/04/10/yoda-albert-einstein/'
+source: 'https://thevintagenews.com/2019/04/10/yoda-albert-einstein/'
 tags:
   - star wars
 ---
