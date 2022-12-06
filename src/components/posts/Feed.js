@@ -88,7 +88,7 @@ const Feed = ({ posts }) => {
                   <Link
                     href="/post/[slug]"
                     as={`/post/${post.slug}`}
-                    data-cursor="dot"
+                    data-cursor="white-outline"
                   >
                     <PostPreview
                       handleMouseEnter={(e) => handleMouseEnter(e, rowIndex, index)}

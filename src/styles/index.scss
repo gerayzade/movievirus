@@ -39,7 +39,7 @@ a {
   &::before,
   &::after {
     transition: .15s;
-  };
+  }
 }
 
 h1, 
@@ -96,6 +96,7 @@ h2 {
   left: 0;
   width: 100%;
   background-image: linear-gradient(to top, rgba($black, 0) 0%, rgba($black, 0.5) 50%, $black 100%);
+  pointer-events: none;
 
   .row {
     align-items: center;
@@ -105,6 +106,7 @@ h2 {
 
   .logo {
     display: inline-block;
+    pointer-events: all;
   
     img {
       height: 30px;
@@ -117,6 +119,7 @@ h2 {
     font-size: 10px;
     letter-spacing: -.3px;
     margin-top: 3px;
+    pointer-events: all;
   }
 
   .burger {
@@ -128,6 +131,7 @@ h2 {
     padding: 0;
     height: 40px;
     width: 40px;
+    pointer-events: all;
 
     &__icon {
       position: absolute;
@@ -196,6 +200,7 @@ h2 {
   font-size: 14px;
   width: 100%;
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 50%, $black 100%);
+  pointer-events: none;
 
   .row {
     align-items: flex-end;
@@ -205,19 +210,27 @@ h2 {
   }
 
   span {
-    a {
-      position: relative;
-      color: $white;
+    pointer-events: all;
+  }
 
-      em {
-        font-style: normal;
-        color: $red;
-      }
+  a {
+    position: relative;
+    color: $white;
+    pointer-events: all;
+
+    em {
+      font-style: normal;
+      color: $red;
+      transition: color .3s;
+    }
+
+    &:hover em {
+      color: $white;
     }
   }
 
   @include media('large') {
-    span:last-child {
+    .row > div:last-child {
       text-align: right;
     }
   }

@@ -20,7 +20,7 @@ const Header = () => {
           <Link href="/">
             <h1
               className="logo"
-              data-cursor="dot-2"
+              data-cursor="large-red-dot"
               onClick={(e) => handleLogoClick(e)}
             >
               <picture>

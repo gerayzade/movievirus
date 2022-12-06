@@ -16,7 +16,7 @@ const MenuToggle = () => {
         'active': isMenuOpened,
       })}
       aria-label="Menu"
-      data-cursor="dot-2"
+      data-cursor="large-red-dot"
       onClick={(e) => dispatch(setMenuState(!isMenuOpened))}
     >
       <div className="burger__icon">

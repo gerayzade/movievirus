@@ -14,17 +14,22 @@ const Cursor = () => {
       borderColor: COLOR_PALETTE.RED,
       borderWidth: 2,
     })
-    cursor.over('[data-cursor="dot"]', {
+    cursor.over('[data-cursor="small-red-dot"]', {
       scale: 3,
-      background: 'transparent',
-      borderColor: COLOR_PALETTE.WHITE,
+      borderColor: 'transparent',
+      mixBlendMode: 'lighten',
     })
-    cursor.over('[data-cursor="dot-2"]', {
+    cursor.over('[data-cursor="large-red-dot"]', {
       scale: 6,
       borderColor: 'transparent',
       mixBlendMode: 'lighten',
     })
-    cursor.over('[data-cursor="dot-3"]', {
+    cursor.over('[data-cursor="white-outline"]', {
+      scale: 3,
+      background: 'transparent',
+      borderColor: COLOR_PALETTE.WHITE,
+    })
+    cursor.over('[data-cursor="transparent"]', {
       borderColor: 'transparent',
       background: 'transparent',
     })

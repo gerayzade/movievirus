@@ -34,7 +34,7 @@ const Post = ({ post }) => {
                     href="/"
                     key={i}
                   >
-                    <li data-cursor="dot-3">
+                    <li data-cursor="transparent">
                       {tag}
                     </li>
                   </Link>
@@ -43,7 +43,7 @@ const Post = ({ post }) => {
               <h4>Source</h4>
               <Link
                 href={soureUrl.href}
-                data-cursor="dot"
+                data-cursor="white-outline"
               >
                 <span>{soureUrl.hostname}</span>
                 <span>{soureUrl.pathname}</span>
