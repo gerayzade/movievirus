@@ -12,7 +12,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "export": "npm run build && next export"
+    "export": "npm run build && next export",
+    "vercel-build": "npm run build"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.0",
