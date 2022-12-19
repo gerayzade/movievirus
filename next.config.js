@@ -1,4 +1,5 @@
 module.exports = {
+  distDir: 'build',
   images: {
     // Image Optimization using Next.js' default loader is not compatible with `next export`
     // https://nextjs.org/docs/messages/export-image-api
