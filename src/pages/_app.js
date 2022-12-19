@@ -5,16 +5,13 @@ import PageTransition from '~/components/PageTransition'
 
 import '~/styles/index.scss'
 
-const VirusApp = ({ Component, router, ...rest }) => {
+const VirusApp = ({ Component, ...rest }) => {
   const { store, props } = wrapper.useWrappedStore(rest)
   return (
     <Fragment>
       <Provider store={store}>
         <PageTransition>
-          <Component
-            key={router.route}
-            {...props.pageProps}
-          />
+          <Component {...props.pageProps} />
         </PageTransition>
       </Provider>
     </Fragment>

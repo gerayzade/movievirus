@@ -1,13 +1,18 @@
 import PropTypes from 'prop-types'
 import NextLink from 'next/link'
+import { useRouter } from 'next/router'
 
 const Link = ({
   children,
   href,
   ...rest
 }) => {
-  return (/^https:\/\//).test(href)
-    ? (
+  const router = useRouter()
+  const isExternalUrl = (/^https:\/\//).test(href)
+  const isSamePath = router.asPath === href
+
+  if (isExternalUrl) {
+    return (
       <a
         href={href}
         target="_blank"
@@ -16,6 +21,14 @@ const Link = ({
       >
         {children}
       </a>
+    )
+  }
+
+  return isSamePath 
+    ? (
+      <span {...rest}>
+        {children}
+      </span>
     )
     : (
       <NextLink
