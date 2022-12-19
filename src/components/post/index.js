@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import HtmlContent from '~/components/ui/HtmlContent'
 import Link from '~/components/ui/Link'
 import LazyLoad from '~/components/LazyLoad'
-import Tags from '~/components/post/tags'
+import Tags from '~/components/post/Tags'
 
 const Post = ({ post }) => {
   const soureUrl = new URL(post.source)
