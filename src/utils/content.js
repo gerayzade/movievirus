@@ -4,7 +4,7 @@ import matter from 'gray-matter'
 const cwd = process.cwd()
 const contentDir = `${cwd}/content`
 
-export const getPostSlugs = ({ postType }) => {
+const getPostSlugs = ({ postType }) => {
   return new Promise((resolve, reject) => {
     try {
       const dirPath = `${contentDir}/${postType}`
@@ -18,9 +18,9 @@ export const getPostSlugs = ({ postType }) => {
   })
 }
 
-export const getPostBySlug = ({
+export const findPostBySlug = ({
   fields = [],
-  postType,
+  postType = 'facts',
   slug,
 }) => {
   return new Promise((resolve, reject) => {
@@ -30,7 +30,7 @@ export const getPostBySlug = ({
         ? fields.reduce((acc, key) => ({
           ...acc,
           [key]: data[key],
-        }), { slug }) 
+        }), { slug })
         : {
           ...data,
           slug,
@@ -43,16 +43,16 @@ export const getPostBySlug = ({
   })
 }
 
-export const getAllPosts = ({
-  fields = [],
-  postType,
+export const findAllPosts = ({
+  fields = ['image', 'tags', 'title'],
+  postType = 'facts',
 }) => {
   return new Promise(async (resolve, reject) => {
     try {
       const postSlugs = await getPostSlugs({ postType })
       const posts = await Promise.all(
         postSlugs.map(async (slug) => {
-          const post = await getPostBySlug({
+          const post = await findPostBySlug({
             fields,
             postType,
             slug,
@@ -68,24 +68,9 @@ export const getAllPosts = ({
   })
 }
 
-export const getPostPaths = async ({ postType }) => {
-  try {
-    const postSlugs = await getPostSlugs({ postType })
-    return postSlugs.map(slug => ({
-      params: {
-        slug,
-      },
-    }))
-  } catch (error) {
-    console.error(error)
-    return []
-  }
+const contentCtrl = {
+  findAllPosts,
+  findPostBySlug,
 }
 
-const contentAPI = {
-  getAllPosts,
-  getPostBySlug,
-  getPostPaths,
-}
-
-export default contentAPI
+export default contentCtrl

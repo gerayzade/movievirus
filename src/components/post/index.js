@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import HtmlContent from '~/components/ui/HtmlContent'
 import Link from '~/components/ui/Link'
 import LazyLoad from '~/components/LazyLoad'
+import Tags from '~/components/post/tags'
 
 const Post = ({ post }) => {
   const soureUrl = new URL(post.source)
@@ -28,18 +29,10 @@ const Post = ({ post }) => {
                 tag="p"
               />
               <h4>Tags</h4>
-              <ul className="tags">
-                {post.tags?.map((tag, i) => (
-                  <Link
-                    href="/"
-                    key={i}
-                  >
-                    <li data-cursor="transparent">
-                      {tag}
-                    </li>
-                  </Link>
-                ))}
-              </ul>
+              <Tags
+                data={post.tags}
+                filterUrl="/"
+              />
               <h4>Source</h4>
               <Link
                 href={soureUrl.href}

@@ -2,9 +2,8 @@ import { useSelector } from 'react-redux'
 import { wrapper } from '~/store'
 import { selectSingleFact } from '~/store/selectors'
 import { getFactBySlug } from '~/store/thunks'
-import contentAPI from '~/utils/content'
 import Layout from '~/components/Layout'
-import Post from '~/components/posts/Post'
+import Post from '~/components/post'
 
 const PostPage = () => {
   const post = useSelector(selectSingleFact)
@@ -15,20 +14,10 @@ const PostPage = () => {
   )
 }
 
-export const getStaticProps = wrapper.getStaticProps(store => async ({ params }) => {
+PostPage.getInitialProps = wrapper.getInitialPageProps(store => async ({ query }) => {
   await store.dispatch(getFactBySlug({
-    slug: params.slug,
+    slug: query.slug,
   }))
 })
-
-export const getStaticPaths = async () => {
-  const paths = await contentAPI.getPostPaths({
-    postType: 'facts',
-  })
-  return {
-    paths,
-    fallback: false,
-  }
-}
 
 export default PostPage
