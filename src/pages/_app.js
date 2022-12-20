@@ -7,6 +7,7 @@ import '~/styles/index.scss'
 
 const VirusApp = ({ Component, ...rest }) => {
   const { store, props } = wrapper.useWrappedStore(rest)
+  console.log(props)
   return (
     <Fragment>
       <Provider store={store}>
