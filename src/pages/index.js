@@ -15,10 +15,12 @@ const HomePage = ({ filterTag }) => {
   )
 }
 
-HomePage.getInitialProps = wrapper.getInitialPageProps(store => async ({ query }) => {
+export const getServerSideProps = wrapper.getServerSideProps(store => async ({ query }) => {
   await store.dispatch(getAllFacts())
   return {
-    filterTag: query.tag,
+    props: {
+      filterTag: query.tag || null,
+    },
   }
 })
 

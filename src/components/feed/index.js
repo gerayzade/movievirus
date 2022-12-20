@@ -40,8 +40,7 @@ const Feed = ({ posts }) => {
   // handle transformations on mouse enter/leave events
   const handleMouseEnter = (e, rowIndex, colIndex) => {
     e.persist()
-    const isColActive = activeRow === rowIndex
-      && activeCol === colIndex
+    const isColActive = activeRow === rowIndex && activeCol === colIndex
     if (!mouseEvents || isColActive) return
     const vw = window.innerWidth
     const pos = e.pageX / vw

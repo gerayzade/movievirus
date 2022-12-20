@@ -14,7 +14,7 @@ const PostPage = () => {
   )
 }
 
-PostPage.getInitialProps = wrapper.getInitialPageProps(store => async ({ query }) => {
+export const getServerSideProps = wrapper.getServerSideProps(store => async ({ query }) => {
   await store.dispatch(getFactBySlug({
     slug: query.slug,
   }))
