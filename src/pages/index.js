@@ -6,19 +6,26 @@ import Layout from '~/components/Layout'
 import Feed from '~/components/feed'
 import { SLOGAN } from '~/utils/constants'
 
-const HomePage = ({ filterTag }) => {
+const HomePage = ({ filterTag, error }) => {
   const posts = useSelector(selectAllFactsByTag)(filterTag)
   return (
     <Layout title={SLOGAN}>
       <Feed posts={posts} />
+      <h1>{error}</h1>
     </Layout>
   )
 }
 
 HomePage.getInitialProps = wrapper.getInitialPageProps(store => async ({ query }) => {
-  await store.dispatch(getAllFacts())
+  let error = 'no error'
+  try {
+    await store.dispatch(getAllFacts())
+  } catch (e) {
+    error = e
+  }
   return {
     filterTag: query.tag || null,
+    error,
   }
 })
 
