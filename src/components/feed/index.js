@@ -44,7 +44,7 @@ const Feed = ({ posts }) => {
     if (!mouseEvents || isColActive) return
     const vw = window.innerWidth
     const pos = e.pageX / vw
-    const x = vw > 1024
+    const x = vw > 1024 && posts.length > 4
       ? (pos > 0.5 ? -1 : 1) * [30, 15, 0, 15, 30, 22.5, 7.5, 7.5, 22.5][colIndex % 9]
       : 0
     setState({

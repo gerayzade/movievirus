@@ -29,7 +29,7 @@ const SearchInput = () => {
       <input
         ref={input}
         type="text"
-        placeholder="Find some interesting fact..."
+        placeholder="Search..."
         value={searchQuery}
         onChange={(e) => dispatch(setSearchQuery(e.target.value))}
         data-cursor="transparent"

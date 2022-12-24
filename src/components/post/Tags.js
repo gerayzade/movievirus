@@ -2,10 +2,10 @@ import PropTypes from 'prop-types'
 import Link from '~/components/ui/Link'
 import { slugify } from '~/utils'
 
-const Tags = ({ data, filterUrl }) => {
+const Tags = ({ filterUrl, tags }) => {
   return (
     <ul className="tags">
-      {data.map((tag, i) => {
+      {tags.map((tag, i) => {
         const tagUrl = `${filterUrl}?tag=${slugify(tag)}`
         return (
           <li key={i}>
@@ -23,11 +23,11 @@ const Tags = ({ data, filterUrl }) => {
 }
 
 Tags.defaultProps = {
-  data: [],
+  tags: [],
 }
 
 Tags.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.string),
+  tags: PropTypes.arrayOf(PropTypes.string),
   filterUrl: PropTypes.string.isRequired,
 }
 

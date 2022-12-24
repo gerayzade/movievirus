@@ -30,8 +30,8 @@ const Post = ({ post }) => {
               />
               <h4>Tags</h4>
               <Tags
-                data={post.tags}
                 filterUrl="/"
+                tags={post.tags}
               />
               <h4>Source</h4>
               <Link
