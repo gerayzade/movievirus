@@ -1,5 +1,8 @@
 export const isDev = () => {
-  return process.env.NODE_ENV === 'development'
+  return [
+    'development',
+    'staging',
+  ].includes(process.env.NODE_ENV)
 }
 
 export const parseLineBreaks = text => text
