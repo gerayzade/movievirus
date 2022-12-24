@@ -14,12 +14,16 @@ body {
 
   @include customScrollbar;
 
-  :focus {
-    outline: none;
+  @include media('large') {
+    cursor: none;
   }
 
   [data-cursor] {
     cursor: pointer;
+  }
+
+  :focus {
+    outline: none;
   }
 }
 
@@ -102,14 +106,26 @@ h2 {
     align-items: center;
     justify-content: space-between;
     height: 100px;
+
+    @include media('small-and-medium') {
+      height: 80px;
+    }
   }
 
   .logo {
     display: inline-block;
     pointer-events: all;
+
+    @include media('small-and-medium') {
+      display: block;
+    }
   
     img {
       height: 30px;
+
+      @include media('small-and-medium') {
+        height: 23px;
+      }
     }
   }
 
@@ -120,6 +136,10 @@ h2 {
     letter-spacing: -.3px;
     margin-top: 3px;
     pointer-events: all;
+
+    @include media('small-and-medium') {
+      display: none;
+    }
   }
 
   .burger {
@@ -171,23 +191,6 @@ h2 {
       }
     }
   }
-  @include media('small-and-medium') {
-    .row {
-      height: 80px;
-    }
-
-    .hashes {
-      display: none;
-    }
-
-    .logo {
-      display: block;
-
-      img {
-        height: 23px;
-      }
-    }
-  }
 }
 
 // Footer
@@ -202,11 +205,28 @@ h2 {
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 50%, $black 100%);
   pointer-events: none;
 
+  @include media('small-and-medium') {
+    position: initial;
+    margin-top: -80px;
+  }
+
   .row {
     align-items: flex-end;
     justify-content: space-between;
     height: 100px;
     padding-bottom: 30px;
+
+    @include media('small-and-medium') {
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-start;
+    }
+
+    @include media('large') {
+      & > div:last-child {
+        text-align: right;
+      }
+    }
   }
 
   span {
@@ -228,23 +248,6 @@ h2 {
       color: $white;
     }
   }
-
-  @include media('large') {
-    .row > div:last-child {
-      text-align: right;
-    }
-  }
-
-  @include media('small-and-medium') {
-    position: initial;
-    margin-top: -80px;
-
-    .row {
-      flex-direction: column;
-      justify-content: flex-end;
-      align-items: flex-start;
-    }
-  }
 }
 
 // Posts Feed
@@ -256,6 +259,10 @@ h2 {
 
     @include media('small-and-medium') {
       justify-content: flex-start;
+    }
+
+    @include media('large') {
+      transition: .3s;
     }
 
     .fun-quote {
@@ -277,6 +284,11 @@ h2 {
   .post-preview {
     position: relative;
 
+    @include media('large') {
+      overflow: hidden;
+      transition: .3s;
+    }
+
     .layer {
       @include layer;
 
@@ -290,40 +302,33 @@ h2 {
     h4 {
       line-height: 1.6;
       max-width: 240px;
-    }
-  }
 
-  @include media('large') {
-    .row,
-    .post-preview,
-    .post-preview h4 {
-      transition: .3s;
-      transition-property: transform, opacity, box-shadow;
-      will-change: transform, opacity, box-shadow;
-    }
-
-    .post-preview {
-      overflow: hidden;
-
-      h4 {
+      @include media('large') {
         font-size: 11px;
         max-width: 165px;
         opacity: 0;
         transform: scale(.6);
+        transition: .3s;
       }
+    }
 
-      &.muted {
+    &.muted {
+      @include media('large') {
         opacity: .5;
         z-index: 1;
       }
+    }
 
-      &.active {
+    &.active {
+      @include media('large') {
         opacity: 1;
         transform: scale(1.3);
         z-index: 2;
         box-shadow: 0 0 30px 20px rgba(0, 0, 0, 0.6);
+      }
 
-        h4 {
+      h4 {
+        @include media('large') {
           opacity: 1;
           transform: scale(1);
         }
@@ -336,6 +341,19 @@ h2 {
 
 .post {
   line-height: 1.6;
+
+  @include media('large') {
+    display: flex;
+  }
+
+  .image {
+    @include media('large') {
+      flex-shrink: 0;
+      margin: 0 20px 0 0;
+      width: 50%;
+      padding-bottom: 30%;
+    }
+  }
 
   .data {
     display: flex;
@@ -362,6 +380,10 @@ h2 {
   p {
     text-align: justify;
     margin: 0px auto 20px;
+
+    @include media('small') {
+      text-align: left;
+    }
   }
 
   h4 {
@@ -371,6 +393,10 @@ h2 {
 
     &:first-child {
       margin: 20px 0 -10px;
+
+      @include media('large') {
+        margin-top: 0;
+      }
     }
   }
 
@@ -406,66 +432,6 @@ h2 {
       &:hover {
         background-color: $red;
       }
-    }
-  }
-
-  @include media('small') {
-    p {
-      text-align: left;
-    }
-  }
-
-  @include media('large') {
-    display: flex;
-
-    .image {
-      flex-shrink: 0;
-      margin: 0 20px 0 0;
-      width: 50%;
-      padding-bottom: 30%;
-    }
-
-    h4:first-child {
-      margin-top: 0;
-    }
-  }
-}
-
-// Additional style for large screens
-
-@include media('large') {
-  body {
-    cursor: none;
-  }
-
-  .screen-flow {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    height: 100%;
-    transform: translate(-50%);
-    z-index: 10;
-    pointer-events: none;
-
-    &::before,
-    &::after {
-      content: '';
-      display: block;
-      position: absolute;
-      top: 0;
-      height: 100%;
-      width: 20px;
-      background-image: linear-gradient(to top, $white 10px, rgba(0, 0, 0, 0) 10px);
-      background-size: 100% 20px;
-      background-repeat: repeat-y;
-    }
-
-    &::before {
-      left: -30px;
-    }
-
-    &::after {
-      right: -30px;
     }
   }
 }

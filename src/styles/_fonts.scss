@@ -1,4 +1,18 @@
-@mixin font-face($family, $source, $weight, $style: normal) {
+$font-sources: (
+  'Montserrat': 'montserrat-v14-latin',
+  'Sen': 'sen-v1-latin'
+);
+
+$font-weight: (
+  300: 'Light', 
+  400: 'Regular', 
+  500: 'Medium', 
+  600: 'Semibold', 
+  700: 'Bold'
+);
+
+@mixin font-face($family, $weight, $style: normal) {
+  $source: map-get($font-sources, $family);
   $path: '/fonts/#{$family}/#{$source}-#{$weight}';
   $weight-name: map-get($font-weight, $weight);
 
@@ -19,9 +33,9 @@
 }
 
 @each $weight in 300, 400, 500, 700 {
-  @include font-face('Montserrat', 'montserrat-v14-latin', $weight);
+  @include font-face('Montserrat', $weight);
 }
 
 @each $weight in 700 {
-  @include font-face('Sen', 'sen-v1-latin', $weight);
+  @include font-face('Sen', $weight);
 }
