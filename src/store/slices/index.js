@@ -1,8 +1,8 @@
-import factsReducer from './facts'
+import postsReducer from './posts'
 import layoutReducer from './layout'
 
 const rootReducer = {
-  facts: factsReducer,
+  posts: postsReducer,
   layout: layoutReducer,
 }
 

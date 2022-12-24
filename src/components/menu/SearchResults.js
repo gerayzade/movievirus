@@ -3,11 +3,11 @@ import {
   useSelector,
 } from 'react-redux'
 import { setMenuState } from '~/store/actions'
-import { selectAllFactsBySearchQuery } from '~/store/selectors'
+import { selectAllPostsBySearchQuery } from '~/store/selectors'
 import Link from '~/components/ui/Link'
 
 const SearchResults = () => {
-  const searchResults = useSelector(selectAllFactsBySearchQuery)
+  const searchResults = useSelector(selectAllPostsBySearchQuery)
   const dispatch = useDispatch()
   return (
     <ul className="search-results">

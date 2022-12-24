@@ -4,15 +4,9 @@ const getAllPosts = async (req, res) => {
   switch(req.method) {
     case 'GET':
       try {
-        const {
-          fields,
-          postType,
-        } = req.query
+        const { fields } = req.query
 
-        const data = await contentCtrl.findAllPosts({
-          fields,
-          postType,
-        })
+        const data = await contentCtrl.findAllPosts({ fields })
 
         res.status(200).json(data)
       } catch (error) {

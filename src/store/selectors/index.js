@@ -1,2 +1,2 @@
-export * from './facts'
+export * from './posts'
 export * from './layout'

@@ -6,13 +6,11 @@ const getPostBySlug = async (req, res) => {
       try {
         const {
           fields,
-          postType,
           slug,
         } = req.query
 
         const data = await contentCtrl.findPostBySlug({
           fields,
-          postType,
           slug,
         })
 

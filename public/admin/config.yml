@@ -4,9 +4,9 @@ backend:
 media_folder: public/media
 public_folder: /media
 collections:
-  - name: "facts"
+  - name: "posts"
     label: "Movie Facts"
-    folder: "content/facts"
+    folder: "content/posts"
     create: true
     slug: "{{slug}}"
     fields:

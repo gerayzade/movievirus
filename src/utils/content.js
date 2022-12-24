@@ -4,10 +4,10 @@ import matter from 'gray-matter'
 const cwd = process.cwd()
 const contentDir = `${cwd}/content`
 
-const getPostSlugs = ({ postType }) => {
+const getPostSlugs = () => {
   return new Promise((resolve, reject) => {
     try {
-      const dirPath = `${contentDir}/${postType}`
+      const dirPath = `${contentDir}/posts`
       const postFiles = fs.readdirSync(dirPath)
       const postSlugs = postFiles.map(name => name.replace(/\.md$/, ''))
       resolve(postSlugs)
@@ -20,12 +20,11 @@ const getPostSlugs = ({ postType }) => {
 
 export const findPostBySlug = ({
   fields = [],
-  postType = 'facts',
   slug,
 }) => {
   return new Promise((resolve, reject) => {
     try {
-      const { data } = matter.read(`${contentDir}/${postType}/${slug}.md`)
+      const { data } = matter.read(`${contentDir}/posts/${slug}.md`)
       const post = fields.length
         ? fields.reduce((acc, key) => ({
           ...acc,
@@ -45,18 +44,13 @@ export const findPostBySlug = ({
 
 export const findAllPosts = ({
   fields = ['image', 'tags', 'title'],
-  postType = 'facts',
 }) => {
   return new Promise(async (resolve, reject) => {
     try {
-      const postSlugs = await getPostSlugs({ postType })
+      const postSlugs = await getPostSlugs()
       const posts = await Promise.all(
         postSlugs.map(async (slug) => {
-          const post = await findPostBySlug({
-            fields,
-            postType,
-            slug,
-          })
+          const post = await findPostBySlug({ fields, slug })
           return post
         })
       )

@@ -2,12 +2,12 @@ import { createSlice } from '@reduxjs/toolkit'
 import { HYDRATE } from 'next-redux-wrapper'
 import * as reduxHelper from '~/utils/redux'
 import {
-  getAllFacts,
-  getFactBySlug,
+  getAllPosts,
+  getPostBySlug,
 } from '~/store/thunks'
 
-export const factsSlice = createSlice({
-  name: 'facts',
+export const postsSlice = createSlice({
+  name: 'posts',
   initialState: {
     all: [],
     single: {},
@@ -17,15 +17,15 @@ export const factsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(HYDRATE, reduxHelper.handleHydrateAction({
-        sliceName: 'facts',
+        sliceName: 'posts',
       }))
-      .addCase(getAllFacts.fulfilled, reduxHelper.handleFulfilledAction({
+      .addCase(getAllPosts.fulfilled, reduxHelper.handleFulfilledAction({
         statePropKey: 'all',
       }))
-      .addCase(getFactBySlug.fulfilled, reduxHelper.handleFulfilledAction({
+      .addCase(getPostBySlug.fulfilled, reduxHelper.handleFulfilledAction({
         statePropKey: 'single',
       }))
   },
 })
 
-export default factsSlice.reducer
+export default postsSlice.reducer
