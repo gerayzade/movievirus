@@ -25,6 +25,14 @@ body {
   :focus {
     outline: none;
   }
+
+  &.disable-scroll {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
 }
 
 svg, 
@@ -112,6 +120,10 @@ h2 {
     }
   }
 
+  a {
+    display: inline-flex;
+  }
+
   .logo {
     display: inline-block;
     pointer-events: all;
@@ -188,6 +200,120 @@ h2 {
         &:last-child {
           transform: matrix(0.7, 0.7, -0.7, 0.7, 0, -7);
         }
+      }
+    }
+  }
+}
+
+// Menu
+
+.menu {
+  display: flex;
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(
+    circle at center,
+    rgba($black, 0.8) 0,
+    rgba($black, 0.9) 50%,
+    $black 100%
+  );
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity .3s, visibility 0s .3s;
+
+  &.active {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity .3s, visibility 0s;
+  }
+
+  &-content {
+    flex: 1;
+    overflow-y: scroll;
+  
+    @include customScrollbar;
+  }
+  
+  .search {
+    width: 100%;
+    margin: 100px auto 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .3s, visibility 0s .3s;
+
+    @include media('large') {
+      max-width: 500px;
+    }
+  }
+
+  &.active {
+    .search {
+      visibility: visible;
+      opacity: 1;
+      transition: opacity .3s .3s, visibility 0s;
+    }
+  }
+  
+  .search-input {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+  
+    input {
+      flex: 1;
+      font-family: $font-montserrat;
+      cursor: text;
+      caret-color: $red;
+      color: $white;
+      border: none;
+      background: none;
+      appearance: none;
+      padding: 5px 25px 5px 0;
+      border-bottom: 1px solid $red;
+      text-overflow: ellipsis;
+      font-size: 18px;
+  
+      &::placeholder {
+        font: inherit;
+        font-style: italic;
+        color: $white;
+        opacity: 1;
+      }
+    }
+  
+    svg {
+      position: absolute;
+      bottom: 10px;
+      right: 0;
+      pointer-events: none;
+      width: 16px;
+    }
+  }
+  
+  .search-results {
+    li {
+      &:not(:last-child) {
+        margin-bottom: 10px;
+      }
+    }
+  
+    a {
+      display: block;
+      margin: 0 auto;
+      color: $white;
+      font-size: 18px;
+
+      @include media('large') {
+        text-align: center;
+      }
+  
+      &:hover {
+        color: $red;
       }
     }
   }
@@ -277,6 +403,8 @@ h2 {
 
       span {
         @include highlight($black);
+
+        transition: .3s;
       }
     }
   }
@@ -302,13 +430,13 @@ h2 {
     h4 {
       line-height: 1.6;
       max-width: 240px;
+      transition: .3s;
 
       @include media('large') {
         font-size: 11px;
         max-width: 165px;
         opacity: 0;
         transform: scale(.6);
-        transition: .3s;
       }
     }
 
@@ -334,6 +462,13 @@ h2 {
         }
       }
     }
+  }
+}
+
+.menu-active {
+  .post-preview h4,
+  .fun-quote span {
+    opacity: 0;
   }
 }
 
@@ -422,15 +557,18 @@ h2 {
     margin: 10px 0 20px -5px;
 
     li {
-      color: $white;
-      display: inline-block;
       margin-right: 1em;
-      padding: 0 .3em .1em;
-      border: 1px solid $red;
-      transition: background-color .3s;
 
-      &:hover {
-        background-color: $red;
+      a {
+        display: inline-block;
+        color: $white;
+        padding: 0 .3em .1em;
+        border: 1px solid $red;
+        transition: background-color .3s;
+
+        &:hover {
+          background-color: $red;
+        }
       }
     }
   }

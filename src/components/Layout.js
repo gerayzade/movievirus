@@ -4,6 +4,7 @@ import Head from 'next/head'
 import Cursor from '~/components/cursor'
 import Footer from '~/components/footer'
 import Header from '~/components/header'
+import Menu from  '~/components/menu'
 import {
   PreloadFonts,
   PreloadImages,
@@ -35,6 +36,7 @@ const Layout = ({ children, title }) => {
       <Cursor />
       <div className="page-transition" />
       <Header />
+      <Menu />
       <main className="content">
         {children}
       </main>

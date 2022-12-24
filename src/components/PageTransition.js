@@ -25,7 +25,6 @@ const PageTransition = ({ children }) => {
             ${COLOR_PALETTE.BLACK} 50%, ${COLOR_PALETTE.BLACK} 100%
           );
           transform: translateY(100vh);
-          will-change: transform;
         }
         .page-transition-enter .page-transition {
           transform: translateY(-100vh);

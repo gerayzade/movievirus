@@ -3,8 +3,8 @@ import {
   useDispatch,
   useSelector,
 } from 'react-redux'
+import { setMenuState } from '~/store/actions'
 import { selectMenuState } from '~/store/selectors'
-import { setMenuState } from '~/store/slices/layout'
 
 const MenuToggle = () => {
   const isMenuOpened = useSelector(selectMenuState)

@@ -2,10 +2,15 @@ import {
   Fragment,
   useEffect,
 } from 'react'
+import { useSelector } from 'react-redux'
+import { selectSearchQuery } from '~/store/selectors'
 import CursorDot from '~/components/cursor/plugin'
 import { COLOR_PALETTE } from '~/utils/mappings'
 
 const Cursor = () => {
+  // Use search query to update cursor type over dynamically changing search results
+  const searchQuery = useSelector(selectSearchQuery)
+
   useEffect(() => {
     const cursor = CursorDot({
       zIndex: 100,
@@ -33,7 +38,7 @@ const Cursor = () => {
       borderColor: 'transparent',
       background: 'transparent',
     })
-  }, [])
+  }, [searchQuery])
   return (<Fragment />)
 }
 

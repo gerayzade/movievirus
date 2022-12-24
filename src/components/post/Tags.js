@@ -8,14 +8,14 @@ const Tags = ({ data, filterUrl }) => {
       {data.map((tag, i) => {
         const tagUrl = `${filterUrl}?tag=${slugify(tag)}`
         return (
-          <Link
-            href={tagUrl}
-            key={i}
-          >
-            <li data-cursor="transparent">
+          <li key={i}>
+            <Link
+              href={tagUrl}
+              data-cursor="transparent"
+            >
               {tag}
-            </li>
-          </Link>
+            </Link>
+          </li>
         )
       })}
     </ul>
