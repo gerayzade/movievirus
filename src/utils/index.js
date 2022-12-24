@@ -1,7 +1,6 @@
 export const isDev = () => {
   return [
     'development',
-    'production',
   ].includes(process.env.NODE_ENV)
 }
 
