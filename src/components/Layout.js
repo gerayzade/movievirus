@@ -9,6 +9,7 @@ import {
   PreloadFonts,
   PreloadImages,
 } from '~/components/ResourceLinks'
+import { SLOGAN } from '~/utils/constants'
 
 const Layout = ({ children, title }) => {
   useEffect(() => {
@@ -18,6 +19,10 @@ const Layout = ({ children, title }) => {
     <div className="wrapper">
       <Head>
         <title>{`MovieVirus${title ? ` ★ ${title}` : ''}`}</title>
+        <meta
+          name="description"
+          content={SLOGAN}
+        />
         {/* preload assets */}
         <PreloadFonts />
         <PreloadImages />

@@ -29,6 +29,8 @@ const Logo = () => {
           <img
             src="/images/logo.svg"
             alt="Movievirus"
+            width={286}
+            height={30}
           />
         </picture>
       </h1>

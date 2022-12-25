@@ -137,9 +137,11 @@ h2 {
     }
   
     img {
+      width: 286px;
       height: 30px;
 
       @include media('small-and-medium') {
+        width: 220px;
         height: 23px;
       }
     }
