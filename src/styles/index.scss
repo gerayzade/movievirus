@@ -121,12 +121,16 @@ h2 {
   }
 
   a {
-    display: inline-flex;
+    display: flex;
   }
 
   .logo {
-    display: inline-block;
+    display: block;
     pointer-events: all;
+
+    &-wrapper {
+      display: inline-flex;
+    }
 
     @include media('small-and-medium') {
       display: block;
