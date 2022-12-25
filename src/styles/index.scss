@@ -322,11 +322,13 @@ h2 {
       }
   
       &:hover {
-        color: $red;
+        @media (hover: hover) {
+          color: $red;
 
-        span {
-          // Override marked keywords color
-          color: $red !important;
+          span {
+            // Override marked keywords color
+            color: $red !important;
+          }
         }
       }
     }
@@ -385,7 +387,9 @@ h2 {
     }
 
     &:hover em {
-      color: $white;
+      @media (hover: hover) {
+        color: $white;
+      }
     }
   }
 }
@@ -557,7 +561,9 @@ h2 {
     color: rgba($red, 0);
 
     &:hover {
-      color: rgba($red, .4);
+      @media (hover: hover) {
+        color: rgba($red, .4);
+      }
     }
 
     :first-child {
@@ -581,7 +587,9 @@ h2 {
         transition: background-color .3s;
 
         &:hover {
-          background-color: $red;
+          @media (hover: hover) {
+            background-color: $red;
+          }
         }
       }
     }
