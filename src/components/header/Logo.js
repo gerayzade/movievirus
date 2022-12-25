@@ -6,14 +6,16 @@ import Link from '~/components/ui/Link'
 const Logo = () => {
   const router = useRouter()
   const dispatch = useDispatch()
-  const handleLogoClick = (e) => {
+  const handleClick = (e) => {
     dispatch(setMenuState(false))
     if (router.pathname === '/') {
-      window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: 'smooth',
-      })
+      setTimeout(() => {
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: 'smooth',
+        })
+      }, 0)
     }
   }
   return (
@@ -21,7 +23,7 @@ const Logo = () => {
       <h1
         className="logo"
         data-cursor="large-red-dot"
-        onClick={(e) => handleLogoClick(e)}
+        onClick={(e) => handleClick(e)}
       >
         <picture>
           <img

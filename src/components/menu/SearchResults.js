@@ -15,6 +15,7 @@ const SearchResults = () => {
         return (
           <li key={i}>
             <Link
+              className="result"
               href="/post/[slug]"
               as={`/post/${result.slug}`}
               data-cursor="white-outline"
