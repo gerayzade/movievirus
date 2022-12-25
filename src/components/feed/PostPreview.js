@@ -25,11 +25,11 @@ const PostPreview = ({
         role="img"
       />
       <div className="layer">
-        <h4>
+        <h2>
           <span className="highlight">
             {post.title}
           </span>
-        </h4>
+        </h2>
       </div>
     </div>
   )

@@ -423,10 +423,13 @@ h2 {
 
       @include noise;
 
+      h2 {
+        font-size: 16px;
+        transition: .3s;
+      }
+
       span {
         @include highlight($black);
-
-        transition: .3s;
       }
     }
   }
@@ -449,7 +452,8 @@ h2 {
       padding: 15px 40px 10px 15px;
     }
 
-    h4 {
+    h2 {
+      font-size: 16px;
       line-height: 1.6;
       max-width: 240px;
       transition: .3s;
@@ -477,7 +481,7 @@ h2 {
         box-shadow: 0 0 30px 20px rgba(0, 0, 0, 0.6);
       }
 
-      h4 {
+      h2 {
         @include media('large') {
           opacity: 1;
           transform: scale(1);
@@ -488,9 +492,11 @@ h2 {
 }
 
 .menu-active {
-  .post-preview h4,
-  .fun-quote span {
-    opacity: 0;
+  .post-preview,
+  .fun-quote {
+    h2 {
+      opacity: 0;
+    }
   }
 }
 
@@ -512,7 +518,7 @@ h2 {
     }
   }
 
-  .data {
+  .post-info {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -525,6 +531,21 @@ h2 {
   h2 {
     max-width: 500px;
     margin: 20px 0;
+  }
+
+  h3 {
+    color: $white;
+    font-size: 12px;
+    text-transform: uppercase;
+
+    &:first-of-type {
+      order: -1;
+      margin: 20px 0 -10px;
+
+      @include media('large') {
+        margin-top: 0;
+      }
+    }
   }
 
   p, 
@@ -543,20 +564,6 @@ h2 {
     }
   }
 
-  h4 {
-    color: $white;
-    font-size: 12px;
-    text-transform: uppercase;
-
-    &:first-child {
-      margin: 20px 0 -10px;
-
-      @include media('large') {
-        margin-top: 0;
-      }
-    }
-  }
-
   a {
     white-space: nowrap;
     max-width: 100%;
@@ -570,7 +577,7 @@ h2 {
       }
     }
 
-    :first-child {
+    span:first-child {
       color: $red;
     }
   }

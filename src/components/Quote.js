@@ -6,12 +6,12 @@ const Quote = ({ index }) => {
   return (
     <div className="col-md-30 hide-sm hide-lg">
       <div className="fun-quote">
-        <h4>
+        <h2>
           <HtmlContent
             content={QUOTES[index % QUOTES.length]}
             tag="span"
           />
-        </h4>
+        </h2>
       </div>
     </div>
   )

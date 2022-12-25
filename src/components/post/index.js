@@ -17,23 +17,23 @@ const Post = ({ post }) => {
               data-src={post.image}
               role="img"
             />
-            <div className="data">
-              <h4>{'20 Mar, 2020'}</h4>
+            <div className="post-info">
               <h2>
                 <span className="highlight">
                   {post.title}
                 </span>
               </h2>
+              <h3>{'20 Mar, 2020'}</h3>
               <HtmlContent
                 content={post.description}
                 tag="p"
               />
-              <h4>Tags</h4>
+              <h3>Tags</h3>
               <Tags
                 filterUrl="/"
                 tags={post.tags}
               />
-              <h4>Source</h4>
+              <h3>Source</h3>
               <Link
                 href={soureUrl.href}
                 data-cursor="white-outline"
