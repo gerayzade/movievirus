@@ -14,6 +14,7 @@ const VirusApp = ({ Component, router, ...rest }) => {
         <NextProgress
           color={COLOR_PALETTE.RED}
           height={3}
+          options={{ showSpinner: false }}
         />
         <Component
           key={router.asPath}

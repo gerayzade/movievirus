@@ -210,7 +210,7 @@ h2 {
 .menu {
   display: flex;
   position: fixed;
-  z-index: 5;
+  z-index: 9;
   top: 0;
   left: 0;
   right: 0;
@@ -261,10 +261,14 @@ h2 {
     justify-content: center;
     position: sticky;
     top: 0;
-    padding-top: 110px;
+    padding-top: 80px;
     padding-bottom: 5px;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
     background-image: linear-gradient(to bottom, rgba($black, 0) 0%, rgba($black, 0.9) 20%, $black 100%);
+
+    @include media('large') {
+      padding-top: 100px;
+    }
   
     input {
       flex: 1;
@@ -275,7 +279,7 @@ h2 {
       border: none;
       background: none;
       appearance: none;
-      padding: 5px 25px 5px 0;
+      padding: 8px 24px 8px 2px;
       border-bottom: 1px solid $red;
       text-overflow: ellipsis;
       font-size: 18px;
@@ -290,7 +294,7 @@ h2 {
   
     svg {
       position: absolute;
-      bottom: 10px;
+      bottom: 15px;
       right: 0;
       pointer-events: none;
       width: 16px;
@@ -298,9 +302,12 @@ h2 {
   }
   
   .search-results {
+    margin-bottom: 60px;
+    padding: 0 2px;
+
     li {
       &:not(:last-child) {
-        margin-bottom: 10px;
+        margin-bottom: 15px;
       }
     }
   
@@ -309,9 +316,18 @@ h2 {
       margin: 0 auto;
       color: $white;
       font-size: 18px;
+
+      span {
+        transition: .3s;
+      }
   
       &:hover {
         color: $red;
+
+        span {
+          // Override marked keywords color
+          color: $red !important;
+        }
       }
     }
   }
@@ -321,7 +337,7 @@ h2 {
 
 .footer {
   position: fixed;
-  z-index: 10;
+  z-index: 8;
   bottom: 0;
   left: 0;
   font-size: 14px;

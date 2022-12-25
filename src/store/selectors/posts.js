@@ -11,12 +11,12 @@ export const selectAllPostsByTag = createSelector(
     : posts
 )
 
-export const selectAllPostsBySearchQuery = createSelector(
+export const selectPostsBySearchQuery = createSelector(
   selectAllPosts,
   selectSearchQuery,
   (posts, query) => posts.filter((post) => {
     const regexp = new RegExp(query, 'ig')
-    return query && (post.title.match(regexp) || post.tags.find(tag => tag.match(regexp)))
+    return query && post.title.match(regexp)
   })
 )
 
