@@ -13,28 +13,27 @@ const useSearch = ({
     }
   }
 
-  const showResults = !searchMessage
-
   const queryRegexp = new RegExp(searchQuery, 'ig')
 
-  searchResults = searchResults.map((result) => {
-    let title = result.title
-    const matches = Array.from(new Set(title.match(queryRegexp)))
-    matches.forEach((keyword) => {
-      const keywordRegexp = new RegExp(`(${keyword})(?![^<]*>|[^<>]*<\/)`, 'g')
-      title = title.replace(keywordRegexp, `<span style="color: ${COLOR_PALETTE.YELLOW}">${keyword}</span>`)
+  searchResults = searchMessage
+    ? []
+    : searchResults.map((result) => {
+      let title = result.title
+      const matches = Array.from(new Set(title.match(queryRegexp)))
+      matches.forEach((keyword) => {
+        const keywordRegexp = new RegExp(`(${keyword})(?![^<]*>|[^<>]*<\/)`, 'g')
+        title = title.replace(keywordRegexp, `<span style="color: ${COLOR_PALETTE.YELLOW}">${keyword}</span>`)
+      })
+      return {
+        ...result,
+        title,
+      }
     })
-    return {
-      ...result,
-      title,
-    }
-  })
 
   return {
     searchMessage,
     searchQuery,
     searchResults,
-    showResults,
   }
 }
 

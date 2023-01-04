@@ -16,7 +16,6 @@ const SearchResults = () => {
   const {
     searchMessage,
     searchResults,
-    showResults,
   } = useSearch({
     searchQuery: useSelector(selectSearchQuery),
     searchResults: useSelector(selectPostsBySearchQuery),
@@ -26,7 +25,7 @@ const SearchResults = () => {
       {searchMessage && (
         <li>{searchMessage}</li>
       )}
-      {showResults && searchResults.map((result, i) => {
+      {searchResults.map((result, i) => {
         return (
           <li key={i}>
             <Link
