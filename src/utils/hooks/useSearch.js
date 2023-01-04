@@ -1,0 +1,41 @@
+import { COLOR_PALETTE } from '~/utils/mappings'
+
+const useSearch = ({
+  searchQuery,
+  searchResults,
+}) => {
+  let searchMessage
+  if (searchQuery) {
+    if (searchQuery.length < 3) {
+      searchMessage = 'Please enter at least 3 characters to start searchin'
+    } else if (!searchResults.length) {
+      searchMessage = 'No results'
+    }
+  }
+
+  const showResults = !searchMessage
+
+  const queryRegexp = new RegExp(searchQuery, 'ig')
+
+  searchResults = searchResults.map((result) => {
+    let title = result.title
+    const matches = Array.from(new Set(title.match(queryRegexp)))
+    matches.forEach((keyword) => {
+      const keywordRegexp = new RegExp(`(${keyword})(?![^<]*>|[^<>]*<\/)`, 'g')
+      title = title.replace(keywordRegexp, `<span style="color: ${COLOR_PALETTE.YELLOW}">${keyword}</span>`)
+    })
+    return {
+      ...result,
+      title,
+    }
+  })
+
+  return {
+    searchMessage,
+    searchQuery,
+    searchResults,
+    showResults,
+  }
+}
+
+export default useSearch

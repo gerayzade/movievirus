@@ -3,33 +3,30 @@ import {
   useSelector,
 } from 'react-redux'
 import { setMenuState } from '~/store/actions'
+import HtmlContent from '~/components/ui/HtmlContent'
+import Link from '~/components/ui/Link'
+import { useSearch } from '~/utils/hooks'
 import {
   selectPostsBySearchQuery,
   selectSearchQuery,
 } from '~/store/selectors'
-import HtmlContent from '~/components/ui/HtmlContent'
-import Link from '~/components/ui/Link'
-import { COLOR_PALETTE } from '~/utils/mappings'
 
 const SearchResults = () => {
-  const searchResults = useSelector(selectPostsBySearchQuery)
-  const searchQuery = useSelector(selectSearchQuery)
   const dispatch = useDispatch()
-  const highlightSearchKeyword = (text) => {
-    const queryRegexp = new RegExp(searchQuery, 'ig')
-    const matches = Array.from(new Set(text.match(queryRegexp)))
-    matches.forEach((keyword) => {
-      const keywordRegexp = new RegExp(`(${keyword})(?![^<]*>|[^<>]*<\/)`, 'g')
-      text = text.replace(keywordRegexp, `<span style="color: ${COLOR_PALETTE.YELLOW}">${keyword}</span>`)
-    })
-    return text
-  }
+  const {
+    searchMessage,
+    searchResults,
+    showResults,
+  } = useSearch({
+    searchQuery: useSelector(selectSearchQuery),
+    searchResults: useSelector(selectPostsBySearchQuery),
+  })
   return (
     <ul className="search-results">
-      {searchQuery && !searchResults.length && (
-        <li>No Results</li>
+      {searchMessage && (
+        <li>{searchMessage}</li>
       )}
-      {searchResults.map((result, i) => {
+      {showResults && searchResults.map((result, i) => {
         return (
           <li key={i}>
             <Link
@@ -40,7 +37,7 @@ const SearchResults = () => {
               onClick={(e) => dispatch(setMenuState(false))}
             >
               <HtmlContent
-                content={highlightSearchKeyword(result.title)}
+                content={result.title}
                 tag="span"
               />
             </Link>
