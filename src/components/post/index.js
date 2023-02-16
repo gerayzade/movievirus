@@ -5,7 +5,7 @@ import LazyLoad from '~/components/LazyLoad'
 import Tags from '~/components/post/Tags'
 
 const Post = ({ post }) => {
-  const soureUrl = new URL(post.source)
+  const sourceUrl = new URL(post.source)
   return (
     <LazyLoad data={post}>
       <div className="row">
@@ -35,11 +35,11 @@ const Post = ({ post }) => {
               />
               <h3>Source</h3>
               <Link
-                href={soureUrl.href}
+                href={sourceUrl.href}
                 data-cursor="white-outline"
               >
-                <span>{soureUrl.hostname}</span>
-                <span>{soureUrl.pathname}</span>
+                <span>{sourceUrl.hostname}</span>
+                <span>{sourceUrl.pathname}</span>
               </Link>
             </div>
           </div>
