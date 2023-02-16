@@ -17,17 +17,17 @@ const SearchInput = () => {
   const isMenuOpened = useSelector(selectMenuState)
   const searchQuery = useSelector(selectSearchQuery)
   const dispatch = useDispatch()
-  const input = useRef(null)
+  const inputRef = useRef(null)
   useEffect(() => {
     if (isMenuOpened) {
-      dispatch(setSearchQuery())
-      input.current.focus()
+      dispatch(setSearchQuery(''))
+      inputRef.current.focus()
     }
   }, [isMenuOpened, dispatch])
   return (
     <div className="search-input">
       <input
-        ref={input}
+        ref={inputRef}
         type="text"
         placeholder="Search here..."
         value={searchQuery}

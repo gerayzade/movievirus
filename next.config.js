@@ -1,5 +1,12 @@
+const isDev = () => {
+  return [
+    'development',
+  ].includes(process.env.NODE_ENV)
+}
+
 const withPWA = require('next-pwa')({
   dest: 'public',
+  disable: isDev,
 })
 
 const nextConfig = withPWA({

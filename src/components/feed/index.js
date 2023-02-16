@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import {
+  useCallback,
   useEffect,
   useMemo,
   useRef,
@@ -21,24 +22,25 @@ const Feed = ({ posts }) => {
   const { active, x } = state
   const [activeRow, activeCol] = active
   // handle scroll
-  const timeout = useRef()
+  const timeoutRef = useRef()
+  const onScroll = useCallback(() => { 
+    setState(initialState)
+    setMouseEvents(false)
+    clearTimeout(timeoutRef.current)
+    timeoutRef.current = setTimeout(() => { 
+      setMouseEvents(true)
+    }, 400)
+  }, [initialState])
+  // attach event listener
   useEffect(() => {
-    const onScroll = () => { 
-      setState(initialState)
-      setMouseEvents(false)
-      clearTimeout(timeout.current)
-      timeout.current = setTimeout(() => { 
-        setMouseEvents(true)
-      }, 400)
-    }
     window.addEventListener('scroll', onScroll)
     return () => {
-      clearTimeout(timeout.current)
+      clearTimeout(timeoutRef.current)
       window.removeEventListener('scroll', onScroll)
     }
-  }, [initialState])
+  }, [onScroll])
   // handle transformations on mouse enter/leave events
-  const handleMouseEnter = (e, rowIndex, colIndex) => {
+  const handleMouseEnter = useCallback((e, rowIndex, colIndex) => {
     e.persist()
     const isColActive = activeRow === rowIndex && activeCol === colIndex
     if (!mouseEvents || isColActive) return
@@ -51,8 +53,10 @@ const Feed = ({ posts }) => {
       active: [rowIndex, colIndex],
       x,
     })
-  }
-  const handleMouseLeave = (e) => setState(initialState)
+  }, [activeRow, activeCol, mouseEvents, posts])
+  const handleMouseLeave = useCallback((e) => {
+    setState(initialState)
+  }, [initialState])
   // generate alternating rows with 5 and 4 posts
   let pointer = 0
   const n = posts.length

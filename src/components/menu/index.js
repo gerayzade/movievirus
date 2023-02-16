@@ -9,12 +9,12 @@ import Search from '~/components/menu/Search'
 
 const Menu = () => {
   const isMenuOpened = useSelector(selectMenuState)
-  const menuContent = useRef(null)
+  const menuContentRef = useRef(null)
   const scrollOffset = useRef(0)
   useEffect(() => {
     // Keep scroll position while menu is opened
     if (isMenuOpened) {
-      menuContent.current.scrollTop = 0
+      menuContentRef.current.scrollTop = 0
       scrollOffset.current = window.pageYOffset
       document.body.style.setProperty('top', `-${scrollOffset.current}px`)
       document.body.classList.add('disable-scroll', 'menu-active')
@@ -29,7 +29,7 @@ const Menu = () => {
       'active': isMenuOpened,
     })}>
       <div
-        ref={menuContent}
+        ref={menuContentRef}
         className="menu-content"
       >
         <div className="row">

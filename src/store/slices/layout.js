@@ -11,7 +11,7 @@ export const layoutSlice = createSlice({
       state.isMenuOpened = payload
     },
     setSearchQuery: (state, { payload }) => {
-      state.searchQuery = payload || ''
+      state.searchQuery = payload
     },
   },
 })
