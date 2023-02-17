@@ -21,10 +21,12 @@ export const postsSlice = createSlice({
         sliceName: 'posts',
       }))
       .addCase(getAllPosts.pending, reduxHelper.handlePendingAction())
+      .addCase(getAllPosts.rejected, reduxHelper.handleRejectedAction())
       .addCase(getAllPosts.fulfilled, reduxHelper.handleFulfilledAction({
         statePropKey: 'all',
       }))
       .addCase(getPostBySlug.pending, reduxHelper.handlePendingAction())
+      .addCase(getPostBySlug.rejected, reduxHelper.handleRejectedAction())
       .addCase(getPostBySlug.fulfilled, reduxHelper.handleFulfilledAction({
         statePropKey: 'single',
       }))

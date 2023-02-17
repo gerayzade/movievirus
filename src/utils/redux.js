@@ -12,6 +12,24 @@ export const handleHydrateAction = ({ sliceName }) => {
   }
 }
 
+export const handlePendingAction = () => {
+  return (state) => {
+    return {
+      ...state,
+      loading: true,
+    }
+  }
+}
+
+export const handleRejectedAction = () => {
+  return (state) => {
+    return {
+      ...state,
+      loading: false,
+    }
+  }
+}
+
 export const handleFulfilledAction = ({ statePropKey }) => {
   return (state, { payload }) => {
     return {
@@ -19,15 +37,6 @@ export const handleFulfilledAction = ({ statePropKey }) => {
       [statePropKey]: payload,
       statePropKey,
       loading: false,
-    }
-  }
-}
-
-export const handlePendingAction = () => {
-  return (state) => {
-    return {
-      ...state,
-      loading: true,
     }
   }
 }

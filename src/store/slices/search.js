@@ -29,6 +29,7 @@ export const searchSlice = createSlice({
         sliceName: 'search',
       }))
       .addCase(getSearchResults.pending, reduxHelper.handlePendingAction())
+      .addCase(getSearchResults.rejected, reduxHelper.handleRejectedAction())
       .addCase(getSearchResults.fulfilled, reduxHelper.handleFulfilledAction({
         statePropKey: 'results',
       }))
