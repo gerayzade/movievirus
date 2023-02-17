@@ -1,12 +1,14 @@
-import { useDispatch } from 'react-redux'
 import { useRouter } from 'next/router'
+import { useCallback } from 'react'
+import { useDispatch } from 'react-redux'
 import { setMenuState } from '~/store/actions'
 import Link from '~/components/ui/Link'
 
 const Logo = () => {
   const router = useRouter()
   const dispatch = useDispatch()
-  const handleClick = (e) => {
+
+  const handleClick = useCallback((e) => {
     dispatch(setMenuState(false))
     if (router.pathname === '/') {
       setTimeout(() => {
@@ -17,7 +19,7 @@ const Logo = () => {
         })
       }, 0)
     }
-  }
+  }, [dispatch, router])
   return (
     <Link href="/">
       <h1

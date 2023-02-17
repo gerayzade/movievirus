@@ -18,6 +18,16 @@ export const handleFulfilledAction = ({ statePropKey }) => {
       ...state,
       [statePropKey]: payload,
       statePropKey,
+      loading: false,
+    }
+  }
+}
+
+export const handlePendingAction = () => {
+  return (state) => {
+    return {
+      ...state,
+      loading: true,
     }
   }
 }

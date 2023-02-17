@@ -1,4 +1,6 @@
+export { setMenuState } from '~/store/slices/layout'
 export {
-  setMenuState,
+  setSearchLoading,
+  setSearchResults,
   setSearchQuery,
-} from '~/store/slices/layout'
+} from '~/store/slices/search'

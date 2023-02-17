@@ -1,22 +1,14 @@
-import contentCtrl from '~/utils/content'
+import contentfulService from '~/utils/contentful'
 
 const getPostBySlug = async (req, res) => {
   switch(req.method) {
     case 'GET':
       try {
-        const {
-          fields,
-          slug,
-        } = req.query
-
-        const data = await contentCtrl.findPostBySlug({
-          fields,
-          slug,
-        })
+        const data = await contentfulService.getEntry('post', req.query)
 
         res.status(200).json(data)
       } catch (error) {
-        res.status(400).end(`Error: ${error}`)
+        res.status(400).end(`${error}`)
       }
       break
     default:

@@ -1,6 +1,7 @@
+import Head from 'next/head'
 import PropTypes from 'prop-types'
 import { useEffect } from 'react'
-import Head from 'next/head'
+import { SLOGAN } from '~/utils/constants'
 import Cursor from '~/components/cursor'
 import Footer from '~/components/footer'
 import Header from '~/components/header'
@@ -9,7 +10,6 @@ import {
   PreloadFonts,
   PreloadImages,
 } from '~/components/ResourceLinks'
-import { SLOGAN } from '~/utils/constants'
 
 const Layout = ({ children, title }) => {
   useEffect(() => {

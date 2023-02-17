@@ -1,8 +1,8 @@
+import Blazy from 'blazy'
 import {
   Fragment,
   useEffect,
 } from 'react'
-import Blazy from 'blazy'
 
 const LazyLoad = ({ children, data }) => {
   useEffect(() => {

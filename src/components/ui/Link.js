@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types'
 import NextLink from 'next/link'
+import PropTypes from 'prop-types'
 import { useRouter } from 'next/router'
 
 const Link = ({

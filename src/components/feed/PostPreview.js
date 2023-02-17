@@ -20,8 +20,8 @@ const PostPreview = ({
     >
       <div
         className="image lazy"
-        aria-label={post.title}
-        data-src={post.image}
+        aria-label={post.featuredImage.title}
+        data-src={post.featuredImage.src}
         role="img"
       />
       <div className="layer">
@@ -48,9 +48,12 @@ PostPreview.propTypes = {
   isActive: PropTypes.bool,
   isMuted: PropTypes.bool,
   post: PropTypes.shape({
-    image: PropTypes.string.isRequired,
+    featuredImage: PropTypes.shape({
+      src: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+    }).isRequired,
     title: PropTypes.string.isRequired,
-  }),
+  }).isRequired,
 }
 
 export default PostPreview

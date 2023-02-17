@@ -9,6 +9,7 @@ import {
 export const postsSlice = createSlice({
   name: 'posts',
   initialState: {
+    loading: false,
     all: [],
     single: {},
   },
@@ -19,9 +20,11 @@ export const postsSlice = createSlice({
       .addCase(HYDRATE, reduxHelper.handleHydrateAction({
         sliceName: 'posts',
       }))
+      .addCase(getAllPosts.pending, reduxHelper.handlePendingAction())
       .addCase(getAllPosts.fulfilled, reduxHelper.handleFulfilledAction({
         statePropKey: 'all',
       }))
+      .addCase(getPostBySlug.pending, reduxHelper.handlePendingAction())
       .addCase(getPostBySlug.fulfilled, reduxHelper.handleFulfilledAction({
         statePropKey: 'single',
       }))

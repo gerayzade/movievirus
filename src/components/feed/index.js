@@ -12,17 +12,16 @@ import PostPreview from '~/components/feed/PostPreview'
 import Quote from '~/components/Quote'
 
 const Feed = ({ posts }) => {
-  // animate rows with posts
   const initialState = useMemo(() => ({
     active: [-1, -1],
     x: 0,
   }), [])
+
   const [state, setState] = useState(initialState)
   const [mouseEvents, setMouseEvents] = useState(true)
-  const { active, x } = state
-  const [activeRow, activeCol] = active
-  // handle scroll
+
   const timeoutRef = useRef()
+
   const onScroll = useCallback(() => { 
     setState(initialState)
     setMouseEvents(false)
@@ -31,7 +30,7 @@ const Feed = ({ posts }) => {
       setMouseEvents(true)
     }, 400)
   }, [initialState])
-  // attach event listener
+
   useEffect(() => {
     window.addEventListener('scroll', onScroll)
     return () => {
@@ -39,7 +38,10 @@ const Feed = ({ posts }) => {
       window.removeEventListener('scroll', onScroll)
     }
   }, [onScroll])
-  // handle transformations on mouse enter/leave events
+
+  const { active, x } = state
+  const [activeRow, activeCol] = active
+
   const handleMouseEnter = useCallback((e, rowIndex, colIndex) => {
     e.persist()
     const isColActive = activeRow === rowIndex && activeCol === colIndex
@@ -54,10 +56,12 @@ const Feed = ({ posts }) => {
       x,
     })
   }, [activeRow, activeCol, mouseEvents, posts])
+
   const handleMouseLeave = useCallback((e) => {
     setState(initialState)
   }, [initialState])
-  // generate alternating rows with 5 and 4 posts
+
+  // Render alternating rows with 5 and 4 posts
   let pointer = 0
   const n = posts.length
   const rows = Array(Math.floor(n / 9) * 2 + Math.ceil((n - 9 * Math.floor(n / 9)) / 5)).fill(0)
@@ -86,7 +90,7 @@ const Feed = ({ posts }) => {
                 return (
                   <div
                     className="col-lg-12 col-md-30 col-sm-60"
-                    key={post.slug}
+                    key={post.id}
                   >
                     <Link
                       href="/post/[slug]"

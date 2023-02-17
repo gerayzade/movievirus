@@ -1,6 +1,7 @@
 import { COLOR_PALETTE } from '~/utils/mappings'
 
 const useSearch = ({
+  searchLoading,
   searchQuery,
   searchResults,
 }) => {
@@ -8,7 +9,7 @@ const useSearch = ({
   if (searchQuery) {
     if (searchQuery.length < 3) {
       searchMessage = 'Please enter at least 3 characters to start searchin'
-    } else if (!searchResults.length) {
+    } else if (!searchLoading && !searchResults.length) {
       searchMessage = 'No results'
     }
   }

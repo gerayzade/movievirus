@@ -1,3 +1,4 @@
+import moment from 'moment'
 import PropTypes from 'prop-types'
 import HtmlContent from '~/components/ui/HtmlContent'
 import Link from '~/components/ui/Link'
@@ -5,7 +6,8 @@ import LazyLoad from '~/components/LazyLoad'
 import Tags from '~/components/post/Tags'
 
 const Post = ({ post }) => {
-  const sourceUrl = new URL(post.source)
+  const date = moment(post.createdAt).format('DD MMM, YYYY')
+  const sourceUrl = new URL(post.sourceUrl)
   return (
     <LazyLoad data={post}>
       <div className="row">
@@ -13,8 +15,8 @@ const Post = ({ post }) => {
           <div className="post">
             <div
               className="image lazy"
-              aria-label={post.title}
-              data-src={post.image}
+              aria-label={post.featuredImage.title}
+              data-src={post.featuredImage.src}
               role="img"
             />
             <div className="post-info">
@@ -23,7 +25,7 @@ const Post = ({ post }) => {
                   {post.title}
                 </span>
               </h2>
-              <h3>{'20 Mar, 2020'}</h3>
+              <h3>{date}</h3>
               <HtmlContent
                 content={post.description}
                 tag="p"
@@ -51,12 +53,16 @@ const Post = ({ post }) => {
 
 Post.propTypes = {
   post: PropTypes.shape({
+    createdAt: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    source: PropTypes.string.isRequired,
+    featuredImage: PropTypes.shape({
+      src: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+    }).isRequired,
+    sourceUrl: PropTypes.string.isRequired,
     tags: PropTypes.arrayOf(PropTypes.string),
     title: PropTypes.string.isRequired,
-  }),
+  }).isRequired,
 }
 
 export default Post

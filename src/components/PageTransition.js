@@ -1,5 +1,5 @@
-import { Fragment } from 'react'
 import { PageTransition as NextPageTransition } from 'next-page-transitions'
+import { Fragment } from 'react'
 import { COLOR_PALETTE } from '~/utils/mappings'
 
 const PageTransition = ({ children }) => {

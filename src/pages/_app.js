@@ -1,6 +1,6 @@
+import NextProgress from 'next-progress';
 import { Fragment } from 'react'
 import { Provider } from 'react-redux'
-import NextProgress from 'next-progress';
 import { wrapper } from '~/store'
 import { COLOR_PALETTE } from '~/utils/mappings'
 

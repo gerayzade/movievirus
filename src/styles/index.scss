@@ -99,6 +99,21 @@ h2 {
   }
 }
 
+@keyframes rotating {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loader {
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  border: 3px solid rgba($white, 0.1);
+  border-top: 3px solid $red;
+  animation: rotating 1.2s infinite cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+
 // Header
 
 .header {
@@ -305,6 +320,15 @@ h2 {
       pointer-events: none;
       width: 16px;
     }
+
+    .loader {
+      position: absolute;
+      right: 0;
+      bottom: 15px;
+      width: 20px;
+      height: 20px;
+      border-width: 2px;
+    }
   }
   
   .search-results {
@@ -395,6 +419,40 @@ h2 {
     &:hover em {
       @media (hover: hover) {
         color: $white;
+      }
+    }
+  }
+}
+
+// Error
+
+.error {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  right: 0;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  padding: 40px 15px;
+  text-transform: uppercase;
+  
+  h1 {
+    font-size: 4.4vw;
+    line-height: 1;
+    text-align: center;
+
+    &::first-line {
+      color: $red;
+      font-size: 16vw;
+    }
+
+    @include media('small') {
+      font-size: 8.8vw;
+
+      &::first-line {
+        font-size: 32vw;
       }
     }
   }

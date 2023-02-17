@@ -24,9 +24,9 @@ const CursorDot = ({
     alt.y = e.clientY
     dot.style.opacity = 1
     if (!inited) {
-      // remove cursors if exist
+      // Remove cursors if exist
       $('.cursor-dot').forEach($dot => $dot.parentNode.removeChild($dot))
-      // add new cursor
+      // Add new cursor
       document.body.append(dot)
       cur.x = alt.x
       cur.y = alt.y

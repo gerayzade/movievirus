@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types'
-import Link from '~/components/ui/Link'
 import { slugify } from '~/utils'
+import Link from '~/components/ui/Link'
 
 const Tags = ({ filterUrl, tags }) => {
   return (
     <ul className="tags">
       {tags.map((tag, i) => {
-        const tagUrl = `${filterUrl}?tag=${slugify(tag)}`
+        const tagUrl = `${filterUrl}?tags=${slugify(tag)}`
         return (
           <li key={i}>
             <Link

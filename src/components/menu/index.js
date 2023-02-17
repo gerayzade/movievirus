@@ -9,8 +9,10 @@ import Search from '~/components/menu/Search'
 
 const Menu = () => {
   const isMenuOpened = useSelector(selectMenuState)
+
   const menuContentRef = useRef(null)
   const scrollOffset = useRef(0)
+
   useEffect(() => {
     // Keep scroll position while menu is opened
     if (isMenuOpened) {

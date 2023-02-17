@@ -13,3 +13,9 @@ export const slugify = str => str
   .toLowerCase()
   .replace(/[^\w\s-]/g, '')
   .replace(/[\s_-]+/g, '-')
+
+export const camelCase = str => str
+  .replace(/\s+/g, '-')
+  .split('-')
+  .map((word, i) => i === 0 ? word : word.charAt(0).toUpperCase() + word.slice(1))
+  .join('')

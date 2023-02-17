@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
-import HtmlContent from '~/components/ui/HtmlContent'
 import { QUOTES } from '~/utils/constants'
+import HtmlContent from '~/components/ui/HtmlContent'
 
 const Quote = ({ index }) => {
   return (
