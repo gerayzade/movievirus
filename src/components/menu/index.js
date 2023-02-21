@@ -5,7 +5,7 @@ import {
 } from 'react'
 import { useSelector } from 'react-redux'
 import { selectMenuState } from '~/store/selectors'
-import Search from '~/components/menu/Search'
+import Search from '~/components/search'
 
 const Menu = () => {
   const isMenuOpened = useSelector(selectMenuState)

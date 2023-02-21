@@ -1,5 +1,5 @@
-import SearchInput from '~/components/menu/SearchInput'
-import SearchResults from '~/components/menu/SearchResults'
+import SearchInput from '~/components/search/SearchInput'
+import SearchResults from '~/components/search/SearchResults'
 
 const Search = () => {
   return (

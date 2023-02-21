@@ -6,8 +6,8 @@ import {
 import { setMenuState } from '~/store/actions'
 import {
   selectSearchLoading,
-  selectSearchResults,
   selectSearchQuery,
+  selectSearchResults,
 } from '~/store/selectors'
 import { useSearch } from '~/utils/hooks'
 import HtmlContent from '~/components/ui/HtmlContent'

@@ -11,8 +11,8 @@ import {
 } from 'react-redux'
 import {
   setSearchLoading,
-  setSearchResults,
   setSearchQuery,
+  setSearchResults,
 } from '~/store/actions'
 import {
   selectMenuState,
