@@ -17,7 +17,7 @@ export const QUOTES = [
   'When life gets blurry\nadjust your focus',
 ]
 
-export const SEARCH_QUERY_MIN_LENGTH = 3
+export const MIN_SEARCH_QUERY_LENGTH = 3
 
 export const SLOGAN = 'The most viral facts from film industry'
 

@@ -20,7 +20,7 @@ import {
   selectSearchQuery,
 } from '~/store/selectors'
 import { getSearchResults } from '~/store/thunks'
-import { SEARCH_QUERY_MIN_LENGTH } from '~/utils/constants'
+import { MIN_SEARCH_QUERY_LENGTH } from '~/utils/constants'
 import SvgIcon from '~/components/ui/SvgIcon'
 
 const SearchInput = () => {
@@ -30,7 +30,7 @@ const SearchInput = () => {
   const searchQuery = useSelector(selectSearchQuery)
 
   const handleSearchResults = useMemo(() => debounce((value) => {
-    if (value.length >= SEARCH_QUERY_MIN_LENGTH) {
+    if (value.length >= MIN_SEARCH_QUERY_LENGTH) {
       dispatch(getSearchResults({ searchQuery: value }))
     } else {
       dispatch(setSearchLoading(false))
@@ -40,7 +40,7 @@ const SearchInput = () => {
   const handleInputChange = useCallback((e) => {
     const value = e.target.value
     dispatch(setSearchQuery(value))
-    if (value.length < SEARCH_QUERY_MIN_LENGTH) {
+    if (value.length < MIN_SEARCH_QUERY_LENGTH) {
       dispatch(setSearchResults([]))
       dispatch(setSearchLoading(true))
     }
@@ -57,7 +57,7 @@ const SearchInput = () => {
     }
   }, [isMenuOpened, dispatch])
 
-  const displayLoader = searchLoading && searchQuery.length >= SEARCH_QUERY_MIN_LENGTH
+  const displayLoader = searchLoading && searchQuery.length >= MIN_SEARCH_QUERY_LENGTH
   return (
     <div className="search-input">
       <input

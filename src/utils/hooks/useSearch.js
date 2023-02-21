@@ -1,3 +1,4 @@
+import { MIN_SEARCH_QUERY_LENGTH } from '~/utils/constants'
 import { COLOR_PALETTE } from '~/utils/mappings'
 
 const useSearch = ({
@@ -7,8 +8,8 @@ const useSearch = ({
 }) => {
   let searchMessage
   if (searchQuery) {
-    if (searchQuery.length < 3) {
-      searchMessage = 'Please enter at least 3 characters to start searchin'
+    if (searchQuery.length < MIN_SEARCH_QUERY_LENGTH) {
+      searchMessage = `Please enter at least ${MIN_SEARCH_QUERY_LENGTH} characters to start searching`
     } else if (!searchLoading && !searchResults.length) {
       searchMessage = 'No results'
     }
