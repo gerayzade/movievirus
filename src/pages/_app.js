@@ -1,8 +1,7 @@
-import NextProgress from 'next-progress';
 import { Fragment } from 'react'
 import { Provider } from 'react-redux'
 import { wrapper } from '~/store'
-import { COLOR_PALETTE } from '~/utils/mappings'
+import ProgressBar from '~/components/ProgressBar';
 
 import '~/styles/index.scss'
 
@@ -11,11 +10,7 @@ const VirusApp = ({ Component, router, ...rest }) => {
   return (
     <Fragment>
       <Provider store={store}>
-        <NextProgress
-          color={COLOR_PALETTE.RED}
-          height={3}
-          options={{ showSpinner: false }}
-        />
+        <ProgressBar />
         <Component
           key={router.asPath}
           {...props.pageProps}

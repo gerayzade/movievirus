@@ -4,6 +4,8 @@
 @import 'reset';
 @import 'grid';
 
+/* purgecss start ignore */
+
 body {
   position: relative;
   font-family: $font-sen;
@@ -61,6 +63,31 @@ h2 {
 
   @include media('small-and-medium') {
     font-size: 20px;
+  }
+}
+
+#nprogress {
+  pointer-events: none;
+
+  .bar {
+    background: $red;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+  }
+
+  .peg {
+    display: block;
+    position: absolute;
+    right: 0px;
+    width: 100px;
+    height: 100%;
+    box-shadow: 0 0 10px $red, 0 0 5px $red;
+    opacity: 1.0;
+    transform: rotate(3deg) translate(0px, -4px);
   }
 }
 
