@@ -1,8 +1,6 @@
-const isDev = () => {
-  return [
-    'development',
-  ].includes(process.env.NODE_ENV)
-}
+const isDev = [
+  'development',
+].includes(process.env.NODE_ENV)
 
 const withPWA = require('next-pwa')({
   dest: 'public',
