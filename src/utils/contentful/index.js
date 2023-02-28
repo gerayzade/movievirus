@@ -17,7 +17,7 @@ const client = contentful.createClient({
   space: CONTENTFUL_SPACE_ID,
 })
 
-const PAGE_LIMIT = 18
+const PAGE_LIMIT = 36
 
 const getTags = async (query = {}) => {
   const response = await client.getTags({
