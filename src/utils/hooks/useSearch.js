@@ -9,7 +9,7 @@ const useSearch = ({
   let searchMessage
   if (searchQuery) {
     if (searchQuery.length < MIN_SEARCH_QUERY_LENGTH) {
-      searchMessage = `Please enter at least ${MIN_SEARCH_QUERY_LENGTH} characters to start searching`
+      searchMessage = `Please enter at least ${MIN_SEARCH_QUERY_LENGTH} characters`
     } else if (!searchLoading && !searchResults.length) {
       searchMessage = 'No results'
     }
