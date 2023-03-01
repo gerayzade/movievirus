@@ -14,16 +14,21 @@ export const transformTags = tags => tags.map(tag => tag.name)
 
 export const transformQuery = ({
   ids,
+  limit = 10,
+  order = '-sys.createdAt',
+  skip = 0,
   search,
   select,
   slug,
   tags,
 }) => {
-  const query = {}
+  const query = { limit, order, skip }
+
   ids && (query['sys.id[in]'] = ids)
   search && (query['fields.title[match]'] = search)
   select && (query['select'] = select.replace(/[^,]+/g, 'fields.$&'))
   slug && (query['fields.slug[equals]'] = slug)
   tags && (query['metadata.tags.sys.id[all]'] = camelCase(tags))
+
   return query
 }

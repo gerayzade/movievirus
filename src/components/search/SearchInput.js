@@ -69,12 +69,8 @@ const SearchInput = () => {
         data-cursor="transparent"
       />
       {displayLoader
-        ? (
-          <div className="loader" />
-        )
-        : (
-          <SvgIcon name="search" />
-        )
+        ? <div className="loader" />
+        : <SvgIcon name="search" />
       }
     </div>
   )

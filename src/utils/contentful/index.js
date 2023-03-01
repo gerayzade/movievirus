@@ -17,8 +17,6 @@ const client = contentful.createClient({
   space: CONTENTFUL_SPACE_ID,
 })
 
-const PAGE_LIMIT = 36
-
 const getTags = async (query = {}) => {
   const response = await client.getTags({
     ...transformQuery(query),
@@ -32,20 +30,20 @@ const getTags = async (query = {}) => {
 const getEntries = async (contentType, query = {}) => {
   const response = await client.getEntries({
     content_type: contentType,
-    limit: PAGE_LIMIT,
     ...transformQuery(query),
   })
 
-  const entries = response.items
-
-  return entries.map(entry => transformEntry(entry))
+  return {
+    entries: response.items.map(entry => transformEntry(entry)),
+    totalCount: response.total,
+  }
 }
 
 const getEntry = async (contentType, query = {}) => {
   const response = await client.getEntries({
     content_type: contentType,
-    limit: 1,
     ...transformQuery(query),
+    limit: 1,
   })
 
   const entry = response.items[0]

@@ -10,7 +10,7 @@ export const postsSlice = createSlice({
   name: 'posts',
   initialState: {
     loading: false,
-    all: [],
+    all: {},
     single: {},
   },
   reducers: {
