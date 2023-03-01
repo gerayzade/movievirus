@@ -1,4 +1,7 @@
-import { Fragment } from 'react'
+import {
+  Fragment,
+  useCallback,
+} from 'react'
 import {
   useDispatch,
   useSelector,
@@ -43,6 +46,10 @@ const SearchResults = () => {
     }
   }
 
+  const handleClick = useCallback((e) => {
+    dispatch(setMenuState(false))
+  }, [dispatch])
+
   return (
     <Fragment>
       <ul className="search-results">
@@ -57,7 +64,7 @@ const SearchResults = () => {
                     href="/post/[slug]"
                     as={`/post/${result.slug}`}
                     data-cursor="white-outline"
-                    onClick={(e) => dispatch(setMenuState(false))}
+                    onClick={handleClick}
                   >
                     <HtmlContent
                       content={result.title}

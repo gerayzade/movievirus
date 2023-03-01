@@ -1,4 +1,5 @@
 import cn from 'classnames'
+import { useCallback } from 'react'
 import {
   useDispatch,
   useSelector,
@@ -9,6 +10,10 @@ import { selectMenuState } from '~/store/selectors'
 const MenuToggle = () => {
   const isMenuOpened = useSelector(selectMenuState)
   const dispatch = useDispatch()
+
+  const handleClick = useCallback((e) => {
+    dispatch(setMenuState(!isMenuOpened))
+  }, [dispatch, isMenuOpened])
   return (
     <button
       type="button"
@@ -17,7 +22,7 @@ const MenuToggle = () => {
       })}
       aria-label="Menu"
       data-cursor="large-red-dot"
-      onClick={(e) => dispatch(setMenuState(!isMenuOpened))}
+      onClick={handleClick}
     >
       <div className="burger__icon">
         <span className="burger__line"></span> 

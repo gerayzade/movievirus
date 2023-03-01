@@ -25,7 +25,7 @@ const Logo = () => {
       <h1
         className="logo"
         data-cursor="large-red-dot"
-        onClick={(e) => handleClick(e)}
+        onClick={handleClick}
       >
         <picture>
           <img
