@@ -6,8 +6,8 @@ import {
 } from 'react-redux'
 import { wrapper } from '~/store'
 import {
-  selectAllPosts,
-  selectAllPostsTotalCount,
+  selectPosts,
+  selectPostsTotal,
   selectPostsLoading,
 } from '~/store/selectors'
 import { getAllPosts } from '~/store/thunks'
@@ -18,9 +18,9 @@ import Feed from '~/components/feed'
 
 const HomePage = () => {
   const dispatch = useDispatch()
-  const isLoading = useSelector(selectPostsLoading)
-  const posts = useSelector(selectAllPosts)
-  const totalCount = useSelector(selectAllPostsTotalCount)
+  const posts = useSelector(selectPosts)
+  const postsLoading = useSelector(selectPostsLoading)
+  const postsTotal = useSelector(selectPostsTotal)
 
   const router = useRouter()
   
@@ -32,7 +32,7 @@ const HomePage = () => {
     }))
   }, [dispatch, posts, router])
 
-  const loadMore = posts.length < totalCount
+  const loadMore = posts.length < postsTotal
 
   return (
     <Layout title={SLOGAN}>
@@ -40,7 +40,7 @@ const HomePage = () => {
       {loadMore && (
         <InfiniteLoading
           handleLoading={handleLoading}
-          isLoading={isLoading}
+          isLoading={postsLoading}
         />
       )}
     </Layout>

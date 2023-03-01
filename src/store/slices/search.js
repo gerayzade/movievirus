@@ -9,15 +9,19 @@ export const searchSlice = createSlice({
   name: 'search',
   initialState: {
     loading: false,
-    results: [],
+    result: {
+      entries: [],
+      total: 0,
+    },
     query: '',
   },
   reducers: {
+    clearSearchResults: (state) => {
+      state.result.entries = []
+      state.result.total = 0
+    },
     setSearchLoading: (state, { payload }) => {
       state.loading = payload
-    },
-    setSearchResults: (state, { payload }) => {
-      state.results = payload
     },
     setSearchQuery: (state, { payload }) => {
       state.query = payload
@@ -31,14 +35,14 @@ export const searchSlice = createSlice({
       .addCase(getSearchResults.pending, reduxHelper.handlePendingAction())
       .addCase(getSearchResults.rejected, reduxHelper.handleRejectedAction())
       .addCase(getSearchResults.fulfilled, reduxHelper.handleFulfilledAction({
-        statePropKey: 'results',
+        statePropKey: 'result',
       }))
   },
 })
 
 export const {
+  clearSearchResults,
   setSearchLoading,
-  setSearchResults,
   setSearchQuery,
 } = searchSlice.actions
 

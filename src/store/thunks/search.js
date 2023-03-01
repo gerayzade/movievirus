@@ -7,6 +7,7 @@ const postsEndpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/api/posts`
 export const getSearchResults = createAsyncThunk('search/getSearchResults', async (params = {}) => {
   const { data } = await axios.get(`${postsEndpoint}`, {
     params: merge({
+      limit: 20,
       search: params.searchQuery,
       select: 'slug,title',
     }, params),

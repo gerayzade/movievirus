@@ -35,7 +35,7 @@ const getEntries = async (contentType, query = {}) => {
 
   return {
     entries: response.items.map(entry => transformEntry(entry)),
-    totalCount: response.total,
+    total: response.total,
   }
 }
 

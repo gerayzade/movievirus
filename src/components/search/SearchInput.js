@@ -10,9 +10,9 @@ import {
   useSelector,
 } from 'react-redux'
 import {
+  clearSearchResults,
   setSearchLoading,
   setSearchQuery,
-  setSearchResults,
 } from '~/store/actions'
 import {
   selectMenuState,
@@ -37,12 +37,12 @@ const SearchInput = () => {
     }
   }, 500), [dispatch])
 
-  const handleInputChange = useCallback((e) => {
-    const value = e.target.value
+  const handleInputChange = useCallback(({ target: { value } }) => {
+    handleSearchResults.cancel()
+    dispatch(setSearchLoading(true))
     dispatch(setSearchQuery(value))
     if (value.length < MIN_SEARCH_QUERY_LENGTH) {
-      dispatch(setSearchResults([]))
-      dispatch(setSearchLoading(true))
+      dispatch(clearSearchResults())
     }
     handleSearchResults(value)
   }, [dispatch, handleSearchResults])
@@ -52,7 +52,7 @@ const SearchInput = () => {
   useEffect(() => {
     if (isMenuOpened) {
       dispatch(setSearchQuery(''))
-      dispatch(setSearchResults([]))
+      dispatch(clearSearchResults())
       inputRef.current.focus()
     }
   }, [isMenuOpened, dispatch])
