@@ -74,8 +74,9 @@ const Feed = ({ posts }) => {
             transform: `translateX(${x !== 0 ? x * (1 + ((rowIndex % 3) * 0.4)) : 0}px)`, 
             zIndex: rowIndex === activeRow ? 2 : 1,
           }
+
           const displayQuote = rowIndex === rows.length - 1
-            ? rowPosts.length < 2
+            ? rowPosts.length % 2 !== 0
             : rowIndex % 2 === 0
           return (
             <div
