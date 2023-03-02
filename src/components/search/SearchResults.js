@@ -25,11 +25,13 @@ const SearchResults = () => {
 
   const searchResultsWithHighlights = searchResults.map((result) => {
     let title = result.title
-    const queryRegexp = new RegExp(searchQuery, 'ig')
-    const matches = Array.from(new Set(title.match(queryRegexp)))
-    matches.forEach((keyword) => {
-      const keywordRegexp = new RegExp(`(${keyword})(?![^<]*>|[^<>]*<\/)`, 'g')
-      title = title.replace(keywordRegexp, `<span style="color: ${COLOR_PALETTE.YELLOW}">${keyword}</span>`)
+    searchQuery.split(' ').forEach((word) => {
+      const queryRegexp = new RegExp(word, 'ig')
+      const matches = Array.from(new Set(title.match(queryRegexp)))
+      matches.forEach((keyword) => {
+        const keywordRegexp = new RegExp(`(${keyword})(?![^<]*>|[^<>]*<\/)`, 'g')
+        title = title.replace(keywordRegexp, `<span style="color: ${COLOR_PALETTE.YELLOW}">${keyword}</span>`)
+      })
     })
     return {
       ...result,
