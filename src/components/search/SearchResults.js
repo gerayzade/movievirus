@@ -38,7 +38,7 @@ const SearchResults = () => {
       const matches = uniq(title.match(queryRegexp))
       matches.forEach((match) => {
         const matchRegexp = new RegExp(`(^|["\' ])(${match})(?![^<]*>|[^<>]*<\/)`, 'g')
-        title = title.replace(matchRegexp, `$1<span style="color: ${COLOR_PALETTE.YELLOW}">${match}</span>`)
+        title = title.replace(matchRegexp, `$1<span style="background: ${COLOR_PALETTE.RED}">${match}</span>`)
       })
     })
     return {

@@ -385,10 +385,6 @@ h2 {
       margin: 0 auto;
       color: $white;
       font-size: 18px;
-
-      span {
-        transition: .3s;
-      }
   
       &:hover {
         @media (hover: hover) {
@@ -396,7 +392,7 @@ h2 {
 
           span {
             // Override marked keywords color
-            color: $red !important;
+            background: transparent !important;
           }
         }
       }
