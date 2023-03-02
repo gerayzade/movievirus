@@ -25,7 +25,7 @@ const SearchResults = () => {
 
   const searchResultsWithHighlights = searchResults.map((result) => {
     let title = result.title
-    searchQuery.split(' ').forEach((word) => {
+    searchQuery.replace(/[^a-zA-Z0-9 ]/g, ' ').split(' ').forEach((word) => {
       const queryRegexp = new RegExp(word, 'ig')
       const matches = Array.from(new Set(title.match(queryRegexp)))
       matches.forEach((keyword) => {
