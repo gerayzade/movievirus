@@ -1,3 +1,4 @@
+import uniq from 'lodash/uniq'
 import {
   Fragment,
   useCallback,
@@ -25,16 +26,19 @@ const SearchResults = () => {
 
   const searchResultsWithHighlights = searchResults.map((result) => {
     let title = result.title
+    // Split the search query into an array of words
     const words = searchQuery
       .replace(/[^a-zA-Z0-9 ]/g, ' ')
       .replace(/ +/g, ' ')
+      .trim()
       .split(' ')
+    // Replace matched keywords with a highlighted version
     words.forEach((word) => {
       const queryRegexp = new RegExp(word, 'ig')
-      const matches = Array.from(new Set(title.match(queryRegexp)))
-      matches.forEach((keyword) => {
-        const keywordRegexp = new RegExp(`(^|["\' ])(${keyword})(?![^<]*>|[^<>]*<\/)`, 'g')
-        title = title.replace(keywordRegexp, `$1<span style="color: ${COLOR_PALETTE.YELLOW}">${keyword}</span>`)
+      const matches = uniq(title.match(queryRegexp))
+      matches.forEach((match) => {
+        const matchRegexp = new RegExp(`(^|["\' ])(${match})(?![^<]*>|[^<>]*<\/)`, 'g')
+        title = title.replace(matchRegexp, `$1<span style="color: ${COLOR_PALETTE.YELLOW}">${match}</span>`)
       })
     })
     return {
