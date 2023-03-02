@@ -29,8 +29,8 @@ const SearchResults = () => {
       const queryRegexp = new RegExp(word, 'ig')
       const matches = Array.from(new Set(title.match(queryRegexp)))
       matches.forEach((keyword) => {
-        const keywordRegexp = new RegExp(`(${keyword})(?![^<]*>|[^<>]*<\/)`, 'g')
-        title = title.replace(keywordRegexp, `<span style="color: ${COLOR_PALETTE.YELLOW}">${keyword}</span>`)
+        const keywordRegexp = new RegExp(`(^| )(${keyword})(?![^<]*>|[^<>]*<\/)`, 'g')
+        title = title.replace(keywordRegexp, `<span style="color: ${COLOR_PALETTE.YELLOW}">$1${keyword}</span>`)
       })
     })
     return {
