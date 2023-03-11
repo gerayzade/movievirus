@@ -31,7 +31,9 @@ const SearchInput = () => {
 
   const handleSearchResults = useMemo(() => debounce((value) => {
     if (value.length >= MIN_SEARCH_QUERY_LENGTH) {
-      dispatch(getSearchResults({ searchQuery: value }))
+      dispatch(getSearchResults({
+        searchQuery: value,
+      }))
     } else {
       dispatch(setSearchLoading(false))
     }

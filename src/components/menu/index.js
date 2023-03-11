@@ -32,7 +32,7 @@ const Menu = () => {
     })}>
       <div
         ref={menuContentRef}
-        className="menu-content"
+        className="content"
       >
         <div className="row">
           <div className="col-lg-60 col-md-60 col-sm-60">

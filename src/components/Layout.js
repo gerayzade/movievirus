@@ -28,10 +28,9 @@ const Layout = ({ children, title }) => {
         <PreloadImages />
       </Head>
       <Cursor />
-      <div className="page-transition" />
       <Header />
       <Menu />
-      <main className="content">
+      <main>
         {children}
       </main>
       <Footer />

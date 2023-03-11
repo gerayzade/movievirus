@@ -1,5 +1,6 @@
 import moment from 'moment'
 import PropTypes from 'prop-types'
+import { parseURL } from '~/utils'
 import HtmlContent from '~/components/ui/HtmlContent'
 import Link from '~/components/ui/Link'
 import LazyLoad from '~/components/LazyLoad'
@@ -7,7 +8,7 @@ import Tags from '~/components/post/Tags'
 
 const Post = ({ post }) => {
   const date = moment(post.createdAt).format('DD MMM, YYYY')
-  const sourceUrl = new URL(post.sourceUrl)
+  const sourceUrl = parseURL(post.sourceUrl)
 
   return (
     <LazyLoad data={post}>

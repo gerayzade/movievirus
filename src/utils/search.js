@@ -3,6 +3,7 @@ import { MIN_SEARCH_QUERY_LENGTH } from '~/utils/constants'
 import { COLOR_PALETTE } from '~/utils/mappings'
 
 export const getSearchMessage = ({
+  searchLoading,
   searchQuery,
   searchResults,
 }) => {

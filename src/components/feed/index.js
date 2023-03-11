@@ -33,6 +33,7 @@ const Feed = ({ posts }) => {
 
   useEffect(() => {
     window.addEventListener('scroll', onScroll)
+
     return () => {
       clearTimeout(timeoutRef.current)
       window.removeEventListener('scroll', onScroll)
