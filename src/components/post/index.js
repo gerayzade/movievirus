@@ -1,14 +1,14 @@
 import moment from 'moment'
 import PropTypes from 'prop-types'
-import { useMemo } from 'react'
 import HtmlContent from '~/components/ui/HtmlContent'
 import Link from '~/components/ui/Link'
 import LazyLoad from '~/components/LazyLoad'
 import Tags from '~/components/post/Tags'
 
 const Post = ({ post }) => {
-  const date = useMemo(() => moment(post.createdAt).format('DD MMM, YYYY'), [post])
-  const sourceUrl = useMemo(() => new URL(post.sourceUrl), [post])
+  const date = moment(post.createdAt).format('DD MMM, YYYY')
+  const sourceUrl = new URL(post.sourceUrl)
+
   return (
     <LazyLoad data={post}>
       <div className="row">

@@ -9,8 +9,11 @@ const Link = ({
   ...rest
 }) => {
   const router = useRouter()
+
   const isCurrentPath = router.asPath == (asPath || href)
-  return (/^https:\/\//).test(href)
+  const isExternalUrl = (/^https:\/\//).test(href)
+
+  return isExternalUrl
     ? (
       <a
         href={href}
