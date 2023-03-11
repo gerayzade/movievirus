@@ -25,8 +25,16 @@ const SearchResults = () => {
   const searchQuery = useSelector(selectSearchQuery)
   const searchResults = useSelector(selectSearchResults)
 
-  const searchMessage = getSearchMessage({ searchLoading, searchQuery, searchResults })
-  const searchResultsWithHighlights = getSearchResultsWithHighlights({ searchQuery, searchResults })
+  const searchMessage = getSearchMessage({
+    searchLoading,
+    searchQuery,
+    searchResults,
+  })
+
+  const searchResultsWithHighlights = getSearchResultsWithHighlights({
+    searchQuery,
+    searchResults,
+  })
 
   const handleClick = useCallback((e) => {
     dispatch(setMenuState(false))
