@@ -20,7 +20,7 @@ const Feed = ({ posts }) => {
   const [state, setState] = useState(initialState)
   const [mouseEvents, setMouseEvents] = useState(true)
 
-  const timeoutRef = useRef()
+  const timeoutRef = useRef(null)
 
   const onScroll = useCallback(() => { 
     setState(initialState)
