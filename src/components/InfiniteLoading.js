@@ -3,15 +3,30 @@ import {
   Fragment,
   useCallback,
   useEffect,
+  useRef,
 } from 'react'
+import {
+  useSelector,
+} from 'react-redux'
+import { selectMenuState } from '~/store/selectors'
 
 const InfiniteLoading = ({ handleLoading, isLoading }) => {
+  const isMenuOpened = useSelector(selectMenuState)
+
+  const scrollContainerRef = useRef(null)
+
+  useEffect(() => {
+    scrollContainerRef.current = isMenuOpened
+      ? document.querySelector('.menu > .content')
+      : document.documentElement
+  }, [isMenuOpened])
+
   const handleScroll = useCallback((e) => {
     if (isLoading) return
 
     const offset = 280
-    const scrollHeight = document.documentElement.scrollHeight
-    const scrollPosition = document.documentElement.scrollTop + window.innerHeight
+    const scrollHeight = scrollContainerRef.current.scrollHeight
+    const scrollPosition = scrollContainerRef.current.scrollTop + window.innerHeight
     const isBottomReached = Math.ceil(scrollPosition) >= (scrollHeight - offset)
 
     if (isBottomReached) {
@@ -20,14 +35,18 @@ const InfiniteLoading = ({ handleLoading, isLoading }) => {
   }, [handleLoading, isLoading])
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
+    const useWindowObject = scrollContainerRef.current.tagName === 'HTML'
+    const element = useWindowObject ? window : scrollContainerRef.current
+
+    element.addEventListener('scroll', handleScroll)
+
     return () => {
-      window.removeEventListener('scroll', handleScroll)
+      element.removeEventListener('scroll', handleScroll)
     }
   }, [handleScroll])
 
   useEffect(() => {
-    const scrollHeight = document.documentElement.scrollHeight
+    const scrollHeight = scrollContainerRef.current.scrollHeight
     const isScrollDisabled = scrollHeight === window.innerHeight
 
     if (!isLoading && isScrollDisabled) {

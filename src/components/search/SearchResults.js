@@ -11,12 +11,15 @@ import {
   selectSearchLoading,
   selectSearchQuery,
   selectSearchResults,
+  selectSearchResultsTotal,
 } from '~/store/selectors'
+import { getSearchResults } from '~/store/thunks'
 import {
   getSearchMessage,
   getSearchResultsWithHighlights,
 } from '~/utils/search'
 import HtmlContent from '~/components/ui/HtmlContent'
+import InfiniteLoading from '~/components/InfiniteLoading'
 import Link from '~/components/ui/Link'
 
 const SearchResults = () => {
@@ -24,6 +27,7 @@ const SearchResults = () => {
   const searchLoading = useSelector(selectSearchLoading)
   const searchQuery = useSelector(selectSearchQuery)
   const searchResults = useSelector(selectSearchResults)
+  const searchResultsTotal = useSelector(selectSearchResultsTotal)
 
   const searchMessage = getSearchMessage({
     searchLoading,
@@ -39,6 +43,16 @@ const SearchResults = () => {
   const handleClick = useCallback((e) => {
     dispatch(setMenuState(false))
   }, [dispatch])
+  
+  const handleLoading = useCallback(() => {
+    dispatch(getSearchResults({
+      append: true,
+      skip: searchResults.length,
+      searchQuery,
+    }))
+  }, [dispatch, searchQuery, searchResults])
+
+  const loadMore = searchResults.length < searchResultsTotal
 
   return (
     <Fragment>
@@ -67,6 +81,12 @@ const SearchResults = () => {
           )
         }
       </ul>
+      {loadMore && (
+        <InfiniteLoading
+          handleLoading={handleLoading}
+          isLoading={searchLoading}
+        />
+      )}
     </Fragment>
   )
 }
