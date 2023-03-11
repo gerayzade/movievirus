@@ -75,6 +75,7 @@ const Feed = ({ posts }) => {
             zIndex: rowIndex === activeRow ? 2 : 1,
           }
 
+          const quoteIndex = Math.floor(rowIndex / 2)
           const displayQuote = rowIndex === rows.length - 1
             ? rowPosts.length % 2 !== 0
             : rowIndex % 2 === 0
@@ -110,7 +111,7 @@ const Feed = ({ posts }) => {
                 )
               })}
               {displayQuote && (
-                <Quote index={Math.floor(rowIndex / 2)} />
+                <Quote index={quoteIndex} />
               )}
             </div>
           )
