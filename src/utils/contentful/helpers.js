@@ -17,7 +17,7 @@ export const transformQuery = ({
   limit = 10,
   order = '-sys.createdAt',
   skip = 0,
-  search,
+  searchQuery,
   select,
   slug,
   tags,
@@ -25,7 +25,7 @@ export const transformQuery = ({
   const query = { limit, order, skip }
 
   ids && (query['sys.id[in]'] = ids)
-  search && (query['fields.title[match]'] = search)
+  searchQuery && (query['fields.title[match]'] = searchQuery)
   select && (query['select'] = select.replace(/[^,]+/g, 'fields.$&'))
   slug && (query['fields.slug[equals]'] = slug)
   tags && (query['metadata.tags.sys.id[all]'] = camelCase(tags))

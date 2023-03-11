@@ -8,7 +8,6 @@ export const getSearchResults = createAsyncThunk('search/getSearchResults', asyn
   const { data } = await axios.get(`${postsEndpoint}`, {
     params: merge({
       limit: 10,
-      search: params.searchQuery,
       select: 'slug,title',
     }, params),
   })
