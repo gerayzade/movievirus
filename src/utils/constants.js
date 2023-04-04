@@ -21,4 +21,6 @@ export const MIN_SEARCH_QUERY_LENGTH = 3
 
 export const SLOGAN = 'The most viral facts from film industry'
 
+export const DESCRIPTION = `${SLOGAN}! Discover behind-the-scenes secrets and little-known information about popular films and actors.`
+
 export const TINIEST_GIF_IMAGE = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=='

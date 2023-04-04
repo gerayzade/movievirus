@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import PropTypes from 'prop-types'
 import { useEffect } from 'react'
-import { SLOGAN } from '~/utils/constants'
+import { DESCRIPTION } from '~/utils/constants'
 import Cursor from '~/components/cursor'
 import Footer from '~/components/footer'
 import Header from '~/components/header'
@@ -21,7 +21,7 @@ const Layout = ({ children, title }) => {
         <title>{`MovieVirus${title ? ` ★ ${title}` : ''}`}</title>
         <meta
           name="description"
-          content={SLOGAN}
+          content={DESCRIPTION}
         />
         {/* preload assets */}
         <PreloadFonts />
