@@ -1,7 +1,11 @@
 import Head from 'next/head'
 import PropTypes from 'prop-types'
+import { useRouter } from 'next/router'
 import { useEffect } from 'react'
-import { DESCRIPTION } from '~/utils/constants'
+import {
+  BASE_URL,
+  DESCRIPTION,
+} from '~/utils/constants'
 import Cursor from '~/components/cursor'
 import Footer from '~/components/footer'
 import Header from '~/components/header'
@@ -12,6 +16,8 @@ import {
 } from '~/components/ResourceLinks'
 
 const Layout = ({ children, title }) => {
+  const { asPath } = useRouter()
+  const canonical = `${BASE_URL}${asPath.split(/[?#]/)[0]}`
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
@@ -23,6 +29,12 @@ const Layout = ({ children, title }) => {
           name="description"
           content={DESCRIPTION}
         />
+        {BASE_URL && (
+          <link
+            rel="canonical"
+            href={canonical}
+          />
+        )}
         {/* preload assets */}
         <PreloadFonts />
         <PreloadImages />

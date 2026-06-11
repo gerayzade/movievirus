@@ -26,3 +26,5 @@ export const DESCRIPTION = `${SLOGAN}! Discover behind-the-scenes secrets and li
 export const TINIEST_GIF_IMAGE = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=='
 
 export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
+
+export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
