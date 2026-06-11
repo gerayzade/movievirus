@@ -3,11 +3,16 @@ import {
   useEffect,
   useRef,
 } from 'react'
-import { useSelector } from 'react-redux'
+import {
+  useDispatch,
+  useSelector,
+} from 'react-redux'
 import { selectMenuState } from '~/store/selectors'
+import { setMenuState } from '~/store/actions'
 import Search from '~/components/search'
 
 const Menu = () => {
+  const dispatch = useDispatch()
   const isMenuOpened = useSelector(selectMenuState)
 
   const menuContentRef = useRef(null)
@@ -26,6 +31,22 @@ const Menu = () => {
       window.scrollTo(0, scrollOffset.current)
     }
   }, [isMenuOpened])
+
+  useEffect(() => {
+    if (!isMenuOpened) return
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        dispatch(setMenuState(false))
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [isMenuOpened, dispatch])
   return (
     <aside className={cn('menu', {
       'active': isMenuOpened,
