@@ -3,6 +3,7 @@ import { camelCase } from '~/utils'
 export const transformEntry = entry => ({
   id: entry.sys.id,
   createdAt: entry.sys.createdAt,
+  updatedAt: entry.sys.updatedAt,
   ...entry.fields,
   featuredImage: entry.fields.featuredImage && {
     src: entry.fields.featuredImage.fields.file.url,
