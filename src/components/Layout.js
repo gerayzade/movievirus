@@ -18,7 +18,7 @@ const Layout = ({ children, title }) => {
   return (
     <div className="wrapper">
       <Head>
-        <title>{`MovieVirus${title ? ` ★ ${title}` : ''}`}</title>
+        <title>{`MovieVirus${title ? ` - ${title}` : ''}`}</title>
         <meta
           name="description"
           content={DESCRIPTION}
