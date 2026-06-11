@@ -15,11 +15,13 @@ npm run export   # build + next export → static site (images run unoptimized)
 - Requires Node `24.x` (see `engines` in package.json / `.nvmrc`).
 - No test framework is configured — there are no tests to run.
 - Both `package-lock.json` and `yarn.lock` exist; npm and yarn both work. Pick one and stay consistent.
-- Requires a `.env.local` (copy from `.env.sample`): `CONTENTFUL_ACCESS_TOKEN`, `CONTENTFUL_SPACE_ID`, `CONTENTFUL_ENV`, `NEXT_PUBLIC_BASE_URL`. Without valid Contentful credentials, post/search pages return errors.
+- Requires a `.env.local` (copy from `.env.sample`): `CONTENTFUL_ACCESS_TOKEN`, `CONTENTFUL_SPACE_ID`, `CONTENTFUL_ENV`, `NEXT_PUBLIC_BASE_URL`. Without valid Contentful credentials, post/search pages return errors. `NEXT_PUBLIC_GA_MEASUREMENT_ID` is optional — Google Analytics only loads in production when it's set.
 
 ## Architecture
 
 A **Next.js 13 Pages Router** app (plain JavaScript, not TypeScript) — a movie blog/magazine whose content comes from **Contentful CMS**, not a movie database API. PWA-enabled via `next-pwa`, deployed on Vercel.
+
+**Analytics:** `src/components/GoogleAnalytics.js` injects the gtag snippet via `next/script` (`strategy="afterInteractive"`) and is mounted in `src/pages/_app.js` outside the Redux `<Provider>`. It's production-gated — returns `null` when `isDev()` is true or `GA_MEASUREMENT_ID` (from `src/utils/constants.js`, sourced from `NEXT_PUBLIC_GA_MEASUREMENT_ID`) is unset — so it's a no-op in dev and when unconfigured.
 
 ### Data flow (Contentful → API route → Redux → page)
 
@@ -53,7 +55,7 @@ Global **SCSS** in `src/styles/` (`index.scss` plus `_variables`, `_mixins`, `_g
 
 ## Conventions
 
-- **Path alias `~/`** maps to `src/` (`jsconfig.json`, `baseUrl: ./src`). Import as `import Layout from '~/components/Layout'`, not relative paths.
+- **Path alias `~/`** maps to `src/` via `jsconfig.json` `compilerOptions.paths` (`"~/*": ["./src/*"]`). Import as `import Layout from '~/components/Layout'`, not relative paths.
 - **Components are grouped by feature** under `src/components/` (`header/`, `menu/`, `search/`, `feed/`, `post/`, `footer/`, `ui/`). `Layout.js` wraps all pages.
 - **JavaScript + PropTypes** for prop validation — no TypeScript.
 - **ESLint code style is enforced** (`.eslintrc.json`): 2-space indent, `comma-dangle: always-multiline`, `operator-linebreak`/`multiline-ternary` *before* the operator, `curly: multi-line`. `console.warn`/`console.error` are allowed; other `console` calls warn. Run `npm run lint` before finishing.
