@@ -8,7 +8,7 @@ const Footer = () => (
       </div>
       <div className="col-lg-30 col-md-60 col-sm-60">
         <Link
-          href="https://gerayzade.az/"
+          href="https://www.h.gerayzade.az/"
           data-cursor="small-red-dot"
         >
           {'</'} Developed by <em>Gerayzade</em> {'>'}
