@@ -2,15 +2,16 @@ import PropTypes from 'prop-types'
 import { slugify } from '~/utils'
 import Link from '~/components/ui/Link'
 
-const Tags = ({ filterUrl, tags }) => {
+const Tags = ({ tags }) => {
   return (
     <ul className="tags">
       {tags.map((tag, i) => {
-        const tagUrl = `${filterUrl}?tags=${slugify(tag)}`
+        const slug = slugify(tag)
         return (
           <li key={i}>
             <Link
-              href={tagUrl}
+              href="/tag/[slug]"
+              as={`/tag/${slug}`}
               data-cursor="transparent"
             >
               {tag}
@@ -28,7 +29,6 @@ Tags.defaultProps = {
 
 Tags.propTypes = {
   tags: PropTypes.arrayOf(PropTypes.string),
-  filterUrl: PropTypes.string.isRequired,
 }
 
 export default Tags

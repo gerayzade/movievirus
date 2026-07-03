@@ -68,6 +68,7 @@ const getEntry = async (contentType, query = {}) => {
 const contentfulService = {
   getEntries,
   getEntry,
+  getTags,
 }
 
 export default contentfulService

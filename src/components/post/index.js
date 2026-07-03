@@ -34,7 +34,6 @@ const Post = ({ post }) => {
               />
               <h3>Tags</h3>
               <Tags
-                filterUrl="/"
                 tags={post.tags}
               />
               <h3>Source</h3>

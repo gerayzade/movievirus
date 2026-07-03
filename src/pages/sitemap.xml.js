@@ -1,4 +1,5 @@
 import contentfulService from '~/utils/contentful'
+import { slugify } from '~/utils'
 
 const SitemapPage = () => null
 
@@ -16,11 +17,17 @@ export const getServerSideProps = async ({ res }) => {
     skip += limit
   }
 
+  const tagNames = await contentfulService.getTags({ limit: 1000 })
+
   const formatDate = date => new Date(date).toISOString().split('T')[0]
   const entryDate = post => post.updatedAt || post.createdAt
 
   const pages = [
     { loc: `${baseUrl}/`, lastmod: posts[0] && entryDate(posts[0]), priority: '1.0' },
+    ...tagNames.map(name => ({
+      loc: `${baseUrl}/tag/${slugify(name)}`,
+      priority: '0.6',
+    })),
     ...posts.map(post => ({
       loc: `${baseUrl}/post/${post.slug}`,
       lastmod: entryDate(post),

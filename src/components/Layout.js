@@ -15,7 +15,7 @@ import {
   PreloadImages,
 } from '~/components/ResourceLinks'
 
-const Layout = ({ children, title }) => {
+const Layout = ({ children, description, title }) => {
   const { asPath } = useRouter()
   const canonical = `${BASE_URL}${asPath.split(/[?#]/)[0]}`
   useEffect(() => {
@@ -27,7 +27,7 @@ const Layout = ({ children, title }) => {
         <title>{`MovieVirus${title ? ` - ${title}` : ''}`}</title>
         <meta
           name="description"
-          content={DESCRIPTION}
+          content={description}
         />
         {BASE_URL && (
           <link
@@ -51,10 +51,12 @@ const Layout = ({ children, title }) => {
 }
 
 Layout.defaultProps = {
+  description: DESCRIPTION,
   title: null,
 }
 
 Layout.propTypes = {
+  description: PropTypes.string,
   title: PropTypes.string,
 }
 
